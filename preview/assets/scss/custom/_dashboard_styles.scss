@@ -1,0 +1,842 @@
+ /* Sales Dashboard */
+ #top-categories,
+ #segmentation {
+   .apexcharts-pie text {
+     @apply fill-defaulttextcolor;
+   }
+
+   .apexcharts-pie circle {
+     @apply stroke-transparent;
+   }
+
+   .apexcharts-pie line {
+     @apply stroke-transparent;
+   }
+
+ }
+
+ ul.top-categories li {
+   @apply relative ps-8 before:absolute before:content-[""] before:w-[7px] before:h-[7px] before:rounded-[50%] before:start-4 before:top-[1rem];
+   padding-inline-start: 2rem !important;
+
+
+   &:nth-child(1) {
+     @apply before:bg-primary;
+   }
+
+   &:nth-child(2) {
+     @apply before:bg-secondary;
+   }
+
+   &:nth-child(3) {
+     @apply before:bg-success;
+   }
+
+   &:nth-child(4) {
+     @apply before:bg-info;
+   }
+
+   &:nth-child(5) {
+     @apply before:bg-warning;
+   }
+ }
+
+ .recent-activity-list {
+   @apply mb-0;
+
+   li {
+     @apply relative mb-[1.93rem] ps-24 last:mb-0 before:content-[""] before:absolute before:w-2.5 before:h-2.5 before:rounded-[50%] before:start-[72px] before:top-[5px] after:content-[""] after:absolute after:w-px after:h-full  after:border-l after:border-solid after:border-defaultborder after:dark:border-defaultborder/10   after:start-[4.75rem] after:top-[22px] last:after:hidden;
+
+     &:nth-child(1) {
+       @apply before:border-primary/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(2) {
+       @apply before:border-secondary/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(3) {
+       @apply before:border-success/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(4) {
+       @apply before:border-info/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(5) {
+       @apply before:border-warning/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(6) {
+       @apply before:border-danger/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(7) {
+       @apply before:border-primary/80 before:border-2 before:border-solid;
+     }
+   }
+ }
+
+ .recent-activity-time {
+   @apply absolute start-0;
+ }
+
+ ul.visitors-browser-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.35rem] last:mb-0;
+   }
+ }
+
+ ul.top-customers-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.3rem] last:mb-0;
+   }
+ }
+
+ .box {
+
+     .VisitorsByGender {
+       ul.segmentation-list li {
+         @apply relative ps-[2rem] before:content-[""] before:absolute before:w-[7px] before:h-[7px] before:rounded-[50%] before:start-[0.8rem] before:top-5;
+          padding-inline-start: 2rem !important;
+         &.male {
+           @apply before:bg-primary;
+         }
+
+         &.female {
+           @apply before:bg-secondary;
+         }
+
+         &.others {
+           @apply before:bg-success;
+         }
+
+         &.not-mentioned {
+           @apply before:bg-info;
+         }
+       }
+     }
+   
+ }
+
+ ul.top-country-sales {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.38rem] last:mb-0;
+   }
+ }
+
+ /* Sales Dashboard */
+
+ /* Analytics Dashboard */
+ ul.analytics-activity {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.57rem] last:mb-0;
+   }
+ }
+
+ #visitors {
+   .apexcharts-datalabels-group text {
+     @apply fill-defaulttextcolor;
+   }
+
+   .apexcharts-pie text {
+     @apply fill-defaulttextcolor fill-white;
+   }
+
+   .apexcharts-pie circle {
+     @apply stroke-transparent;
+   }
+
+   .apexcharts-pie line {
+     @apply stroke-transparent;
+   }
+ }
+
+ .analytics-visitors-countries {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.6rem] last:mb-0;
+   }
+ }
+
+ #users-map {
+   @apply h-56;
+ }
+
+ #users-map .jvm-zoom-btn.jvm-zoomin,
+ #users-map .jvm-zoom-btn.jvm-zoomout {
+   @apply hidden;
+ }
+
+ #users-map #jvm-markers-labels-group text {
+   @apply hidden;
+ }
+
+ /* Analytics Dashboard */
+
+ /* Ecommerce Dashboard */
+ .table thead tr th {
+   @apply font-semibold text-[0.9rem];
+ }
+
+ .ecommerce-banner-card {
+   @apply relative z-0 before:content-[""] before:absolute before:w-full before:h-full before:bg-primary/20 before:z-[-1] after:content-[""] after:absolute after:w-full after:h-full after:bg-[url(../public/assets/images/ecommerce/png/43.png)] after:bg-cover after:bg-center after:bg-no-repeat after:z-[-1] after:opacity-[0.15];
+
+   img {
+     @apply absolute w-44 h-44 bottom-[-1rem];
+   }
+ }
+
+ p {
+   @apply mt-0 mb-4;
+ }
+
+ ul.ecommerce-top-selling-list li {
+   @apply mb-[1rem] last:mb-0;
+ }
+
+ ul.ecommerce-visitors-country-list li {
+   @apply mb-[0.85rem] last:mb-0;
+ }
+
+ .ecommerce-top-customers-list li {
+   @apply mb-[1.05rem] last:mb-0;
+ }
+
+ #orders-summary,
+ #leads-channels,
+ #task-activity,
+ #candidates,
+ #statistics,
+ #audience-reached,
+ #file-manager-storage {
+   .apexcharts-pie text {
+     @apply fill-defaulttextcolor dark:fill-defaulttextcolor/80;
+   }
+ }
+
+ /* Ecommerce Dashboard */
+
+ /* CRM Dashboard */
+ ul.task-list-tab li {
+   @apply mb-[1.25rem] last:mb-0;
+ }
+
+ .crm-top-deals li {
+   @apply mb-[1.45rem] last:mb-0;
+ }
+
+ .crm-leads-channels-list {
+   li {
+     @apply ps-8 relative before:absolute before:content-[""] before:w-[7px] before:h-[7px] before:start-[1rem] before:top-[1.25rem] before:rounded-full;
+     padding-inline-start: 2rem !important;
+
+     &:nth-child(1) {
+       @apply before:bg-primary;
+     }
+
+     &:nth-child(2) {
+       @apply before:bg-secondary;
+     }
+
+     &:nth-child(3) {
+       @apply before:bg-success;
+     }
+
+     &:nth-child(4) {
+       @apply before:bg-info;
+     }
+
+     &:nth-child(5) {
+       @apply before:bg-warning;
+     }
+   }
+ }
+
+ ul.crm-recent-activity-list li {
+   @apply relative mb-[1.45rem] ps-4 last:mb-0 after:content-[""] after:absolute after:w-px after:h-full after:border-l-defaultborder  after:border-l after:border-dashed  after:dark:border-[#ffffff54] after:start-px after:top-[22px] before:content-[""] before:absolute before:w-[3px] before:h-4 before:rounded-sm before:start-0 before:top-[3px] last:after:hidden;
+  .dark &::after {
+     @apply border-[rgb(255_255_255_/_20%)];
+    }
+   &:nth-child(1) {
+     @apply before:bg-primary;
+   }
+
+   &:nth-child(2) {
+     @apply before:bg-secondary;
+   }
+
+   &:nth-child(3) {
+     @apply before:bg-success;
+   }
+
+   &:nth-child(4) {
+     @apply before:bg-info;
+   }
+
+   &:nth-child(5) {
+     @apply before:bg-warning;
+   }
+ }
+
+ /* CRM Dashboard */
+
+ /* Crypto Dashboard */
+ .crypto-main-card-icon {
+   @apply absolute w-[100px] h-[100px] end-[-1.5625rem] top-[-2.1875rem] opacity-5;
+ }
+
+ .crypto-trensing-assets-list li {
+   @apply mb-5 last:mb-0;
+ }
+
+ .market-cap-list li {
+   @apply mb-[1.35rem] last:mb-0;
+ }
+
+ ul.crypto-transactions-list li {
+   @apply mb-4 last:mb-0;
+ }
+
+ .crypto-wallet .donut-value {
+   @apply font-bold text-xl m-auto;
+ }
+
+ .crypto-wallet .chart-circle-value {
+   @apply absolute text-5xl leading-[70px] border-primary text-center w-[140px] h-[140px] flex m-auto rounded-[50%] border-2 border-dashed start-0 end-[0.13rem] inset-y-0;
+ }
+
+ .crypto-wallet {
+   @apply relative my-auto mx-0 flex justify-center items-center h-full;
+ }
+
+ #buy-crypto {
+   .input-group {
+     .choices__inner {
+       @apply ltr:rounded-tl-none ltr:rounded-bl-none rtl:rounded-br-none rtl:rounded-tr-none border-s-0;
+     }
+   }
+ }
+
+ /* Crypto Dashboard */
+
+ /* NFT Dashboard */
+ .nft-banner-card {
+   @apply min-h-[250px] z-[1] before:content-[""] before:absolute before:w-full before:h-full before:bg-[url(../public/assets/images/nft-images/38.jpg)] before:bg-cover before:bg-center before:bg-no-repeat before:z-[-1] before:rounded-lg before:inset-0 after:content-[""] after:absolute after:z-[-1] after:w-full after:h-full after:bg-[linear-gradient(to_right,rgba(0,_0,_0,_0.5)_30%,transparent)] after:bg-cover after:bg-center after:bg-no-repeat after:rounded-xl after:inset-0;
+ }
+
+ .nft-main-banner-image {
+   @apply absolute end-16 -bottom-9;
+ }
+
+ .text-fixed-white {
+   @apply text-white;
+ }
+
+ .nft-auction-time {
+   @apply absolute bg-[rgba(0,_0,_0,_0.3)] text-[11px] font-medium px-2 py-[0.15rem] rounded-[0.3rem] start-4 top-4;
+ }
+
+ .nft-content {
+   @apply absolute w-full bg-primary/10 backdrop-blur-[30px] p-4 start-0 bottom-0;
+ }
+
+ .nft-featuredcollect-image {
+   @apply rounded-sm relative;
+ }
+
+ .nft-details-swiper img {
+   @apply h-[385px];
+ }
+
+ /* NFT Dashboard */
+
+ /* Projects Dashboard */
+ .project-category {
+   @apply relative ps-4 before:content-[""] before:absolute before:w-[9px] before:h-[9px] before:rounded-[50%] before:start-0 before:top-[5px];
+
+   &.category1 {
+     @apply before:bg-primary;
+   }
+
+   &.category2 {
+     @apply before:bg-secondary;
+   }
+
+   &.category3 {
+     @apply before:bg-success;
+   }
+
+   &.category4 {
+     @apply before:bg-info;
+   }
+ }
+
+ ul.project-recent-transactions-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-5 last:mb-0;
+   }
+ }
+
+ .projects-to-do-list {
+   @apply mb-0;
+
+   li {
+     @apply relative mb-[1.83rem] ps-5 last:mb-0 before:absolute before:content-[""] before:w-[3px] before:h-4/5 before:rounded-sm before:start-0 before:top-1;
+
+     &:nth-child(1) {
+       @apply before:bg-primary;
+     }
+
+     &:nth-child(2) {
+       @apply before:bg-secondary;
+     }
+
+     &:nth-child(3) {
+       @apply before:bg-success;
+     }
+
+     &:nth-child(4) {
+       @apply before:bg-warning;
+     }
+
+     &:nth-child(5) {
+       @apply before:bg-info;
+     }
+
+     &:nth-child(6) {
+       @apply before:bg-danger;
+     }
+   }
+ }
+
+ #projects-ongoing {
+   @apply absolute start-0 bottom-0;
+ }
+
+ #task-activity .apexcharts-pie line,
+ #task-activity .apexcharts-pie circle {
+   @apply stroke-transparent;
+ }
+
+ #task-activity .apexcharts-pie text {
+   @apply fill-defaulttextcolor;
+ }
+
+ ul.task-activity-list li {
+   @apply relative ps-8 before:content-[""] before:absolute before:w-[7px] before:h-[7px] before:rounded-[50%] before:start-[0.8rem] before:top-5;
+  padding-inline-start: 2rem !important;
+   &.male {
+     @apply before:bg-primary;
+   }
+
+   &.female {
+     @apply before:bg-secondary;
+   }
+
+   &.others {
+     @apply before:bg-success;
+   }
+
+   &.not-mentioned {
+     @apply before:bg-info;
+   }
+ }
+
+ /* Projects Dashboard */
+
+ /* Jobs Dashboard */
+ #candidates .apexcharts-pie text {
+   @apply fill-defaulttextcolor;
+ }
+
+ .user-activity-list {
+   @apply relative mb-0 before:content-[""] before:absolute before:h-full before:w-px before:border-l-defaultborder dark:before:border-l-defaultborder/10 before:h-[90%] before:border-l before:border-solid before:start-5 before:top-[0];
+
+   li {
+     @apply mb-[1.55rem] last:mb-0;
+   }
+ }
+
+ .recent-jobs-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.2rem] last:mb-0;
+   }
+ }
+
+ .chart-value {
+   @apply absolute text-sm start-[30%] top-[35%];
+ }
+
+ /* Jobs Dashboard */
+
+ /* HRM Dashboard */
+ #work-format .apexcharts-pie text {
+   @apply fill-defaulttextcolor dark:fill-defaulttextcolor/80;
+ }
+.box {
+  .box-body {
+ ul.employee-work-format-list li {
+   @apply relative ps-8 before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-[50%] before:start-4 before:top-[1.1875rem];
+
+   &:nth-child(1) {
+     @apply before:bg-primary;
+   }
+
+   &:nth-child(2) {
+     @apply before:bg-secondary;
+   }
+
+   &:nth-child(3) {
+     @apply before:bg-info;
+   }
+
+   &:nth-child(4) {
+     @apply before:bg-success;
+   }
+ }
+  }
+}
+ .timeline-widget1 {
+   @apply relative overflow-x-auto before:absolute before:content-[""] before:w-px before:h-[86%] before:bg-defaultborder dark:before:bg-defaultborder/10 before:start-12 before:top-2 before:bottom-4;
+
+   .timeline-widget-list {
+     @apply relative font-medium mb-[1.45rem] before:content-[""] before:absolute before:w-3 before:h-3 before:bg-white before:dark:bg-bodybg before:rounded-[3.125rem] before:start-[2.688rem] before:top-1 last:mb-0;
+
+     &:nth-child(1) {
+       @apply before:border-primary/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(2) {
+       @apply before:border-secondary/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(3) {
+       @apply before:border-success/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(4) {
+       @apply before:border-warning/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(5) {
+       @apply before:border-info/80 before:border-2 before:border-solid;
+     }
+
+     &:nth-child(6) {
+       @apply before:border-danger/80 before:border-2 before:border-solid;
+     }
+   }
+ }
+
+ .timeline-widget1 .timeline-widget-list .timeline-widget-content {
+   @apply max-w-[14rem];
+ }
+
+ .timeline-widget1.timeline-2 .timeline-widget-list .timeline-widget-content {
+   @apply max-w-sm;
+ }
+
+ ul.schedule-list li {
+   @apply mb-5 last:mb-0;
+ }
+
+ ul.recruitment-pipeline-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.35rem] last:mb-0;
+   }
+ }
+
+ ul.hrm-leave-requests-list {
+   @apply mb-0;
+
+   li {
+     @apply relative mb-[0.95rem] last:mb-0;
+   }
+ }
+
+ /* HRM Dashboard */
+ /* Courses Dashboard */
+ .box.course-main-card {
+   @apply relative z-[1] before:z-[-1] before:content-[""] before:absolute before:w-full before:h-full before:bg-[url(../public/assets/images/media/backgrounds/2.png)] before:bg-no-repeat before:bg-center before:bg-cover before:opacity-50 before:inset-0 after:z-[-1] after:content-[""] after:absolute after:w-full after:h-full after:bg-primary/80;
+
+   img {
+     @apply absolute bottom-[-1.125rem] end-[-2rem] h-56;
+   }
+ }
+
+ .courses-top-categories-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.55rem] last:mb-0;
+   }
+ }
+
+ ul.latest-courses-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.25rem] last:mb-0;
+   }
+ }
+
+ ul.top-instructors {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.55rem] last:mb-0;
+   }
+ }
+
+ /* Courses Dashboard */
+
+ /* Stocks dashboard */
+ .swiper-vertical {
+   @apply h-[33.75rem];
+ }
+
+ #statistics .apexcharts-pie text {
+   @apply fill-defaulttextcolor dark:fill-defaulttextcolor/70;
+ }
+
+ ul.watchlist-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1rem] last:mb-0;
+   }
+ }
+
+ /* Stocks dashboard */
+
+ /* Medical Dashboard */
+ .box.medical-main-card {
+   @apply relative z-[1] before:z-[-1] before:content-[""] before:absolute before:w-full before:h-full before:bg-[url(../public/assets/images/media/backgrounds/4.png)] before:bg-no-repeat before:bg-center before:bg-cover before:opacity-50 before:inset-0 after:z-[-1] after:content-[""] after:absolute after:w-full after:h-full after:bg-primary/80;
+
+   img {
+     @apply absolute bottom-[-6.5rem] h-72 end-6;
+   }
+ }
+
+ ul.available-doctors-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-5 last:mb-0;
+   }
+ }
+
+ .upcoming-shedule .nav {
+   @apply justify-between;
+ }
+
+ .upcoming-shedule .sh-link {
+   @apply min-w-[65px] max-w-[65px] block transition-all duration-[ease] delay-[0.3s] bg-bodybg p-[0.6rem] rounded-[3px];
+ }
+
+ .upcoming-shedule .sh-shedule {
+   @apply relative ps-5 before:content-[""] before:absolute before:h-full before:w-1 before:rounded-sm before:bg-primary before:start-0 before:top-[0];
+ }
+
+ .upcoming-shedule .sh-shedule-container li {
+   @apply mb-[1.44rem] last:mb-0;
+ }
+
+ .upcoming-shedule .sh-shedule-container>.list-item:nth-child(2) .sh-shedule::before {
+   @apply bg-secondary;
+ }
+
+ .upcoming-shedule .sh-shedule-container>.list-item:nth-child(3) .sh-shedule::before {
+   @apply bg-success;
+ }
+
+ .upcoming-shedule .sh-shedule-container>.list-item:nth-child(4) .sh-shedule::before {
+   @apply bg-info;
+ }
+
+ .upcoming-shedule .sh-shedule-container>.list-item:nth-child(5) .sh-shedule::before {
+   @apply bg-warning;
+ }
+
+ ul.top-categories li {
+   @apply relative;
+   padding-inline-start: 2rem !important;
+ }
+
+
+ /* Medical Dashboard */
+
+ /* POS Dashboard */
+ .pos-category .box.active,
+ .pos-category .box:hover {
+   @apply border-primary shadow-[0px_4px_4px_rgba(118,_138,_254,_0.03)] border-2 border-solid;
+ }
+
+ .pos-category .box .avatar svg {
+   @apply w-[4.25rem] h-[4.25rem] fill-primary;
+ }
+
+ .pos-category .box {
+   @apply border-2 border-solid border-transparent;
+ }
+
+ .stretched-link {
+   @apply after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:z-[1];
+ }
+
+ @media (min-width: 1200px) {
+   .list-wrapper {
+     .card-item {
+       @apply w-[100%] px-3;
+     }
+   }
+ }
+
+//  @media (min-width: 576px) and (max-width: 1400px) {
+//    .list-wrapper {
+//      .card-item {
+//        @apply w-[50%] px-3;
+//      }
+//    }
+//  }
+
+ /* POS Dashboard */
+
+ /* Podcast Dashboard */
+ .podcast-banner {
+   @apply relative z-[1] before:content-[""] before:absolute before:w-full before:h-full before:bg-[url(../public/assets/images/media/media-70.jpg)] before:bg-cover before:bg-center before:bg-no-repeat before:z-[-1] before:rounded-md before:inset-0 after:content-[""] after:absolute after:z-[-1] after:w-full after:h-full after:bg-[url(../public/assets/images/media/backgrounds/4.png)] after:bg-cover after:bg-center after:bg-no-repeat after:opacity-20 after:rounded-lg after:inset-0;
+ }
+
+ .podcasters {
+   @apply mb-0;
+
+   li {
+     @apply mb-4 last:mb-0;
+   }
+ }
+
+ .podcast-playing-now {
+   @apply w-[12.5rem] h-[12.5rem] flex justify-center mx-auto mt-0 mb-[1.4rem];
+
+   img {
+     @apply rounded-xl;
+   }
+ }
+
+ .podcast-playing-progress {
+   @apply w-full;
+ }
+
+ .podcast-playing-progress .progress-custom .progress-bar:after {
+   @apply content-[""] w-3 h-3 shadow-[0_0.313rem_0.313rem_primary/20] bg-white absolute end-[-0.375rem] rounded-[50%] border-4 border-solid border-primary -top-1;
+ }
+
+ .podcast-recently-played-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-4 last:mb-0;
+   }
+ }
+
+ /* Podcast Dashboard */
+
+ /* School Dashboard */
+ .events .flatpickr-calendar {
+   @apply shadow-none;
+ }
+
+ .events .flatpickr-current-month .flatpickr-monthDropdown-months {
+   @apply bg-transparent;
+ }
+
+ .events .flatpickr-calendar,
+ .events .flatpickr-rContainer,
+ .events .flatpickr-days {
+   @apply w-full;
+ }
+
+ .events .flatpickr-day {
+   @apply w-full max-w-full h-11 leading-[44px];
+ }
+
+ .events .dayContainer {
+   @apply w-full max-w-[inherit];
+ }
+
+ #Eventscalendar {
+   @apply hidden;
+ }
+
+ /* School Dashboard */
+
+ /* Social Media Dashboard */
+ .social-main-icon svg {
+   @apply w-9 h-9;
+ }
+
+ .social-requests-list,
+ .social-suggestions-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-6;
+
+     &:last-child {
+       @apply mb-0;
+     }
+   }
+
+   .ti-dropdown-menu {
+     li {
+       @apply mb-0;
+     }
+   }
+ }
+
+ .social-requests-list {
+   @apply mb-0;
+
+   li {
+     @apply mb-[1.6rem];
+
+     &:last-child {
+       @apply mb-0;
+     }
+   }
+ }
+
+ #audience-reached .apexcharts-pie text {
+   @apply fill-defaulttextcolor;
+ }
+
+ /* Social Media Dashboard */
+ #orders-summary {
+   .apexcharts-pie circle {
+     @apply stroke-transparent;
+   }
+ }
+
+ .rounded-xxl {
+   @apply rounded-[30px];
+ }
+
+ .dayContainer {
+   @apply min-w-full;
+ }

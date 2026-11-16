@@ -1,0 +1,100 @@
+ 
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+.file-manager-navigation,
+.file-manager-folders,
+.selected-file-details {
+  @apply bg-white dark:bg-bodybg ;
+}
+.files-main-nav {
+  @apply max-h-[calc(100vh_-_14rem)];
+}
+@media (min-width: 576px) {
+  .file-manager-navigation {
+    @apply w-[30rem];
+  }
+}
+.file-format-icon svg {
+  @apply w-[2.2rem] h-[2.2rem];
+}
+.folder-svg-container svg {
+  @apply w-[1.8rem] h-[1.8rem];
+}
+.filestar {
+  @apply absolute start-2.5 top-2;
+}
+.file-details img {
+  @apply w-[150px] h-[150px] bg-light dark:bg-bodybg2 rounded-[50%];
+}
+@media (max-width: 1200px) {
+  .selected-file-details.open {
+    @apply w-[19.5rem] absolute block shadow-[0_0.125rem_0_rgba(10,10,10,0.04)] border-l-defaultborder border-l border-solid end-0 top-2;
+  }
+}
+.file-manager-navigation.close {
+  @apply hidden;
+}
+.file-manager-folders.open {
+  @apply block;
+}
+@media (max-width: 365px) {
+  .file-manager-container .file-folders-container {
+    @apply max-h-[calc(100vh_-_12.9rem)];
+  }
+}
+ul.files-main-nav {
+  @apply mb-0;
+}
+ul.files-main-nav li {
+  @apply rounded-sm mb-[0.15rem] px-3 py-2 hover:bg-light dark:hover:bg-light last:mb-0;
+}
+ul.files-main-nav li div {
+  @apply text-textmuted dark:text-textmuted/50;
+}
+ul.files-main-nav li:hover div {
+  @apply text-primary ;
+}
+ul.files-main-nav li.active {
+  @apply bg-primary/10;
+}
+ul.files-main-nav li.active div {
+  @apply text-primary;
+}
+ul.files-main-nav li div.filemanager-upgrade-storage {
+  @apply w-[235px] h-auto bg-light dark:bg-bodybg2 border-defaultborder rounded-sm text-center text-defaulttextcolor p-4 border-2 border-dashed;
+}
+ul.files-main-nav li div.filemanager-upgrade-storage img {
+  @apply w-[150px] h-[150px];
+}
+#file-manager-storage .apexcharts-pie line,
+#file-manager-storage .apexcharts-pie circle {
+  @apply stroke-transparent ;
+}
+#file-manager-storage
+  .apexcharts-datalabels-group
+  .apexcharts-text.apexcharts-datalabel-label {
+  @apply fill-textmuted;
+}
+#file-manager-storage
+  .apexcharts-datalabels-group
+  .apexcharts-text.apexcharts-datalabel-value {
+  @apply fill-defaulttextcolor;
+}
+.filemanager-dropzone .dropzone {
+  @apply min-h-[50px] bg-primary/10 text-primary border-primary/10;
+}
+.filemanager-dropzone .dropzone .dz-message {
+  @apply m-0;
+}
+.filemanager-list {
+  @apply list-none;
+}
+.filemanager-list li {
+  @apply rounded-sm mb-4;
+}
+// .filemanager-gradient {
+//   @apply bg-filemanager-gradient;
+// }

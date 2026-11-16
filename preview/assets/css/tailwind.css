@@ -1,0 +1,235 @@
+@import "tailwindcss";
+@import "preline/variants.css";
+@import "preline/src/plugins/dropdown/variants.css";
+@import "preline/src/plugins/remove-element/variants.css";
+@import "preline/src/plugins/tooltip/variants.css";
+@import "preline/src/plugins/accordion/variants.css";
+@import "preline/src/plugins/tree-view/variants.css";
+@import "preline/src/plugins/collapse/variants.css";
+@import "preline/src/plugins/tabs/variants.css";
+@import "preline/src/plugins/overlay/variants.css";
+@import "preline/src/plugins/scrollspy/variants.css";
+@import "preline/src/plugins/carousel/variants.css";
+@import "preline/src/plugins/select/variants.css";
+@import "preline/src/plugins/input-number/variants.css";
+@import "preline/src/plugins/pin-input/variants.css";
+@import "preline/src/plugins/strong-password/variants.css";
+@import "preline/src/plugins/stepper/variants.css";
+@import "preline/src/plugins/combobox/variants.css";
+@import "preline/src/plugins/layout-splitter/variants.css";
+@import "preline/src/plugins/scroll-nav/variants.css";
+@import "preline/src/plugins/datatable/variants.css";
+@import "preline/src/plugins/range-slider/variants.css";
+@import "preline/src/plugins/file-upload/variants.css";
+@import "preline/src/plugins/datepicker/variants.css";
+@import "preline/src/plugins/theme-switch/variants.css";
+@custom-variant dark (&:where(.dark, .dark *));
+/* <-- this switches dark mode to class-based */
+/* Preline */
+@theme {
+  --color-bodybg: #f5f6fa;
+  --color-bodybg2: #19181a;
+  --color-darkbg: #19181a;
+  --color-primary: #735dff;
+  --color-primaryrgb: #735dff;
+  --color-secondary: #ff5a29;
+  --color-warning: #ff9a13;
+  --color-info: #0c9cfc;
+  --color-success: #0cc763;
+  --color-danger: #ff383c;
+  --color-light: #f7f8fa;
+  --color-dark: #0a0a0a;
+  --color-orangemain: #fe7c58;
+  --color-pinkmain: #fe549b;
+  --color-tealmain: #00d8d8;
+  --color-purplemain: #7b76fe;
+  --color-greenmain: #01ef8c;
+  --color-defaultbodybgcolor: #f5f6fa;
+  --color-defaulttextcolor: #222f36;
+  --color-defaultborder: #f3f2f9;
+  --color-defaultbackground: #f9fafb;
+  --color-menubg: #ffffff;
+  --color-menuprimecolor: #657a99;
+  --color-menubordercolor: #f3f2f9;
+  --color-headerbg: #ffffff;
+  --color-headerprimecolor: #657a99;
+  --color-headerbordercolor: #f3f2f9;
+  --color-customwhite: #ffffff;
+  --color-customblack: #000000;
+  --color-listhoverfocus-bg: #f5f6f7;
+  --color-textmuted: #98a5c3;
+  --color-inputborder: #e2e6f1;
+  --color-formcontrolbg: #ffffff;
+  --color-bslinkcolorrgb: #212b37;
+  --color-facebook: #3b5998;
+  --color-twitter: #00acee;
+  --color-github: #333333;
+  --color-google: #cf4e43;
+  --color-youtube: #ff0000;
+  --shadow-defaultshadow: "0px 6px 16px 2px rgba(0, 0, 0, 0.05)";
+  --text-defaultsize: "0.8125rem";
+  --font-defaultfont: "Quicksand", "sans-serif";
+  --font-bootstrap: "bootstrap-icons";
+  --font-remix: "remixicon";
+  --animate-progressbaranimated: "1s linear infinite progressbarstripes";
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+  --breakpoint-xxxl: 1800px;
+  --animate-bell: ring 2s ease-in-out infinite;
+}
+@keyframes ring {
+  0% {
+    transform: rotate(0);
+  }
+  1% {
+    transform: rotate(30deg);
+  }
+  3% {
+    transform: rotate(-28deg);
+  }
+  5% {
+    transform: rotate(34deg);
+  }
+  7% {
+    transform: rotate(-32deg);
+  }
+  9% {
+    transform: rotate(30deg);
+  }
+  11% {
+    transform: rotate(-28deg);
+  }
+  13% {
+    transform: rotate(26deg);
+  }
+  15% {
+    transform: rotate(-24deg);
+  }
+  17% {
+    transform: rotate(22deg);
+  }
+  19% {
+    transform: rotate(-20deg);
+  }
+  21% {
+    transform: rotate(18deg);
+  }
+  23% {
+    transform: rotate(-16deg);
+  }
+  25% {
+    transform: rotate(14deg);
+  }
+  27% {
+    transform: rotate(-12deg);
+  }
+  29% {
+    transform: rotate(10deg);
+  }
+  31% {
+    transform: rotate(-8deg);
+  }
+  33% {
+    transform: rotate(6deg);
+  }
+  35% {
+    transform: rotate(-4deg);
+  }
+  37% {
+    transform: rotate(2deg);
+  }
+  39% {
+    transform: rotate(-1deg);
+  }
+  41% {
+    transform: rotate(1deg);
+  }
+  43% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+/* dark mode */
+[class=dark], .dark {
+  --color-bodybg: #232226;
+  --color-bodybg2: #19181a;
+  --color-menubg: #080808;
+  --color-menubordercolor: #ffffff1a;
+  --color-menuprimecolor: #ffffff;
+  --color-headerbg: #232226;
+  --color-headerprimecolor: #ffffff;
+  --color-headerbordercolor: #ffffff;
+  --color-customwhite: #232226;
+  --color-customblack: #ffffff;
+  --color-defaultborder: #ffffff;
+  --color-defaulttextcolor: #ffffff;
+  --color-light: #2e2d32;
+  --color-darkbg: #19181a;
+  --color-listhoverfocusbg: #ffffff;
+  --color-defaultbackground: #19181a;
+  --color-defaultbodybgcolor: #19181a;
+  --color-textmuted: #ffffff;
+  --color-inputborder: #ffffff;
+  --color-formcontrolbg: #232226;
+}
+
+[data-menu-styles=dark][class=light] {
+  --color-menubg: #202947;
+  --color-menuprimecolor: #ffffff;
+}
+
+[data-header-styles=dark] [class=dark] {
+  @apply bg-bodybg;
+}
+
+@layer base {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1.25rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+}
+/* Optional classes for custom utilities */
+@layer components {
+  input[type=radio] {
+    appearance: none;
+  }
+  .h1 {
+    font-size: 2.5rem;
+  }
+  .h2 {
+    font-size: 2rem;
+  }
+  .h3 {
+    font-size: 1.75rem;
+  }
+  .h4 {
+    font-size: 1.5rem;
+  }
+  .h5 {
+    font-size: 1.25rem;
+  }
+  .h6 {
+    font-size: 1rem;
+  }
+}
+
+/*# sourceMappingURL=tailwind.css.map */

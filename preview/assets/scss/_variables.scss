@@ -1,0 +1,81 @@
+
+
+// :root {
+// 	--body-bg: 											245, 246, 250;
+// 	--primary: 											115 93 255;
+// 	--primary-rgb: 										115, 93, 255;
+// 	--secondary: 										255 90 41;
+// 	--warning: 											255 154 19;
+// 	--info: 											12 156 252;
+// 	--success: 											12 199 99;
+// 	--danger: 											255 56 60;
+// 	--light: 											247 248 250;
+// 	--dark: 											10 10 10;
+// 	--orange: 											254 124 88;
+// 	--pink: 											254 84 155;
+// 	--teal: 											0 216 216;
+// 	--purple: 											123 118 254;
+// 	--green: 											1 239 140;
+// 	--default-body-bg-color: 							245 246 250;
+// 	--default-text-color: 							  	34 47 54;
+// 	--default-border: 									243 242 249;
+// 	--default-background: 							  	249 250 251;
+// 	--menu-bg: 											255 255 255;
+// 	--menu-prime-color: 								101 122 153;
+// 	--menu-border-color: 								243 242 249;
+// 	--header-bg: 										255 255 255;
+// 	--header-prime-color: 								101 122 153;
+// 	--header-border-color: 								243 242 249;
+// 	--custom-white: 									255 255 255;
+// 	--custom-black: 								  	0 0 0;
+// 	--list-hover-focus-bg: 							  	245 246 247;
+// 	--text-muted: 										152 165 195;
+// 	--input-border: 									226 230 241;
+// 	--form-control-bg: 								  	255 255 255;
+// 	--bs-link-color-rgb: 							  	33 43 55;
+// 	--facebook: 										59 89 152;
+//     --twitter: 											0 172 238;
+//     --github: 											51 51 51;    
+//     --google: 											207 78 67;
+//     --youtube: 											255 0 0;
+// }
+
+
+// /* dark mode */
+// .dark{
+// 	--body-bg: 									        35 34 38;	
+
+// 	--dark-bg: 									        25 24 26;
+// 	--menu-bg: 											35 34 38;
+// 	--menu-border-color: 								255 255 255;			gray3
+// 	--menu-prime-color: 								255 255 255;			// menu-prime-color/40
+// 	--header-bg: 										35 34 38;
+// 	--header-prime-color: 								255 255 255;			// header-prime-color/40
+// 	--header-border-color: 								255 255 255;			// header-border-color/10
+// 	--custom-white: 									35 34 38;
+// 	--custom-black: 									255 255 255;  
+// 	--default-border: 									255 255 255;			// default-border/70
+// 	--default-text-color: 								255 255 255;			// default-text-color/80
+// 	--light:								     		46 45 50;	
+// 	--dark: 											25 24 26; 
+// 	--list-hover-focus-bg: 								255 255 255;
+// 	--default-background: 								25 24 26;
+// 	--default-body-bg-color: 							25 24 26;
+// 	--text-muted: 										255 255 255;			// text-muted/50 
+// 	--input-border: 									255 255 255;			// input-border/10
+// 	--form-control-bg: 									35 34 38;
+// 	color-scheme: dark;
+// }
+
+// [data-menu-styles="dark"][class="light"] {
+// 	--menu-bg: 										32 41 71;
+// 	--menu-prime-color: 							178 184 199;
+// }
+// [data-menu-styles="dark"] {
+//     --menu-border-color: 							255, 255, 255, 0.1;
+// }
+// [data-menu-styles="color"] {
+// 	--menu-bg: 										92 103 247;
+// 	--menu-prime-color: 							255 255 255;
+// 	--menu-border-color: 							255 255 255;
+// }

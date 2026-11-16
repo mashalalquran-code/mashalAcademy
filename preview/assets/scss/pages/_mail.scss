@@ -1,0 +1,214 @@
+ 
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+/* Start:: mail-app */
+.main-mail-container {
+  @apply relative overflow-hidden;
+}
+.mail-navigation,
+.total-mails,
+.mail-recepients {
+  @apply bg-white dark:bg-bodybg h-[calc(100vh_-_8rem)] overflow-hidden rounded-sm;
+}
+.mail-info-body {
+  @apply max-h-[calc(100vh_-_8.3rem)];
+}
+@media (min-width: 1400px) {
+  .total-mails .mail-msg .mail-msg-content {
+    @apply inline-block;
+  }
+}
+@media (min-width: 1400px) and (max-width: 1489.98px) {
+  .responsive-mail-action-icons .dropdown {
+    @apply block;
+  }
+  .responsive-mail-action-icons .close-button {
+    @apply hidden;
+  }
+  .mail-action-icons {
+    @apply hidden;
+  }
+}
+@media (max-width: 1399.98px) {
+  .responsive-mail-action-icons {
+    @apply  flex gap-2;
+  }
+  .mail-action-icons {
+    @apply hidden;
+  }
+}
+@media (max-width: 575.98px) {
+  .mail-recepients {
+    @apply hidden;
+  }
+}
+@media (min-width: 1489px) {
+  .responsive-mail-action-icons {
+    @apply hidden;
+  }
+}
+@media (max-width: 991.98px) {
+  .mail-navigation {
+    @apply w-full;
+  }
+}
+@media (min-width: 992px) {
+  .mail-navigation {
+    @apply min-w-[20rem] max-w-xs;
+  }
+}
+.total-mails {
+  @apply w-full;
+}
+.total-mails .mail-messages {
+  @apply max-h-[calc(100vh_-_14.65rem)];
+}
+.total-mails .mail-messages li {
+  @apply border-b-defaultborder dark:border-b-defaultborder/10 pt-[1.1rem] pb-2.5 px-5 border-l-2 border-l-transparent border-b border-solid hover:bg-light last:border-b-0;
+}
+.total-mails .mail-messages li.active {
+  @apply bg-light;
+}
+.total-mails .mail-messages li .avatar.mail-msg-avatar {
+  @apply w-8 h-8;
+}
+.total-mails .mail-messages li .avatar.mail-msg-avatar.online:before,
+.total-mails .mail-messages li .avatar.mail-msg-avatar.offline:before {
+  @apply w-[0.55rem] h-[0.55rem];
+}
+.total-mails .mail-messages li .mail-msg .mail-starred i {
+  @apply text-textmuted opacity-50;
+}
+.total-mails .mail-messages li .mail-msg .mail-starred.true i {
+  @apply text-warning opacity-100;
+}
+.mail-recepients {
+  @apply min-w-[4.4rem] max-w-[4.4rem];
+}
+.mail-recepients .total-mail-recepients {
+  @apply max-h-[calc(100vh_-_12.4rem)];
+}
+.mail-recepients .mail-recepeint-person .avatar {
+  @apply w-[2.3rem] h-[2.3rem] mb-4;
+}
+.mail-recepients .mail-recepeint-person .avatar.online:before,
+.mail-recepients .mail-recepeint-person .avatar.offline:before {
+  @apply w-[0.55rem] h-[0.55rem];
+}
+.mail-recepients .mail-recepeint-person:last-child {
+  @apply mb-0;
+}
+.mail-navigation ul.mail-main-nav {
+  @apply max-h-[calc(100vh_-_14rem)] mb-0 p-4;
+}
+.mail-navigation ul.mail-main-nav li {
+  @apply border-defaultborder rounded-sm font-medium p-2 hover:bg-light;
+}
+.mail-navigation ul.mail-main-nav li svg {
+  @apply w-4 h-4 fill-textmuted;
+}
+.mail-navigation ul.mail-main-nav li div {
+  @apply text-textmuted;
+}
+.mail-navigation ul.mail-main-nav li.active div {
+  @apply text-primary font-semibold;
+}
+.mail-navigation ul.mail-main-nav li.active svg {
+  @apply fill-primary;
+}
+.mail-navigation ul.mail-main-nav li:hover div {
+  @apply text-primary;
+}
+.mail-navigation ul.mail-main-nav li:hover svg {
+  @apply fill-primary;
+}
+@media (min-width: 576px) {
+  .mail-msg-content {
+    @apply w-full;
+  }
+}
+@media (max-width: 575.98px) {
+  .mail-msg-content {
+    @apply max-w-[180px];
+  }
+}
+.mails-information {
+  @apply w-full;
+}
+.mails-information .mail-info-header {
+  @apply border-b-defaultborder p-3 border-b border-defaultborder dark:border-defaultborder/10 border-solid;
+}
+.mails-information .mail-info-footer {
+  @apply border-t-defaultborder p-3 border-t border-defaultborder dark:border-defaultborder/10 border-solid;
+}
+.mails-information .mail-attachment {
+  @apply w-48 h-11 border border-defaultborder rounded-sm flex items-center p-1 border-solid;
+}
+.mails-information .mail-attachment .attachment-icon svg,
+.mails-information .mail-attachment .attachment-icon i {
+  @apply w-6 h-6 text-[2rem] me-2;
+}
+.mails-information .mail-attachment .attachment-name {
+  @apply max-w-[7rem] inline-block text-xs font-medium;
+}
+.mail-reply .ql-toolbar.ql-snow .ql-formats {
+  @apply my-[5px];
+}
+#mail-compose-editor .ql-editor {
+  @apply min-h-[12.62rem];
+}
+.mail-compose .ql-toolbar.ql-snow .ql-formats {
+  @apply my-[5px];
+}
+.offcanvas.offcanvas-end.mail-info-offcanvas {
+  @apply w-[50rem];
+}
+/* End:: mail-app */
+
+/* Start:: mail-settings */
+.mail-notification-settings,
+.mail-security-settings {
+  @apply w-3/5;
+}
+@media (max-width: 575.98px) {
+  #account-settings .btn-group label {
+    @apply text-[0.625rem];
+  }
+}
+.choices__list--dropdown .choices__item--selectable,
+.choices__list[aria-expanded] .choices__item--selectable {
+  @apply p-2.5;
+}
+.choices__list--dropdown .choices__item--selectable::after,
+.choices__list[aria-expanded] .choices__item--selectable::after {
+  @apply hidden;
+}
+.mailsettings-nav li .nav-link {
+  @apply bg-light;
+}
+.mailsettings-nav li .nav-link.active {
+  @apply bg-primary text-white;
+}
+.mailsettings-nav li .nav-link.active svg {
+  @apply text-white fill-white;
+}
+.nav-tabs-header svg {
+  @apply h-[18px] w-[18px] me-1;
+}
+.mail-setting-tab{
+  svg{
+    @apply fill-textmuted;
+  }
+  .active{
+    svg{
+      @apply fill-white ;
+    }
+  }
+}
+.hiddencls{
+  @apply hidden ;
+}
+/* End:: mail-settings */

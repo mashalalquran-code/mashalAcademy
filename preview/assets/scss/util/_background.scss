@@ -1,0 +1,730 @@
+ 
+/* Start:: background */
+.color-container {
+  @apply w-12 h-12 shadow-[0px_0.125rem_0.25rem_rgba(0,0,0,0.05)] flex items-center justify-center leading-[3rem] rounded-lg;
+}
+.text-container {
+  @apply rounded-md shadow-defaultshadow px-2 py-1;
+}
+/* Start::background color */
+.bg-body {
+    @apply bg-bodybg ;
+}
+/* End::background color */
+
+/* Start::background color */
+// .bg-primary1 {
+//   @apply bg-primary/10 ;
+//     &.bg-opacity-10 {
+//       @apply bg-primarytint1color/10 ;
+//     }
+//     &.bg-opacity-25 {
+//       @apply bg-primarytint1color/25 ;
+//     }
+//     &.opacity-50 {
+//       @apply bg-primarytint1color/50 ;
+//     }
+//     &.bg-opacity-75 {
+//       @apply bg-primarytint1color/75 ;
+//     }
+//     &.bg-opacity-100 {
+//       @apply bg-primarytint1color/100 ;
+//     }
+// }
+// .bg-primary2 {
+//   @apply bg-primary/20 ;
+//     &.bg-opacity-10 {
+//       @apply bg-primarytint2color/10 ;
+//     }
+//     &.bg-opacity-25 {
+//       @apply bg-primarytint2color/25 ;
+//     }
+//     &.opacity-50 {
+//       @apply bg-primarytint2color/50 ;
+//     }
+//     &.bg-opacity-75 {
+//       @apply bg-primarytint2color/75 ;
+//     }
+//     &.bg-opacity-100 {
+//       @apply bg-primarytint2color/100 ;
+//     }
+// }
+// .bg-primary3 {
+//   @apply bg-primary/30 ;
+//     &.bg-opacity-10 {
+//       @apply bg-primarytint3color/10 ;
+//     }
+//     &.bg-opacity-25 {
+//       @apply bg-primarytint3color/25 ;
+//     }
+//     &.opacity-50 {
+//       @apply bg-primarytint3color/50 ;
+//     }
+//     &.bg-opacity-75 {
+//       @apply bg-primarytint3color/75 ;
+//     }
+//     &.bg-opacity-100 {
+//       @apply bg-primarytint3color/100 ;
+//     }
+// }
+/* End::background color */
+
+// /* Start::gradient colors */
+// .bg-primary-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,var(--color-primary),var(--color-secondary))] text-white;
+// }
+// .bg-primary1-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,_rgba(var(--color-primar),10),#ab54e3)] text-white ;
+
+// } 
+// .bg-primary2-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,rgba(var(--color-primary),20),#FF6C5D)] text-white ;
+// }
+// .bg-primary3-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,rgba(var(--color-primary),30),#FF663C)] text-white ;
+// }
+// .bg-secondary-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,rgba(var(--color-secondary)),#7289FF)] text-white ;
+// }
+// .bg-warning-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,rgba(var(--color-warning)),#9EA53C)] text-white ;
+// }
+// .bg-info-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,rgba(var(--color-info)),#4990E1)] text-white ;
+// }
+// .bg-success-gradient {
+//   @apply bg-[linear-gradient(to_right,rgba(var(--color-success),#009CA4))] text-white;
+// }
+// .bg-danger-gradient { 
+//   @apply bg-[linear-gradient(to_right,var(--color-danger),#DE4980)] text-white ;
+// }
+// .bg-orange-gradient { 
+//   @apply bg-[linear-gradient(to_bottom_right,var(--color-orangemain),#E5647E)] text-white;
+// }
+// .bg-purple-gradient {
+//   @apply  bg-[linear-gradient(to_bottom_right,var(--color-purplemain),#0086FF)] text-white ;
+// }
+// .bg-teal-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,var(--color-orangemain),#E5647E)] text-white ;
+// }
+// .bg-light-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,var(--color-lightmain),#D7FCFF)] text-white ;
+// }
+// .bg-dark-gradient {
+//   @apply bg-[linear-gradient(to_bottom_right,var(--color-dark),#16657A)] text-white ;
+// }
+/* End::gradient colors */
+
+/* Start:: outline colors */
+.bg-outline-primary {
+  @apply bg-white dark:bg-bodybg border text-primary border-solid border-primary;
+}
+.bg-outline-primary1 {
+  // @apply bg-white dark:bg-bodybg border border-primarytint1color text-primarytint1color border-solid;
+  @apply bg-white dark:bg-bodybg border  border-solid;
+}
+.bg-outline-primary2 {
+  // @apply bg-white dark:bg-bodybg border border-primarytint2color text-primarytint2color border-solid;
+  @apply bg-white dark:bg-bodybg border  border-solid;
+}b
+.bg-outline-primary3 {
+  // @apply bg-white dark:bg-bodybg border border-primarytint3color text-primarytint3color border-solid;
+  @apply bg-white dark:bg-bodybg border  border-solid;
+}
+.bg-outline-secondary {
+  @apply bg-white dark:bg-bodybg border text-secondary border-solid border-secondary;
+}
+.bg-outline-warning {
+  @apply bg-white dark:bg-bodybg border text-warning border-solid border-warning;
+}
+.bg-outline-info {
+  @apply bg-white dark:bg-bodybg border text-info border-solid border-info;
+}
+.bg-outline-success {
+  @apply bg-white dark:bg-bodybg border text-success border-solid border-success;
+}
+.bg-outline-danger {
+  @apply bg-white dark:bg-bodybg border text-danger border-solid border-danger;
+}
+.bg-outline-dark {
+  @apply bg-white dark:bg-bodybg border text-dark border-solid;
+}
+.bg-outline-light {
+  @apply bg-white dark:bg-bodybg border text-black border-solid border-light;
+}
+
+/* End:: outline colors */
+
+/* Start::background transparent */
+.bg-primary-transparent {
+  @apply bg-primary/15 text-primary ;
+    &:hover {
+      @apply bg-primary/10 text-primary ;
+    }
+}
+// .bg-primary1-transparent {
+//   @apply bg-primarytint1color/10 text-primary/10 ;
+//     &:hover {
+//       @apply bg-primarytint1color/10 text-primary/10 ;
+//     }
+// }
+// .bg-primary2-transparent {
+//   @apply bg-primarytint2color/10 text-primary/20 ;
+//     &:hover {
+//       @apply bg-primarytint2color/10 text-primary/20 ;
+//     }
+// }
+// .bg-primary3-transparent {
+//   @apply bg-primarytint3color/10 text-primary/30 ;
+//     &:hover {
+//       @apply bg-primarytint3color/10 text-primary/30 ;
+//     }
+// }
+.bg-secondary-transparent {
+  @apply bg-secondary/15 text-secondary ;
+    &:hover {
+      @apply bg-secondary/10 text-secondary ;
+    }
+}
+.bg-info-transparent {
+  @apply bg-info/15 text-info ;
+    &:hover {
+      @apply bg-info/10 text-info ;
+    }
+}
+.bg-success-transparent {
+  @apply bg-success/15 text-success ;
+    &:hover {
+      @apply bg-success/10 text-success ;
+    }
+}
+.bg-warning-transparent {
+  @apply bg-warning/15 text-warning ;
+    &:hover {
+      @apply bg-warning/10 text-warning ;
+    }
+}
+.bg-danger-transparent {
+  @apply bg-danger/15 text-danger ;
+    &:hover {
+      @apply bg-danger/10 text-danger ;
+    }
+}
+.bg-light-transparent {
+  @apply bg-light/15 text-light ;
+    &:hover {
+      @apply bg-light/10 text-light ;
+    }
+}
+.bg-dark-transparent {
+  @apply bg-dark/15 text-dark ;
+    &:hover {
+      @apply bg-dark/10 text-dark ;
+    }
+}
+.bg-pink-transparent {
+  @apply bg-pinkmain/15 text-pinkmain ;
+    &:hover {
+      @apply bg-pinkmain/10 text-pinkmain ;
+    }
+}
+.bg-orange-transparent {
+  @apply bg-orangemain/15 text-orangemain ;
+    &:hover {
+      @apply bg-orangemain/10 text-orangemain ;
+    }
+}
+.bg-purple-transparent {
+  @apply bg-purplemain/15 text-purplemain ;
+    &:hover {
+      @apply bg-purplemain/10 text-purplemain ;
+    }
+}
+.bg-teal-transparent {
+  @apply bg-tealmain/15 text-tealmain ;
+    &:hover {
+      @apply bg-tealmain/10 text-tealmain ;
+    }
+}
+.bg-green-transparent {
+    @apply bg-greenmain/15 ;
+    &:hover {
+        @apply bg-greenmain/10 ;
+    }
+}
+.bg-indigo-transparent {
+  @apply bg-indigo-500  text-indigo-900 ;
+    &:hover {
+      @apply bg-indigo-100  text-indigo-900 ;
+    }
+}
+.bg-yellow-transparent {
+  @apply bg-yellow-500 text-yellow-900 ;
+    &:hover {
+      @apply bg-yellow-100 text-yellow-900 ;
+    }
+}
+.bg-blue-transparent {
+  @apply bg-blue-500 text-blue-900 ;
+    &:hover {
+      @apply bg-blue-100 text-blue-900 ;
+    }
+}
+.bg-white-transparent {
+  @apply bg-white/15 text-white ;
+    &:hover {
+        @apply bg-white/10 text-white ;
+    }
+}
+.bg-black-transparent {
+  @apply bg-black/15 text-black ;
+    &:hover {
+      @apply bg-black/10 text-black ;
+    }
+}
+/* End::background transparent */
+
+/* Start::backgrounds with colors */
+.text-bg-primary {
+  @apply bg-primary text-white ;
+}
+.text-bg-primary1 {
+  @apply bg-primary/10 text-white ;
+}
+.text-bg-primary2 {
+  @apply bg-primary/20 text-white ;
+}
+.text-bg-primary3 {
+  @apply bg-primary/30 text-white ;
+}
+.text-bg-secondary {
+  @apply bg-secondary text-white ;
+}
+.text-bg-warning {
+  @apply bg-warning text-white ;
+}
+.text-bg-info {
+  @apply bg-info text-white ;
+}
+.text-bg-success {
+  @apply bg-success text-white ;
+}
+.text-bg-danger {
+  @apply bg-danger text-white ;
+}
+.text-bg-light {
+  @apply bg-light text-white ;
+}
+.text-bg-dark {
+  @apply bg-dark text-white ;
+}
+/* End::backgrounds with colors */
+
+/* Start::svg colors */
+.svg-primary svg{
+    @apply fill-primary;
+}
+// .svg-primarytint1color svg{
+//   @apply fill-primarytint1color;
+// }
+// .svg-primarytint2color svg{
+//   @apply fill-primarytint2color;
+// }
+// .svg-primarytint3color svg{
+//   @apply fill-primarytint3color;
+// }
+.svg-secondary svg{
+  @apply fill-secondary;
+}
+.svg-success svg{
+  @apply fill-success;
+}
+.svg-danger svg{
+  @apply fill-danger;
+}
+.svg-warning svg{
+  @apply fill-warning;
+}
+.svg-white svg{
+  @apply fill-white;
+}
+.svg-black svg{
+  @apply fill-black;
+}
+.svg-pink svg{
+  @apply fill-pinkmain;
+}
+.svg-orange svg{
+  @apply fill-orangemain;
+}
+.svg-purple svg{
+  @apply fill-purplemain;
+}
+.svg-indigo svg{
+  @apply fill-indigo-500;
+}
+.svg-info svg{
+  @apply fill-info;
+}
+.svg-yellow svg{
+  @apply fill-yellow-500;
+}
+.svg-light svg{
+  @apply fill-light;
+}
+.svg-dark svg{
+  @apply fill-dark;
+}
+.svg-teal svg{
+  @apply fill-tealmain;
+}
+.svg-default svg{
+  @apply fill-defaulttextcolor;
+}
+/* End::svg colors */
+
+/* Start::Colors */
+/* Start::blue set */
+.bd-blue-100 {
+  @apply bg-blue-100 text-defaulttextcolor;
+  }
+  .bd-blue-200 {
+    @apply bg-blue-200 text-defaulttextcolor;
+  }
+  .bd-blue-300 {
+    @apply bg-blue-300 text-defaulttextcolor;
+  }
+  .bd-blue-400 {
+    @apply bg-blue-400 text-defaulttextcolor;
+  }
+  .bd-blue-500 {
+    @apply bg-blue-500 text-defaulttextcolor;
+  }
+  .bd-blue-600 {
+    @apply bg-blue-600 text-defaulttextcolor;
+  }
+  .bd-blue-700 {
+    @apply bg-blue-700 text-defaulttextcolor;
+  }
+  .bd-blue-800 {
+    @apply bg-blue-800 text-defaulttextcolor;
+  }
+  .bd-blue-900 {
+    @apply bg-blue-900 text-defaulttextcolor;
+  }
+  .bd-blue {
+    @apply bg-blue-900 text-defaulttextcolor;
+  }
+  /* Start::blue set */
+
+  /* Start::indigo set */
+  .bd-indigo-100 {
+    @apply bg-indigo-100 text-defaulttextcolor;
+  }
+  .bd-indigo-200 {
+    @apply bg-indigo-200 text-defaulttextcolor;
+  }
+  .bd-indigo-300 {
+    @apply bg-indigo-300 text-defaulttextcolor;
+  }
+  .bd-indigo-400 {
+    @apply bg-indigo-400 text-defaulttextcolor;
+  }
+  .bd-indigo-500 {
+    @apply bg-indigo-500 text-defaulttextcolor;
+  }
+  .bd-indigo-600 {
+    @apply bg-indigo-600 text-defaulttextcolor;
+  }
+  .bd-indigo-700 {
+    @apply bg-indigo-700 text-defaulttextcolor;
+  }
+  .bd-indigo-800 {
+    @apply bg-indigo-800 text-defaulttextcolor;
+  }
+  .bd-indigo-900 {
+    @apply bg-indigo-900 text-defaulttextcolor;
+  }
+  .bd-indigo {
+    @apply bg-indigo-900 text-defaulttextcolor;
+  }
+  /* Start::indigo set */
+
+  /* Start::purple set */
+  .bd-purple-100 {
+    @apply bg-purplemain/10 text-defaulttextcolor;
+  }
+  .bd-purple-200 {
+    @apply bg-purplemain/20 text-defaulttextcolor;
+  }
+  .bd-purple-300 {
+    @apply bg-purplemain/30 text-defaulttextcolor;
+  }
+  .bd-purple-400 {
+    @apply bg-purplemain/40 text-defaulttextcolor;
+  }
+  .bd-purple-500 {
+    @apply bg-purplemain/50 text-defaulttextcolor;
+  }
+  .bd-purple-600 {
+    @apply bg-purplemain/60 text-defaulttextcolor;
+  }
+  .bd-purple-700 {
+    @apply bg-purplemain/70 text-defaulttextcolor;
+  }
+  .bd-purple-800 {
+    @apply bg-purplemain/80 text-defaulttextcolor;
+  }
+  .bd-purple-900 {
+    @apply bg-purplemain/90 text-defaulttextcolor;
+  }
+  .bd-purple {
+    @apply bg-purplemain text-defaulttextcolor;
+  }
+  /* Start::purple set */
+
+  /* Start::pink set */
+  .bd-pink-100 {
+    @apply bg-pinkmain/10 text-defaulttextcolor;
+  }
+  .bd-pink-200 {
+    @apply bg-pinkmain/20 text-defaulttextcolor;
+  }
+  .bd-pink-300 {
+    @apply bg-pinkmain/30 text-defaulttextcolor;
+  }
+  .bd-pink-400 {
+    @apply bg-pinkmain/40 text-defaulttextcolor;
+  }
+  .bd-pink-500 {
+    @apply bg-pinkmain/50 text-defaulttextcolor;
+  }
+  .bd-pink-600 {
+    @apply bg-pinkmain/60 text-white;
+  }
+  .bd-pink-700 {
+    @apply bg-pinkmain/70 text-white;
+  }
+  .bd-pink-800 {
+    @apply bg-pinkmain/80 text-white;
+  }
+  .bd-pink-900 {
+    @apply bg-pinkmain/90 text-white;
+  }
+  .bd-pink {
+    @apply bg-pinkmain text-white;
+  }
+  /* Start::pink set */
+
+  /* Start::red set */
+  .bd-red-100 {
+    @apply bg-red-100 text-defaulttextcolor;
+  }
+  .bd-red-200 {
+    @apply bg-red-200 text-defaulttextcolor;
+  }
+  .bd-red-300 {
+    @apply bg-red-300 text-defaulttextcolor;
+  }
+  .bd-red-400 {
+    @apply bg-red-400 text-defaulttextcolor;
+  }
+  .bd-red-500 {
+    @apply bg-red-500 text-defaulttextcolor;
+  }
+  .bd-red-600 {
+    @apply bg-red-600 text-white;
+  }
+  .bd-red-700 {
+    @apply bg-red-700 text-white;
+  }
+  .bd-red-800 {
+    @apply bg-red-800 text-white;
+  }
+  .bd-red-900 {
+    @apply bg-red-900 text-white;
+  }
+  .bd-red {
+    @apply bg-red-900 text-white;
+  }
+  /* Start::red set */
+
+  /* Start::orange set */
+  .bd-orange-100 {
+    @apply bg-orangemain/10 text-defaulttextcolor;
+  }
+  .bd-orange-200 {
+    @apply bg-orangemain/20 text-defaulttextcolor;
+  }
+  .bd-orange-300 {
+    @apply bg-orangemain/30 text-defaulttextcolor;
+  }
+  .bd-orange-400 {
+    @apply bg-orangemain/40 text-defaulttextcolor;
+  }
+  .bd-orange-500 {
+    @apply bg-orangemain/50 text-defaulttextcolor;
+  }
+  .bd-orange-600 {
+    @apply bg-orangemain/60 text-white;
+  }
+  .bd-orange-700 {
+    @apply bg-orangemain/70 text-white;
+  }
+  .bd-orange-800 {
+    @apply bg-orangemain/80 text-white;
+  }
+  .bd-orange-900 {
+    @apply bg-orangemain/90 text-white;
+  }
+  .bd-orange {
+    @apply bg-orangemain text-white;
+  }
+  /* Start::orange set */
+
+  /* Start::yellow set */
+  .bd-yellow-100 {
+    @apply bg-yellow-100 text-defaulttextcolor;
+  }
+  .bd-yellow-200 {
+    @apply bg-yellow-200 text-defaulttextcolor;
+  }
+  .bd-yellow-300 {
+    @apply bg-yellow-300 text-defaulttextcolor;
+  }
+  .bd-yellow-400 {
+    @apply bg-yellow-400 text-defaulttextcolor;
+  }
+  .bd-yellow-500 {
+    @apply bg-yellow-500 text-defaulttextcolor;
+  }
+  .bd-yellow-600 {
+    @apply bg-yellow-600 text-white;
+  }
+  .bd-yellow-700 {
+    @apply bg-yellow-700 text-white;
+  }
+  .bd-yellow-800 {
+    @apply bg-yellow-800 text-white;
+  }
+  .bd-yellow-900 {
+    @apply bg-yellow-900 text-white;
+  }
+  .bd-yellow {
+    @apply bg-yellow-900 text-white;
+  }
+  /* Start::yellow set */
+
+  /* Start::green set */
+  .bd-green-100 {
+    @apply bg-greenmain/10 text-defaulttextcolor;
+  }
+  .bd-green-200 {
+    @apply bg-greenmain/20 text-defaulttextcolor;
+  }
+  .bd-green-300 {
+    @apply bg-greenmain/30 text-defaulttextcolor;
+  }
+  .bd-green-400 {
+    @apply bg-greenmain/40 text-defaulttextcolor;
+  }
+  .bd-green-500 {
+    @apply bg-greenmain/50 text-defaulttextcolor;
+  }
+  .bd-green-600 {
+    @apply bg-greenmain/60 text-white;
+  }
+  .bd-green-700 {
+    @apply bg-greenmain/70 text-white;
+  }
+  .bd-green-800 {
+    @apply bg-greenmain/80 text-white;
+  }
+  .bd-green-900 {
+    @apply bg-greenmain/90 text-white;
+  }
+  .bd-green {
+    @apply bg-greenmain text-white;
+  }
+  /* Start::green set */
+
+  /* Start::teal set */
+  .bd-teal-100 {
+    @apply bg-tealmain/10 text-defaulttextcolor;
+  }
+  .bd-teal-200 {
+    @apply bg-tealmain/20 text-defaulttextcolor;
+  }
+  .bd-teal-300 {
+    @apply bg-tealmain/30 text-defaulttextcolor;
+  }
+  .bd-teal-400 {
+    @apply bg-tealmain/40 text-defaulttextcolor;
+  }
+  .bd-teal-500 {
+    @apply bg-tealmain/50 text-defaulttextcolor;
+  }
+  .bd-teal-600 {
+    @apply bg-tealmain/60 text-white;
+  }
+  .bd-teal-700 {
+    @apply bg-tealmain/70 text-white;
+  }
+  .bd-teal-800 {
+    @apply bg-tealmain/80 text-white;
+  }
+  .bd-teal-900 {
+    @apply bg-tealmain/90 text-white;
+  }
+  .bd-teal {
+    @apply bg-tealmain text-white;
+  }
+  /* Start::teal set */
+
+  /* Start::cyan set */
+  .bd-cyan-100 {
+    @apply bg-cyan-100 text-defaulttextcolor;
+  }
+  .bd-cyan-200 {
+    @apply bg-cyan-200 text-defaulttextcolor;
+  }
+  .bd-cyan-300 {
+    @apply bg-cyan-300 text-defaulttextcolor;
+  }
+  .bd-cyan-400 {
+    @apply bg-cyan-400 text-defaulttextcolor;
+  }
+  .bd-cyan-500 {
+    @apply bg-cyan-500 text-defaulttextcolor;
+  }
+  .bd-cyan-600 {
+    @apply bg-cyan-600 text-white;
+  }
+  .bd-cyan-700 {
+    @apply bg-cyan-700 text-white;
+  }
+  .bd-cyan-800 {
+    @apply bg-cyan-800 text-white;
+  }
+  .bd-cyan-900 {
+    @apply bg-cyan-900 text-white;
+  }
+  .bd-cyan {
+    @apply bg-cyan-900 text-white;
+  }
+  /* Start::cyan set */
+
+
+  /* Start::Colors */
+
+  /* Start:: filter */
+  [class = "dark"] {
+    .invert-1 {
+      @apply invert-[1];
+    }
+  }
+  .backdrop-blur {
+    @apply backdrop-blur-[30px];
+  }
+  /* End:: filter */
+  /* End:: background */

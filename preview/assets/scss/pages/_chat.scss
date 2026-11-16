@@ -1,0 +1,330 @@
+ 
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+.main-chart-wrapper {
+  @apply relative overflow-hidden;
+}
+.main-chart-wrapper .chat-info,
+.main-chart-wrapper .main-chat-area,
+.main-chart-wrapper .chat-user-details {
+  @apply bg-white dark:bg-bodybg h-[calc(100vh_-_8rem)] rounded-sm;
+}
+.main-chart-wrapper .chat-users-tab,
+.main-chart-wrapper .chat-groups-tab,
+.main-chart-wrapper .chat-contacts-tab1 {
+  @apply lg:max-h-[calc(100vh_-_24rem)] max-h-[calc(100vh_-_24rem)];
+}
+.main-chart-wrapper .chat-content {
+  @apply max-h-[calc(100vh_-_18rem)];
+}
+.main-chart-wrapper
+  .chat-content
+  .simplebar-content-wrapper
+  .simplebar-content {
+  @apply mt-auto;
+}
+.main-chart-wrapper .chat-content ul li {
+  @apply mb-4 last:mb-0;
+}
+.main-chart-wrapper .responsive-chat-close,
+.main-chart-wrapper button.responsive-userinfo-open {
+  @apply hidden;
+}
+.main-chart-wrapper .chat-info {
+  @apply relative;
+}
+.main-chart-wrapper .chat-info .tab-style-6 {
+  @apply p-4 rounded-none;
+}
+.main-chart-wrapper .chat-info .nav-link {
+  @apply text-textmuted;
+}
+.main-chart-wrapper .chat-info .tab-pane {
+  @apply p-0;
+}
+.main-chart-wrapper .chat-info .chat-groups-tab li {
+  @apply px-5 py-2.5;
+}
+.main-chart-wrapper .chat-info .chat-groups-tab .group-indivudial {
+  @apply text-primary font-normal;
+}
+.main-chart-wrapper .chat-info .chat-contacts-tab > li {
+  @apply px-5 py-2.5;
+}
+.main-chart-wrapper .chat-info .chat-contacts-tab .incoming-call-success i,
+.main-chart-wrapper .chat-info .chat-contacts-tab .outgoing-call-success i {
+  @apply text-success text-sm;
+}
+.main-chart-wrapper .chat-info .chat-contacts-tab .incoming-call-failed i,
+.main-chart-wrapper .chat-info .chat-contacts-tab .outgoing-call-failed i {
+  @apply text-danger text-sm;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li,
+.main-chart-wrapper .chat-info .chat-groups-tab li {
+  @apply px-5 py-2.5 border-l-2 border-l-transparent border-solid;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li:hover,
+.main-chart-wrapper .chat-info .chat-groups-tab li:hover {
+  @apply bg-light;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li .chat-msg,
+.main-chart-wrapper .chat-info .chat-groups-tab li .chat-msg {
+  @apply text-textmuted dark:text-textmuted/50 max-w-[10.25rem] inline-block;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li .chat-msg-typing .chat-msg,
+.main-chart-wrapper .chat-info .chat-groups-tab li .chat-msg-typing .chat-msg {
+  @apply text-success;
+}
+.main-chart-wrapper
+  .chat-info
+  .chat-users-tab
+  li
+  .chat-msg-typing
+  .chat-read-icon,
+.main-chart-wrapper
+  .chat-info
+  .chat-groups-tab
+  li
+  .chat-msg-typing
+  .chat-read-icon {
+  @apply hidden;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li .chat-read-icon,
+.main-chart-wrapper .chat-info .chat-groups-tab li .chat-read-icon {
+  @apply leading-none;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li .chat-read-icon i,
+.main-chart-wrapper .chat-info .chat-groups-tab li .chat-read-icon i {
+  @apply text-base text-success;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li.active,
+.main-chart-wrapper .chat-info .chat-groups-tab li.active {
+  @apply bg-primary/[0.05] text-defaulttextcolor border-l-2 border-l-primary border-solid;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li.chat-msg-unread,
+.main-chart-wrapper .chat-info .chat-groups-tab li.chat-msg-unread {
+  @apply text-defaulttextcolor;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li.chat-msg-unread.active,
+.main-chart-wrapper .chat-info .chat-groups-tab li.chat-msg-unread.active {
+  @apply bg-primary/[0.05];
+}
+.main-chart-wrapper .chat-info .chat-users-tab li.chat-msg-unread .chat-msg,
+.main-chart-wrapper .chat-info .chat-groups-tab li.chat-msg-unread .chat-msg {
+  @apply text-defaulttextcolor;
+}
+.main-chart-wrapper
+  .chat-info
+  .chat-users-tab
+  li.chat-msg-unread
+  .chat-read-icon
+  i,
+.main-chart-wrapper
+  .chat-info
+  .chat-groups-tab
+  li.chat-msg-unread
+  .chat-read-icon
+  i {
+  @apply text-textmuted;
+}
+.main-chart-wrapper .chat-info .chat-users-tab li.chat-inactive .chat-read-icon,
+.main-chart-wrapper
+  .chat-info
+  .chat-groups-tab
+  li.chat-inactive
+  .chat-read-icon {
+  @apply hidden;
+}
+.main-chart-wrapper .main-chat-area {
+  @apply relative w-full max-w-full overflow-hidden;
+}
+.main-chart-wrapper .main-chat-area .main-chat-head {
+  @apply p-3;
+}
+.main-chart-wrapper .main-chat-area .chatnameperson,
+.main-chart-wrapper .main-chat-area .chatting-user-info {
+  @apply font-semibold;
+}
+.main-chart-wrapper .main-chat-area .chat-content {
+  @apply relative z-[1] p-3 before:absolute before:content-[""] before:w-full before:h-full before:bg-[url("../public/assets/images/media/svg/pattern-1.svg")] before:bg-repeat before:z-[-1] before:opacity-[0.015] before:inset-0;
+}
+.main-chart-wrapper .main-chat-area .chat-content .chatting-user-info {
+  @apply text-defaulttextcolor text-[0.813rem];
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chatting-user-info
+  .msg-sent-time {
+  @apply text-textmuted text-xs font-medium;
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chatting-user-info
+  .msg-sent-time
+  .chat-read-mark
+  i {
+  @apply text-success me-[0.3rem];
+}
+.main-chart-wrapper .main-chat-area .chat-content .main-chat-msg div {
+  @apply w-fit mt-[0.4rem] p-3;
+}
+.main-chart-wrapper .main-chat-area .chat-content .main-chat-msg div p {
+  @apply text-[0.813rem];
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .main-chat-msg
+  div
+  .chat-media-image {
+  @apply w-[6.25rem] h-[6.25rem] rounded-sm;
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chat-item-start
+  .main-chat-msg
+  div {
+  @apply bg-white dark:bg-bodybg  text-defaulttextcolor font-medium rounded-tl-none rounded-tr-[0.3rem] rounded-br-[0.3rem] rounded-bl-[0.3rem];
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chat-item-start
+  .msg-sent-time {
+  @apply ms-1;
+}
+.main-chart-wrapper .main-chat-area .chat-content .chat-item-end {
+  @apply text-end justify-end;
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chat-item-end
+  .main-chat-msg
+  div {
+  @apply bg-primary/90 text-white font-medium rounded-tl-[0.3rem] rounded-tr-none rounded-br-[0.3rem] rounded-bl-[0.3rem];
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chat-item-end
+  .msg-sent-time {
+  @apply me-1;
+}
+.main-chart-wrapper .main-chat-area .chat-content .chat-item-start,
+.main-chart-wrapper .main-chat-area .chat-content .chat-item-end {
+  @apply flex;
+}
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chat-item-start
+  .chat-list-inner,
+.main-chart-wrapper
+  .main-chat-area
+  .chat-content
+  .chat-item-end
+  .chat-list-inner {
+  @apply flex max-w-[75%];
+}
+.main-chart-wrapper .main-chat-area .chat-footer {
+  @apply w-full shadow-[0_0.25rem_1rem_rgba(0,0,0,0.1)] shrink-0 flex items-center h-[4.75rem] border-t-defaultborder bg-white dark:bg-bodybg  absolute px-6 py-0 border-t dark:border-t-defaultborder/10 border-solid bottom-0 inset-x-auto;
+}
+.main-chart-wrapper .main-chat-area .chat-day-label {
+  @apply text-center text-textmuted opacity-60 relative mb-8;
+}
+.main-chart-wrapper .main-chat-area .chat-day-label span {
+  @apply text-[0.7rem] bg-primary/20 text-primary px-2 py-[0.188rem] rounded-[0.3rem];
+}
+@media (min-width: 992px) {
+  .main-chart-wrapper .chat-info {
+    @apply min-w-[25rem] max-w-[25rem];
+  }
+}
+@media (max-width: 1275.98px) and (min-width: 992px) {
+  .main-chart-wrapper .chat-info {
+    @apply min-w-[25rem] max-w-[25rem];
+  }
+  .main-chart-wrapper .main-chat-area {
+    @apply w-full max-w-full overflow-hidden;
+  }
+}
+@media (max-width: 991.98px) {
+  .main-chart-wrapper .chat-info {
+    @apply w-full;
+  }
+  .main-chart-wrapper .main-chat-area {
+    @apply hidden min-w-full max-w-full;
+  }
+  .main-chart-wrapper .responsive-chat-close {
+    @apply block;
+  }
+}
+.chat-user-details {
+  @apply p-4;
+}
+// .chat-user-details .avatar {
+//   outline: 0.25rem solid $primary-02;
+// }
+.chat-user-details .shared-files .shared-file-icon i {
+  @apply w-4 h-4 leading-4 flex items-center justify-center text-lg p-[1.125rem] rounded-[0.3rem];
+}
+.chat-user-details .chat-media img {
+  @apply w-full rounded-sm mb-5;
+}
+@media (max-width: 1400px) {
+  .chat-user-details.open {
+    @apply block shadow-defaultshadow border-l-defaultborder border-l border-solid end-0 top-2;
+  }
+  button.responsive-userinfo-open {
+    @apply block;
+  }
+}
+@media (max-width: 991.98px) {
+  .main-chart-wrapper.responsive-chat-open .chat-info {
+    @apply hidden;
+  }
+  .main-chart-wrapper.responsive-chat-open .main-chat-area {
+    @apply block;
+  }
+}
+@media (max-width: 767.98px) {
+  .main-chart-wrapper
+    .main-chat-area
+    .chat-content
+    .main-chat-msg
+    div
+    .chat-media-image {
+    @apply w-10 h-10;
+  }
+}
+@media (max-width: 354px) {
+  .main-chart-wrapper .chat-contacts-tab1,
+  .main-chart-wrapper .chat-groups-tab,
+  .main-chart-wrapper .chat-users-tab {
+    @apply max-h-[calc(100vh_-_31rem)];
+  }
+}
+@media (max-width: 340px) {
+  .main-chart-wrapper .chat-content {
+    @apply max-h-[calc(100vh_-_20rem)];
+  }
+}
+.chat-contacts-tab li {
+  @apply border-b-defaultborder dark:border-b-defaultborder/10 border-b border-solid last:border-b-0;
+}
+[data-page-style="modern"] .main-chat-area .rightIcons .btn-outline-light {
+  @apply border-defaultborder;
+}
+[dir="rtl"] .chat-footer .btn-send {
+  @apply rotate-180;
+}
+[data-theme-mode="dark"] .main-chat-area .chat-content:before {
+  @apply invert-[1];
+}
