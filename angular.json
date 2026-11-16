@@ -29,7 +29,7 @@
               "filepond-plugin-image-preview"
             ],
             "outputPath": {
-              "base": "preview",
+              "base": "dist",
               "browser": ""
             },
 
@@ -59,7 +59,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/zynix-tailwind/preview/",
+              "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
@@ -133,9 +133,6 @@
       "typeSeparator": "."
     },
     "@schematics/angular:interceptor": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:module": {
       "typeSeparator": "."
     },
     "@schematics/angular:pipe": {
