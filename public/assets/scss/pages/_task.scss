@@ -1,0 +1,187 @@
+ 
+/* Start:: task */
+/* Start::task-kanboard-board */
+.ZYNIX-kanban-board {
+    @apply flex overflow-x-auto items-stretch mb-3 pb-4;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type {
+    @apply min-w-[20rem] w-full me-3;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type .kanban-tasks .box {
+    @apply touch-none;
+  }
+  .ZYNIX-kanban-board::-webkit-scrollbar-thumb {
+    @apply bg-dark/10 rounded-[0.3125rem];
+  }
+  .ZYNIX-kanban-board::-webkit-scrollbar-track {
+    @apply rounded-[0.3125rem];
+  }
+  .ZYNIX-kanban-board .task-image .kanban-image {
+    @apply h-[150px] w-full;
+  }
+  .ZYNIX-kanban-board .kanban-content {
+    @apply mt-3;
+  }
+  .ZYNIX-kanban-board .kanban-task-description {
+    @apply text-[0.82rem];
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.new .kanban-tasks .box {
+    @apply border border-primary/30 ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.new .kanban-tasks .box .badge {
+    @apply bg-primary/10 text-primary;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.new .kanban-tasks .box h6 {
+    @apply text-primary;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.new .kanban-tasks .box .progress {
+    @apply bg-primary/20;
+  }
+  .ZYNIX-kanban-board
+    .kanban-tasks-type.new
+    .kanban-tasks
+    .box
+    .progress
+    .progress-bar {
+    @apply bg-primary;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.new .kanban-tasks .box .outline-border {
+    @apply border border-primary/20 text-primary ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.todo .kanban-tasks .box {
+    @apply border border-secondary/30 ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.todo .kanban-tasks .box .badge {
+    @apply bg-secondary/10 text-secondary;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.todo .kanban-tasks .box h6 {
+    @apply text-secondary;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.todo .kanban-tasks .box .progress {
+    @apply bg-secondary/20;
+  }
+  .ZYNIX-kanban-board
+    .kanban-tasks-type.todo
+    .kanban-tasks
+    .box
+    .progress
+    .progress-bar {
+    @apply bg-secondary;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.todo .kanban-tasks .box .outline-border {
+    @apply border border-secondary/20 text-secondary ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.in-progress .kanban-tasks .box {
+    @apply border border-info/30 ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.in-progress .kanban-tasks .box .badge {
+    @apply bg-info/10 text-info;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.in-progress .kanban-tasks .box h6 {
+    @apply text-info;
+  }
+  .ZYNIX-kanban-board
+    .kanban-tasks-type.in-progress
+    .kanban-tasks
+    .box
+    .progress {
+    @apply bg-info/20;
+  }
+  .ZYNIX-kanban-board
+    .kanban-tasks-type.in-progress
+    .kanban-tasks
+    .box
+    .progress
+    .progress-bar {
+    @apply bg-info;
+  }
+  .ZYNIX-kanban-board
+    .kanban-tasks-type.in-progress
+    .kanban-tasks
+    .box
+    .outline-border {
+    @apply border border-info/20 text-info ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.inreview .kanban-tasks .box {
+    @apply border border-danger/30 ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.inreview .kanban-tasks .box .badge {
+    @apply bg-danger/10 text-danger;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.inreview .kanban-tasks .box h6 {
+    @apply text-danger;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.inreview .kanban-tasks .box .progress {
+    @apply bg-danger/20;
+  }
+  .ZYNIX-kanban-board
+    .kanban-tasks-type.inreview
+    .kanban-tasks
+    .box
+    .progress
+    .progress-bar {
+    @apply bg-danger;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.inreview .kanban-tasks .box .outline-border {
+    @apply border border-danger/20 text-danger ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.completed .kanban-tasks .box {
+    @apply border border-success/30 ;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.completed .kanban-tasks .box .badge {
+    @apply bg-success/10 text-success;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.completed .kanban-tasks .box h6 {
+    @apply text-success;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.completed .kanban-tasks .box .progress {
+    @apply bg-success/20;
+  }
+  .ZYNIX-kanban-board
+    .kanban-tasks-type.completed
+    .kanban-tasks
+    .box
+    .progress
+    .progress-bar {
+    @apply bg-success;
+  }
+  .ZYNIX-kanban-board .kanban-tasks-type.completed .kanban-tasks .box .outline-border {
+    @apply border border-success/20 text-success ;
+  }
+  .ZYNIX-kanban-board #new-tasks .box:last-child,
+  .ZYNIX-kanban-board #todo-tasks .box:last-child,
+  .ZYNIX-kanban-board #inprogress-tasks .box:last-child,
+  .ZYNIX-kanban-board #inreview-tasks .box:last-child,
+  .ZYNIX-kanban-board #completed-tasks .box:last-child {
+    @apply mb-0;
+  }
+  .ZYNIX-kanban-board #new-tasks,
+  .ZYNIX-kanban-board #todo-tasks,
+  .ZYNIX-kanban-board #inprogress-tasks,
+  .ZYNIX-kanban-board #inreview-tasks,
+  .ZYNIX-kanban-board #completed-tasks {
+    @apply relative max-h-[35rem];
+  }
+  .ZYNIX-kanban-board .task-Null {
+    @apply relative min-h-[12.5rem] before:absolute before:content-[""]  before:bg-[url('../public/assets/images/media/media-72.png')] before:bg-cover before:bg-center before:h-[12.5rem] before:w-full before:mx-auto before:my-0 before:rounded-[0.3rem] before:inset-0;
+  }
+  .ZYNIX-kanban-board .view-more-button {
+    @apply me-4;
+  }
+/* end::task-kanboard-board */
+
+/* Start::task-details */
+.task-details-key-tasks {
+    @apply list-decimal;
+  }
+  .task-details-key-tasks li {
+    @apply text-sm text-textmuted mb-2 last:mb-0;
+  }
+  .task-description {
+    @apply text-sm;
+  }
+  .task-details-progress {
+    @apply w-[6.25rem];
+  }
+/* End::task-details */
+/* End:: task */

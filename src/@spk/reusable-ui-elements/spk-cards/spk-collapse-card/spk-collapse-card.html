@@ -1,0 +1,51 @@
+@if (!isClosed) {
+  <div class="box custom-box" [class.box-fullscreen]="isFullscreen">
+    <div class="box-header justify-between " [ngClass]="isCollapsed ?'!border-b-0':''">
+      <div class="box-title">{{ title() }}</div>
+      <div>
+        @if (isCollapsible()) {
+          <a (click)="toggleCollapse()" class="inline-flex items-center gap-x-2" href="javascript:void(0);">
+            <svg  class="w-2.5 h-2.5 transition-transform duration-300"
+              width="16" height="16" viewBox="0 0 16 16" fill="none" [ngClass]="isCollapsed ?'rotate-360' :'rotate-180'" >
+              <path d="M2 5L8.16 10.69C8.35 10.86 8.65 10.86 8.84 10.69L15 5"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </a>
+        }
+
+        @if (isClosable()) {
+          <a (click)="closeCard()" href="javascript:void(0);">
+            <i class="ri-close-line text-lg"></i>
+          </a>
+        }
+
+        @if (isFullscreenable()) {
+          <a (click)="toggleFullscreen()" href="javascript:void(0);">
+            <i [class]="isFullscreen ? 'ri-fullscreen-exit-line' : 'ri-fullscreen-line'"></i>
+          </a>
+        }
+      </div>
+    </div>
+
+    @if (isFullscreenable()) {
+      <div class="box-body">
+        <h6 class="card-text font-semibold">{{ subtitle() }}</h6>
+        <p class="box-text mb-0">{{ content() }}</p>
+      </div>
+      <div class="box-footer">
+        <button class="ti-btn btn-wave ti-btn-primary">Read More</button>
+      </div>
+    }
+    @else {
+      @if (!isCollapsed) {
+        <div class="box-body">
+          <h6 class="card-text font-semibold">{{ subtitle() }}</h6>
+          <p class="box-text mb-0">{{ content() }}</p>
+        </div>
+        <div class="box-footer">
+          <button class="ti-btn btn-wave ti-btn-primary">Read More</button>
+        </div>
+      }
+    }
+  </div>
+}

@@ -1,0 +1,25 @@
+<div class="box">
+  <div class="box-body">
+    <div class="flex items-center flex-wrap gap-3">
+      <div class="leading-none">
+        <span class="avatar avatar-lg" [ngClass]="iconClass()" [innerHTML]="sanitizeIcon(svg())"></span>
+      </div>
+      <div class="flex-auto">
+        <h3 class="font-semibold mb-0">{{ count() }}</h3>
+        <span class="">{{ label() }}</span>
+      </div>
+      <div class="text-end">
+        <span class="block text-textmuted dark:text-textmuted/50 text-[13px] mb-1">Today</span>
+        <span class="badge inline-flex items-center" [ngClass]="badgeColor()">
+          @if (badgeColor().includes('success')) {
+            <i class="ti ti-arrow-up me-1"></i>
+          }
+          @if (badgeColor().includes('danger')) {
+            <i class="ti ti-arrow-down me-1"></i>
+          }
+          {{ percentage() }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+
+
+<div class="box-body bg-light border border-defaultborder dark:border-defaultborder/10">
+  <div class="flex items-start justify-between">
+      <div>
+          <p class="!mb-0 text-[15px] font-medium">{{ title() }} </p>
+          <h4 class="mb-3 font-semibold">{{ value() }}</h4>
+      </div>
+      <div>
+          <span class="avatar avatar-md svg-white" [ngClass]="avatarClass()" [innerHTML]="svg() || ''" >
+
+          </span>
+      </div>
+  </div>
+  <div class="flex items-center justify-between">
+      <div class="mb-0 text-xs text-textmuted dark:text-textmuted/50">
+          <span class="font-semibold me-1 inline-block" [ngClass]="percentageClass()" >
+              <i class="fe" [ngClass]="percentageIcon()" ></i>{{ percentage() }}%
+          </span> vs Last Month
+      </div>
+      <a href="javascript:void(0)" class="font-medium text-primary underline">View All
+          <i class="ti ti-arrow-narrow-right rtl:rotate-180"></i>
+      </a>
+  </div>
+</div>
+

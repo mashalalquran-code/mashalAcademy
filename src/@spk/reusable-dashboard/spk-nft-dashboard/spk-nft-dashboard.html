@@ -1,0 +1,31 @@
+
+<div class="box">
+  <div class="box-body">
+    <div class="flex items-start gap-3 flex-wrap">
+      <div>
+        <span class="avatar avatar-md {{ data()?.bgClass }}" [appSvgReplace]="data()?.svg || ''" >
+        </span>
+      </div>
+      <div class="flex-auto">
+        <span class="block mb-2">{{ data()?.title }}</span>
+        <h3 class="font-semibold mb-1 leading-none">{{ data()?.value }}</h3>
+        <div class="text-textmuted dark:text-textmuted/50 inline-flex">
+          <span class="{{ data()?.statusClass }} me-1 inline-flex items-center">
+            <i class="ti ti-arrow-narrow-up"></i>{{ data()?.percentage }}
+          </span>{{ data()?.status }}
+        </div>
+      </div>
+      <div class="ti-dropdown hs-dropdown">
+        <a aria-label="anchor" class="ti-dropdown-toggle hs-dropdown-toggle !p-0" href="javascript:void(0);"
+          data-bs-toggle="dropdown">
+          <i class="ri-more-2-fill text-lg text-textmuted dark:text-textmuted/50"></i>
+        </a>
+        <ul class="ti-dropdown-menu hs-dropdown-menu hidden" role="menu">
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">Week</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">Day</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">Year</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

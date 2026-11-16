@@ -1,0 +1,32 @@
+<div class="box overflow-hidden">
+    <div class="box-body mb-3">
+        <div class="flex items-top justify-between mb-3 flex-wrap">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="leading-none">
+                        <span class="avatar avatar-rounded avatar-xs">
+                            <img [src]="crypto().imageUrl" alt="">
+                        </span>
+                    </div>
+                    <h6 class="font-medium mb-0">{{ crypto().name }} {{ crypto().symbol }}</h6>
+                </div>
+                <span class="text-[25px] flex items-center">{{ crypto().change }}
+                    <span class="text-xs {{ crypto().arrowColor }} opacity-70 ms-2">{{ crypto().arrowValue }}
+                        <i class="{{ crypto().arrowClass }} ms-1 inline-flex"></i>
+                    </span>
+                    @if(crypto().badge){
+
+                        <span class="badge bg-success-transparent text-[10px] ms-2">24H</span>
+                    }
+                </span>
+            </div>
+            <div class="text-end">
+                <span class="block text-sm mb-1 {{ crypto().priceColor }}">{{ crypto().price }}</span>
+                <span class="block {{ crypto().valueColor }} font-medium">{{ crypto().value }}</span>
+            </div>
+        </div>
+    </div>
+    <div id="btc-currency-chart" class="mt-1 w-full">
+        <spk-apexcharts [chartOptions]="crypto().chartOptions" />
+    </div>
+</div>

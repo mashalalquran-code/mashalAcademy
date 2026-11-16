@@ -1,0 +1,16 @@
+<app-switcher />
+
+<div class="page">
+    <app-header />
+    <app-sidebar appHoverEffectSidebar />
+    <!-- Start::app-content -->
+    <div class="main-content app-content">
+        <div class="" [ngClass]="layoutClass" (click)="clickOnBody()">
+            <app-page-header></app-page-header>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <app-footer />
+    <app-tab-to-top />
+</div>
+<div id="responsive-overlay" (click)="clearToggle()"></div>

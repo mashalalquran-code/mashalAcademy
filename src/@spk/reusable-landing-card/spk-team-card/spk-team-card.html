@@ -1,0 +1,30 @@
+<div class="box team-member">
+  <div class="box-body text-center !p-2">
+      <div class="mb-4 leading-none bg-light px-4 py-3">
+          <span class="{{ avatarClass() }}">
+              <img [src]="image()" class="card-img" alt="...">
+          </span>
+      </div>
+      <div class="text-center p-4 pt-0">
+          <h6 class="mb-0 font-semibold">{{ name() }}</h6>
+          <p class="mb-2 text-textmuted dark:text-textmuted/50">{{ role() }}</p>
+          <div class="flex items-center  justify-center gap-2 flex-wrap">
+              <span class="badge bg-light !text-dark dark:!text-defaulttextcolor/80 border rounded-full border-defaultborder/10">
+                  {{ tags()[0] }}
+              </span>
+              <span class="badge bg-light !text-dark dark:!text-defaulttextcolor/80 border rounded-full border-defaultborder/10">
+                  {{ tags()[1] }}
+              </span>
+              <span class="badge bg-light !text-dark dark:!text-defaulttextcolor/80 border rounded-full  border-defaultborder/10">
+                {{ tags()[2] }}
+              </span>
+          </div>
+          <div class="flex justify-center mt-3">
+              <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-primary btn-wave"><i class="ri-twitter-x-fill"></i></a>
+              <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-secondary btn-wave ms-2"><i class="ri-facebook-fill"></i></a>
+              <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-success btn-wave ms-2"><i class="ri-instagram-line"></i></a>
+              <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-info btn-wave ms-2"><i class="ri-linkedin-fill"></i></a>
+          </div>
+      </div>
+  </div>
+</div>

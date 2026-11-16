@@ -1,0 +1,71 @@
+
+
+<div class="box !mb-4">
+  <div class="box-body !p-0">
+    <div class="p-4 kanban-board-head">
+      <div class="flex items-center justify-between">
+        <div class="task-badges">
+          <span class="badge">{{ data()?.id }}</span>
+          @for (badge of data()?.badges; track $index) {
+          <span class="ms-1 badge">{{ badge }}</span>
+          }
+        </div>
+        <spk-dropdowns
+          [Customclass]="'hs-dropdown relative [--placement:bottom-right] inline-flex'"
+          [class]="'ti-btn ti-btn-icon ti-btn-sm outline-border ti-dropdown-toggle hs-dropdown-toggle'"
+          [Menuclass]="'ti-dropdown-menu hs-dropdown-menu hidden'" [Icon]="true" [IconClass]="'fe fe-more-vertical'">
+          <li><a class="ti-dropdown-item" href="javascript:void(0);"><i
+                class="ri-eye-line me-1 align-middle inline-block"></i>View</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);"><i
+                class="ri-delete-bin-line me-1 align-middle inline-block"></i>Delete</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);"><i
+                class="ri-edit-line me-1 align-middle inline-block"></i>Edit</a></li>
+        </spk-dropdowns>
+      </div>
+      <div class="kanban-content mt-2 mb-2">
+        @if(data()?.image){
+        <div class="task-image mt-2">
+          <img [src]="data()?.image" class="img-fluid rounded kanban-image" alt="">
+        </div>
+        }
+        <h6 class="font-medium mb-1 mt-2 text-[15px]">{{ data()?.title }}</h6>
+        @if (data()?.description) {
+
+        <div class="kanban-task-description">{{ data()?.description }}</div>
+        }
+      </div>
+      <div class="mb-3">
+        <p class="text-[13px] font-medium mb-2 text-textmuted dark:text-textmuted/50">
+          Sub Task<span class="float-end text-[13px] font-normal">{{data()?.subTasks?.completed }}/{{ data()?.subTasks?.total
+            }}</span>
+        </p>
+        <div class="progress progress-xs mb-0" role="progressbar" [attr.aria-valuenow]="data()?.progress" aria-valuemin="0"
+          aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped" [style.width]="data()?.progress + '%'">
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="flex gap-2">
+          <a href="javascript:void(0);"
+            class="py-0 px-2 outline-border rounded-sm text-xs flex items-center justify-center">
+            <span class="me-1"><i class="ri-thumb-up-fill align-middle font-normal"></i></span><span
+              class="font-medium text-xs">{{ data()?.likes }}</span>
+          </a>
+          <a href="javascript:void(0);"
+            class="py-0 px-2 outline-border rounded-sm text-xs flex items-center justify-center">
+            <span class="me-1"><i class="ri-message-2-line align-middle font-normal"></i></span><span
+              class="font-medium text-xs">{{ data()?.comments }}</span>
+          </a>
+        </div>
+        <div class="avatar-list-stacked">
+          @for(assignee of data()?.assignees;track $index){
+          <span class="avatar avatar-sm avatar-rounded">
+            <img [src]="assignee" alt="img">
+          </span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

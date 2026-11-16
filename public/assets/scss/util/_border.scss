@@ -1,0 +1,72 @@
+ 
+/* Start::border */
+.border-container {
+    @apply inline-block w-20 h-20 bg-light/30 m-1;
+  }
+/*Start::border */
+.border {
+    // &.border-primary1 {
+    //     @apply  border-primarytint1color opacity-100 border-solid;
+    //     &.border-opacity-10 {
+    //         @apply border-primarytint1color/10 ;
+    //     }
+    //     &.border-opacity-25 {
+    //         @apply border-primarytint1color/25 ;
+    //     }
+    //     &.border-opacity-50 {
+    //         @apply border-primarytint1color/50 ;
+    //     }
+    //     &.border-opacity-75 {
+    //         @apply border-primarytint1color/75 ;
+    //     }
+    //     // &.border-opacity-100 {
+    //         // @apply border-primarytint1color/100 ;
+    //     // }
+    // }
+    // &.border-primary2 {
+    //     @apply  border-primarytint2color opacity-100 border-solid;
+    //     &.border-opacity-10 {
+    //         @apply border-primarytint2color/10 ;
+    //     }
+    //     &.border-opacity-25 {
+    //         @apply border-primarytint2color/25 ;
+    //     }
+    //     &.border-opacity-50 {
+    //         @apply border-primarytint2color/50 ;
+    //     }
+    //     &.border-opacity-75 {
+    //         @apply border-primarytint2color/75 ;
+    //     }
+    //     &.border-opacity-100 {
+    //         @apply border-primarytint2color/100 ;
+    //     }
+    // }
+    // &.border-primary3 {
+    //     @apply  border-primarytint3color opacity-100 border-solid;
+    //     &.border-opacity-10 {
+    //         @apply border-primarytint3color/10 ;
+    //     }
+    //     &.border-opacity-25 {
+    //         @apply border-primarytint3color/25 ;
+    //     }
+    //     &.border-opacity-50 {
+    //         @apply border-primarytint3color/50 ;
+    //     }
+    //     &.border-opacity-75 {
+    //         @apply border-primarytint3color/75 ;
+    //     }
+    //     &.border-opacity-100 {
+    //         @apply border-primarytint3color/100 ;
+    //     }
+    // }
+}
+/* End::Border Colors */
+
+
+/* Start::vr */
+.vr {
+    @apply bg-defaultborder opacity-100 dark:bg-defaultborder/10;
+}
+/* End::vr */
+
+/* End::border */

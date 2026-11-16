@@ -1,0 +1,22 @@
+
+    <div class="box">
+      <div class="box-body">
+        <div class="flex items-start justify-between mb-2">
+          <div>
+            <span class="block mb-2">{{ platformName() }}</span>
+            <h3 class="font-semibold mb-0">{{ followers() }}</h3>
+          </div>
+          <span class="avatar avatar-md avatar-rounded svg-white" [ngClass]="bgColorClass()" [innerHTML]="sanitizeHtml(iconSVG())"></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-textmuted dark:text-textmuted/50">{{ label() }}</span>
+          <span
+            class="inline-flex items-center"
+            [ngClass]="isGrowthUp() ? 'text-success' : 'text-danger'"
+          >
+            <i [ngClass]="isGrowthUp() ? 'ti ti-arrow-up' : 'ti ti-arrow-down'" class="me-1"></i>
+            {{ change() }}
+          </span>
+        </div>
+      </div>
+    </div>

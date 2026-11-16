@@ -1,0 +1,37 @@
+
+<div class="box overflow-hidden">
+  <div class="box-body">
+    <div>
+      <img [src]="cryptoLogo()" class="crypto-main-card-icon" alt=""/>
+    </div>
+    <div class="flex items-center mb-3 gap-2 justify-between">
+      <div class="flex items-center gap-2">
+        <div class="leading-none avatar avatar-lg bg-light p-2 avatar-rounded">
+          <img [src]="cryptoLogo()" alt="" class="w-auto invert-1"/>
+        </div>
+        <div>
+          <div class="text-textmuted dark:text-textmuted/50 text-[13px] font-medium">{{ cryptoSymbol() }}</div>
+          <span class="block font-semibold">{{ cryptoName() }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold mb-0 leading-none">{{ cryptoAmount() }}</h3>
+        <div [ngClass]="cryptoChangeClass()" class="text-[13px] inline-flex items-center">
+          @if (cryptoChangeClass() === 'text-success') {
+            <i class="ti ti-trending-up me-1 align-middle"></i>
+          }
+          @if (cryptoChangeClass() === 'text-danger') {
+            <i class="ti ti-trending-down me-1 align-middle"></i>
+          }
+          {{ cryptoChange() }}
+        </div>
+      </div>
+      <div id="{{ cryptoSymbol() }}-marketcap">
+        <spk-apexcharts [chartOptions]="chartOptions()" />
+      </div>
+    </div>
+  </div>
+</div>
+

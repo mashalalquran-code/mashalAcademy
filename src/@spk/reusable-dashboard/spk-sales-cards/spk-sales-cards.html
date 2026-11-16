@@ -1,0 +1,20 @@
+
+  <div class="box main-card-item">
+    <div class="box-body">
+      <div class="flex items-start justify-between mb-3 flex-wrap">
+        <div>
+          <span class="block mb-4 font-medium">{{ title() }}</span>
+          <h3 class="!font-semibold leading-none mb-0">{{ value() }}</h3>
+        </div>
+        <div class="text-end">
+          <div class="mb-6">
+            <span class="{{svgClass()}}"><div [innerHTML]="sanitizeIcon(svg())"></div></span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <a [href]="linkHref()" class="text-textmuted dark:text-textmuted/50 underline font-medium text-[13px]">{{ linkText() }}</a>
+        <span [ngClass]="changeColor()" class="font-semibold"><i [class]="`ti ti-arrow-narrow-${changeColor()=='text-success'?'up':'down'}`"></i>{{ percentage() }}</span>
+      </div>
+    </div>
+  </div>

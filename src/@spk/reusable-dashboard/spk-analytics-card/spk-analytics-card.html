@@ -1,0 +1,26 @@
+<div class="box">
+  <div class="box-body">
+    <div class="flex justify-between">
+      <span class="avatar avatar-md avatar-rounded bg-{{bgClass()}}/10 svg-{{bgClass()}} mb-3">
+        <i [innerHTML]="sanitizeIcon(icon())"></i>
+      </span>
+      <span class="font-medium text-[13px] text-textmuted dark:text-textmuted/50">{{ description() }}</span>
+    </div>
+    <div class="flex items-end justify-between">
+      <div>
+        <h3 class="!font-semibold">{{ value() }}</h3>
+        <span class="text-xs text-textmuted dark:text-textmuted/50">
+          <span [ngClass]="{'text-success': trend() === 'up', 'text-danger': trend() === 'down'}"
+            class="text-xs inline-flex items-center me-1">
+            <i [class]="trend() === 'up' ? 'ti ti-trending-up' : 'ti ti-trending-down'" class="me-1"></i>
+            {{ percentage() }}
+          </span>
+          Increased
+        </span>
+      </div>
+      <div id="total-followers">
+        <spk-apexcharts [chartOptions]="chartOptions()" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,494 @@
+ 
+/* Start:: ribbons */
+.ribbon {
+  @apply w-20 h-20 overflow-hidden absolute before:absolute before:z-[-1] before:block after:absolute after:z-[-1] after:block;
+  span {
+    @apply absolute block w-[120px] z-[2] shadow-[0_5px_10px_rgba(0,0,0,0.1)] text-white uppercase text-center px-0 py-[3px] ;
+  }
+  &.ribbon-primary{
+    @apply before:border-white/60 before:border-[3px] before:border-solid after:border-white/60 after:border-[3px] after:border-solid;
+    span {
+      @apply bg-primary;
+    }
+  }
+  &.ribbon-secondary{
+    @apply before:border-white/60 before:border-[3px] before:border-solid after:border-white/60 after:border-[3px] after:border-solid;
+    span {
+      @apply bg-secondary;
+    }
+  }
+  &.ribbon-warning{
+    @apply before:border-white/60 before:border-[3px] before:border-solid after:border-white/60 after:border-[3px] after:border-solid;
+    span {
+      @apply bg-warning;
+    }
+  }
+  &.ribbon-info{
+    @apply before:border-white/60 before:border-[3px] before:border-solid after:border-white/60 after:border-[3px] after:border-solid;
+    span {
+      @apply bg-info ;
+    }
+  }
+  &.ribbon-success{
+    @apply before:border-white/60 before:border-[3px] before:border-solid after:border-white/60 after:border-[3px] after:border-solid;
+    span {
+      @apply bg-success;
+    }
+  }
+  &.ribbon-danger{
+    @apply before:border-white/60 before:border-[3px] before:border-solid after:border-white/60 after:border-[3px] after:border-solid;
+    span {
+      @apply bg-danger;
+    }
+  }
+  &.ribbon-orange{
+    @apply before:border-white/60 before:border-[3px] before:border-solid after:border-white/60 after:border-[3px] after:border-solid;
+    span {
+      @apply bg-orangemain;
+    }
+  }
+}
+
+/* top left */
+.ribbon-top-left {
+  @apply top-[-7px] start-[-7px] before:z-[1] before:end-0 before:top-[0] after:z-[1] after:start-0 after:bottom-0 before:border-l-transparent before:border-t-transparent after:border-l-transparent after:border-t-transparent;
+  span {
+    @apply -rotate-45 -end-3 top-5;
+  }
+}
+
+[dir="rtl"]{
+  .ribbon-top-left{
+     span {
+       @apply rotate-45;
+     }
+  }
+}
+
+/* top left */
+
+/* top right */
+.ribbon-top-right {
+  @apply top-[-7px] end-[-7px] before:z-[1] before:start-0 before:top-[0] after:z-[1] after:end-0 after:bottom-0 before:border-r-transparent before:border-t-transparent after:border-r-transparent after:border-t-transparent;
+  span {
+    @apply rotate-45 -start-3 top-5;
+  }
+}
+
+[dir="rtl"]{
+  .ribbon-top-right{
+     span {
+       @apply rotate-[315deg];
+     }
+  }
+}
+
+/* top right */
+
+/* bottom right */
+.ribbon-bottom-right {
+  @apply bottom-[-7px] end-[-7px] before:z-[1] before:start-0 before:bottom-0 after:z-[1] after:end-0 after:top-0
+  before:border-r-transparent before:border-b-transparent after:border-r-transparent after:border-b-transparent;
+  span {
+    @apply rotate-[-225deg] -start-3 bottom-5;
+  }
+}
+
+[dir="rtl"]{
+   .ribbon-bottom-right span {
+  @apply rotate-[225deg];
+}
+}
+/* bottom right */
+
+/* bottom left */
+.ribbon-bottom-left {
+  @apply bottom-[-7px] start-[-7px] before:z-[1] before:end-0 before:bottom-0 after:z-[1] after:start-0 after:top-0
+  before:border-l-transparent before:border-b-transparent after:border-l-transparent after:border-b-transparent;
+  span {
+    @apply rotate-[225deg] -end-3 bottom-5;
+  }
+}
+
+[dir="rtl"]{
+   .ribbon-bottom-left span {
+      @apply rotate-[-225deg];
+    }
+}
+/* bottom left */
+
+/* ribbon 2 */
+
+  /* ribbon 2 */
+  .ribbon-2 {
+    @apply inline-block absolute text-white;
+    &.ribbon-primary {
+      @apply bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))];
+      &:before {
+        @apply border-t-[10px] border-solid border-black/80
+      }
+    }
+    &.ribbon-secondary {
+    @apply bg-[linear-gradient(to_bottom_right,_rgb(var(--secondary)),_#970312)]; 
+      &:before {
+        @apply border-t-[10px] border-solid border-black/80
+      }
+    }
+    &.ribbon-success {
+        @apply bg-[linear-gradient(to_right,var(--color-success),_#009CA4)];
+
+      &:before {
+        @apply border-t-[10px] border-solid border-black/80
+      }
+    }
+    &.ribbon-info {
+       @apply bg-info;
+      &:before {
+        @apply border-t-[10px] border-solid border-black/80
+      }
+    }
+    &.ribbon-warning {
+      @apply bg-warning;
+      &:before {
+        @apply border-t-[10px] border-solid border-black/80
+      }
+    }
+    &.ribbon-danger {
+      @apply bg-danger;
+      &:before {
+        @apply border-t-[10px] border-solid border-black/80
+      }
+    }
+    &.ribbon-orange {
+      @apply bg-orangemain;
+      &:before {
+        @apply border-t-[10px] border-solid border-black/80
+      }
+    }
+    &.ribbon-left {
+      @apply pl-5 pr-10 py-[5px] top-2.5 -start-2.5;
+      &:after {
+        @apply border-e-customwhite border-e-[12px] border-t-[14px] border-b-[16px] border-y-transparent border-solid top-0 end-0;
+      }
+      &:before {
+       @apply border-s-[10px] border-s-transparent border-solid -bottom-2.5 start-0;
+      }
+    }
+    &.ribbon-right {
+      @apply pl-10 pr-5 py-[5px] top-2.5 -end-2.5;
+      &:after {
+        @apply border-s-customwhite border-s-[12px] border-t-[14px] border-b-[16px] border-y-transparent border-solid top-0 start-0;
+      }
+      &:before {
+        @apply border-e-[10px] border-e-transparent end-0 -bottom-2.5;
+      }
+    }
+  }
+  .ribbon-2:after {
+    @apply content-[""] w-0 h-0 absolute;
+  }
+  .ribbon-2:before {
+    @apply h-0 w-0 absolute content-[""];
+  }
+  /* ribbon 2 */
+[dir="rtl"]{
+  .ribbon-2{
+    &.ribbon-left {
+      @apply ps-5 pe-10 py-[5px] -start-2.5 top-2.5 after:border-l-white after:border-r-transparent dark:after:border-l-bodybg after:border-l-[12px] after:border-t-[14px] after:border-b-[16px] after:border-y-transparent after:border-solid after:end-0 after:top-0 before:border-r-[10px] before:border-r-transparent before:border-solid before:start-0 before:-bottom-2.5 ;
+    }
+    &.ribbon-right {
+      @apply ps-10 pe-5 py-[5px] -end-2.5 top-2.5 after:border-r-white after:border-l-transparent dark:after:border-r-bodybg after:border-r-[12px] after:border-t-[14px] after:border-b-[16px] after:border-y-transparent after:border-solid after:start-0 after:top-0 before:border-l-[10px] before:border-l-transparent before:border-solid before:end-0 before:-bottom-2.5 ;
+    }
+  }
+
+}
+/* ribbon 2 */
+
+/* ribbon 3 */
+[dir="rtl"]{
+ .ribbon-3.top-left span {
+  @apply after:rounded-[50px_0_0_0];
+}
+}
+[dir="rtl"]{
+  .ribbon-3{
+    &.top-right span {
+      @apply after:rounded-[0_50px_0_0];
+    }
+    &.top-left {
+      @apply rounded-tr-[10px] rounded-tl-none ;
+    }
+    &.top-right {
+      @apply rounded-tl-[10px] rounded-tr-none ;
+    }
+  }
+}
+.ribbon-3 {
+  @apply absolute text-white -top-2 after:absolute after:content-[""] after:w-0 after:h-0 after:z-[6] after:border-l-[16px] after:border-r-[17px] after:border-x-transparent after:border-solid;
+  &.top-left {
+    @apply rounded-tl-[10px] start-2.5;
+  }
+  &.top-left span:after {
+    @apply end-[-7px] rounded-[0_50px_0_0];
+  }
+  &.top-right {
+    @apply rounded-tr-[10px] end-2.5;
+  }
+  &.top-right span:after {
+    @apply start-[-7px] rounded-[50px_0_0_0];
+  }
+  span {
+    @apply relative block text-center text-[13px] leading-none z-[6] w-[33px] p-2.5 after:absolute after:content-[""] after:h-[7px] after:w-[7px] after:top-0;
+  }
+  &.ribbon-success {
+    @apply bg-success after:border-t-success after:border-t-[10px] after:border-solid;
+    span:after {
+      @apply bg-[#0d9b80];
+    }
+  }
+  &.ribbon-primary {
+    @apply bg-primary after:border-t-primary after:border-t-[10px] after:border-solid;
+    span:after {
+      @apply bg-primary;
+    }
+  }
+  &.ribbon-secondary {
+    @apply bg-secondary after:border-t-secondary after:border-t-[10px] after:border-solid;
+    span:after {
+      @apply bg-[#a017d1];
+    }
+  }
+  .ribbon-warning {
+    @apply bg-warning after:border-t-warning after:border-t-[10px] after:border-solid;
+    span:after {
+      @apply bg-[#d98415];
+    }
+  }
+  .ribbon-info {
+    @apply bg-info after:border-t-info after:border-t-[10px] after:border-solid;
+    span:after {
+      @apply bg-[#148fc7];
+    }
+  }
+  .ribbon-danger {
+    @apply bg-danger after:border-t-danger after:border-t-[10px] after:border-solid;
+    span:after {
+      @apply bg-[#d31236];
+    }
+  }
+}
+
+
+[dir="rtl"]{
+  .ribbon-3 {
+    @apply absolute text-white -top-2 after:absolute after:content-[""] after:w-0 after:h-0 after:z-[6] after:border-r-[16px] after:border-l-[17px] after:border-x-transparent after:border-solid;
+  }
+}
+/* ribbon 3 */
+
+/* ribbon 4 */
+.ribbon-4 {
+  @apply absolute text-white w-[30px] shadow-[0px_4px_16px_rgba(0,0,0,0.1)] top-0 after:absolute after:content-[""] after:w-0 after:h-0 after:z-[6] after:border-b-8 after:border-b-transparent after:border-solid;
+  span {
+    @apply relative block text-center text-xs leading-none z-[6] px-0.5 py-3;
+  }
+  &.top-left {
+    @apply start-2.5 after:start-0;
+  }
+  &.top-right {
+    @apply end-2.5 after:end-0;
+  }
+  &.ribbon-primary span {
+    @apply bg-primary;
+  }
+  &.ribbon-primary:after {
+    @apply border-x-[15px] border-x-primary border-solid;
+  }
+  &.ribbon-secondary span {
+    @apply bg-secondary;
+  }
+  &.ribbon-secondary:after {
+    @apply border-x-[15px] border-x-secondary border-solid;
+  }
+  &.ribbon-warning span {
+    @apply bg-warning;
+  }
+  &.ribbon-warning:after {
+    @apply border-x-[15px] border-x-warning border-solid;
+  }
+  &.ribbon-info span {
+    @apply bg-info;
+  }
+  &.ribbon-info:after {
+    @apply border-x-[15px] border-x-info border-solid;
+  }
+  &.ribbon-success span {
+    @apply bg-success;
+  }
+  &.ribbon-success:after {
+    @apply border-x-[15px] border-x-success border-solid;
+  }
+  &.ribbon-danger span {
+    @apply bg-danger;
+  }
+  &.ribbon-danger:after {
+    @apply border-x-[15px] border-x-danger border-solid;
+  }
+}
+
+/* ribbon 4 */
+
+/* ribbon 5 */
+.ribbon-5 {
+  @apply absolute w-[90px] h-[90px] text-white text-xs font-semibold flex justify-center shadow-[1px_1px_16px_rgba(0,0,0,0.2)] p-[5px];
+  &.ribbon-primary {
+    @apply bg-primary;
+  }
+  &.ribbon-secondary {
+    @apply bg-secondary;
+  }
+  &.ribbon-warning {
+    @apply bg-warning;
+  }
+  &.ribbon-info {
+    @apply bg-info;
+  }
+  &.ribbon-success {
+    @apply bg-success;
+  }
+  &.ribbon-danger {
+    @apply bg-danger;
+  }
+  &.ribbon-dark {
+    @apply bg-dark;
+  }
+  &.ribbon-orange {
+    @apply bg-orangemain;
+  }
+  &.top-left {
+    @apply top-[-2.8125rem] start-[-2.8125rem] rotate-[315deg];
+  }
+  &.top-right {
+    @apply top-[-2.8125rem] end-[-2.8125rem] rotate-45;
+  }
+  &.bottom-left {
+    @apply bottom-[-2.8125rem] start-[-2.8125rem] rotate-[225deg];
+  }
+  &.bottom-right {
+    @apply bottom-[-2.8125rem] end-[-2.8125rem] rotate-[135deg];
+  }
+}
+
+[dir="rtl"]{
+  .ribbon-5{
+    &.top-left {
+      @apply rotate-[-315deg];
+    }
+    &.top-right {
+      @apply rotate-[-45deg];
+    }
+    &.bottom-left {
+      @apply rotate-[-225deg];
+    }
+    &.bottom-right {
+      @apply rotate-[-135deg];
+    }
+  }
+}
+
+/* ribbon 5 */
+
+/* ribbon-6 */
+
+
+  /* ribbon-6 */
+  .ribbon-6 {
+    @apply absolute z-[6] text-[13px] shadow-[1px_1px_16px_rgba(0,0,0,0.2)] px-2 py-0.5 top-2.5 text-white;
+    &.ribbon-primary {
+      @apply bg-primary;
+      &.ribbon-left:after {
+        @apply border-s-[12px] border-s-primary border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-primary border-solid;
+      }
+    }
+    &.ribbon-secondary {
+      @apply bg-secondary;
+      &.ribbon-left:after {
+        @apply border-s-[12px] border-s-secondary border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-secondary border-solid;
+      }
+    }
+    &.ribbon-warning {
+      @apply bg-warning;
+      &.ribbon-left:after {
+        @apply border-s-[12px] border-s-warning border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-warning border-solid;
+      }
+    }
+    &.ribbon-info {
+      @apply bg-info;
+      &.ribbon-left:after {
+        @apply border-s-[12px] border-s-info border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-info border-solid;
+      }
+    }
+    &.ribbon-success {
+      @apply bg-success;
+      &.ribbon-left:after {
+        @apply border-s-[12px] border-s-success border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-success border-solid;
+      }
+    }
+    &.ribbon-danger {
+      @apply bg-danger;
+      &.ribbon-left:after {
+       @apply border-s-[12px] border-s-danger border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-danger border-solid;
+      }
+    }
+    &.ribbon-dark {
+      @apply bg-dark;
+      &.ribbon-left:after {
+        @apply border-s-[12px] border-s-dark border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-dark border-solid;
+      }
+    }
+    &.ribbon-orange {
+      @apply bg-orangemain;
+      &.ribbon-left:after {
+        @apply border-s-[12px] border-s-orangemain border-solid;
+      }
+      &.ribbon-right:after {
+        @apply border-e-[12px] border-e-orangemain border-solid;
+      }
+    }
+    &.ribbon-left {
+      @apply start-0;
+      &:after {
+        @apply content-[""] absolute top-0 bottom-0 -end-[12px] border-t-[12px] border-t-transparent border-solid border-b-[11px] border-b-transparent w-0;
+      }
+    }
+    &.ribbon-right {
+      @apply end-0;
+      &:after {
+        @apply content-[""] absolute top-0 bottom-0 -start-[12px] border-b-[12px] border-b-transparent border-t-[11px] border-t-transparent w-0;
+      }
+    }
+  }
+  /* ribbon-6 */
+/* ribbon-6 */
+/* End:: ribbons */

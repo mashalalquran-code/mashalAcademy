@@ -1,0 +1,21 @@
+/* Append to src/styles.scss. Do not replace your existing theme styles. */
+html[lang="ps"],
+html[lang="fa-AF"] {
+  /* Use an installed font with complete Pashto/Dari glyph coverage. */
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+html[dir="rtl"] .landing-banner-heading {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+html[dir="rtl"] .landing-main .ri-arrow-right-line,
+html[dir="rtl"] .landing-main .fe-arrow-right {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+/* Use these helpers for new UI; retain your theme's existing RTL utilities. */
+.localized-text { text-align: start; }
+.localized-spacing { margin-inline-start: .5rem; }

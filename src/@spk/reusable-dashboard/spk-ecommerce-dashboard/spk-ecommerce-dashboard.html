@@ -1,0 +1,28 @@
+<div class="box">
+  <div class="box-body">
+    <div class="flex justify-between flex-wrap">
+      <div>
+        <div class="flex-auto mb-2">{{ title() }}</div>
+        <h3 class="font-semibold mb-2">{{ value() }}</h3>
+        <div class="text-[13px]">
+          <span class="mb-0">
+            <span class="me-1 inline-flex items-center"
+              [ngClass]="{'text-success': trend() === 'up', 'text-danger': trend() === 'down'}">
+              @if (trend() === 'up') {
+              <i class="ti ti-trending-up align-middle me-1"></i>
+              }
+              @if (trend() === 'down') {
+              <i class="ti ti-trending-down align-middle me-1"></i>
+              }
+              {{ percentage() }}
+            </span>
+          </span>
+          <span class="text-textmuted dark:text-textmuted/50 mb-0">This Month</span>
+        </div>
+      </div>
+      <div class="avatar avatar-md avatar-rounded" [ngClass]="color()">
+        <i class="{{ icon() }} text-[32px] svg-white" [innerHTML]="sanitizeIcon(icon())"></i>
+      </div>
+    </div>
+  </div>
+</div>

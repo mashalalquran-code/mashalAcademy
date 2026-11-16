@@ -1,0 +1,33 @@
+<div class="rounded !border border-defaultborder dark:!border-defaultborder/10 box">
+    <div class="px-3 py-2 !border-b !border-defaultborder dark:!border-defaultborder/10 bg-light flex items-center justify-between">
+      <span class="font-semibold">ID : {{ productId() }}</span>
+      <spk-dropdowns [Customclass]="'ti-dropdown hs-dropdown ms-2'" [class]="'ti-btn ti-btn-icon ti-btn-soft-primary my-1 btn-wave waves-light ti-btn-sm waves-effect  hs-dropdown-toggle'" 
+      [Menuclass]="'ti-dropdown-menu hs-dropdown-menu hidden'" [Icon]="true" [IconClass]="'ti ti-dots-vertical'">
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">Edit</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">Download</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">Delete</a></li>
+      </spk-dropdowns>
+    </div>
+    <div class="!border-b flex items-center justify-between p-3 !border-defaultborder dark:!border-defaultborder/10">
+      <div class="flex items-center">
+        <span class="avatar avatar-lg me-2">
+          <img [src]="productImage()" alt="img">
+        </span>
+        <div>
+          <p class="mb-1 font-semibold text-[15px]">{{ productName() }}</p>
+          <span class="text-textmuted dark:text-textmuted/50 text-[13px]">{{ productDate() }}</span>
+        </div>
+      </div>
+      <span [ngClass]="{'bg-success-transparent': productStatus() === 'Shipped', 'bg-warning-transparent': productStatus() === 'Pending', 'bg-secondary-transparent': productStatus() === 'Cancelled'}" class="rounded-full badge">{{ productStatus() }}</span>
+    </div>
+    <div class="flex items-center justify-between px-3 py-2">
+      <div class="flex items-center">
+        <span class="avatar avatar-sm me-2 avatar-rounded p-1 bg-light">
+          <img [src]="sellerImage()" alt="img">
+        </span>
+        {{ sellerName() }}
+      </div>
+      <p class="mb-0 font-semibold">{{ productPrice() }}</p>
+    </div>
+  </div>
+  

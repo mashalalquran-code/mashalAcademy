@@ -1,0 +1,83 @@
+<ul class="list-unstyled profile-timeline">
+  @for( task of taskDiscussion(); track $index){
+  <li>
+    <div>
+      <span class="avatar avatar-md avatar-rounded profile-timeline-avatar" [class]="task.bgSoftColor">
+        <span class="avatar avatar-sm avatar-rounded" [class]="task.bgColor"><i class="text-base"
+            [class]="task.icon"></i></span>
+      </span>
+      <p class="!mb-4">
+        <span class="font-medium">{{task.title }}</span>
+        <span class="float-end text-[11px] text-textmuted dark:text-textmuted/50">{{ task.dateTime }}</span>
+      </p>
+      @if(task?.attachmentImages?.length){
+      <div class="p-2 rounded-sm bg-light border border-defaultborder dark:border-defaultborder/10">
+        <div class="grid grid-cols-12 gap-x-2 xl:gap-x-2 gap-y-2">
+          @for( data of task.attachmentImages; track $index){
+          <div class="xl:col-span-6 col-span-12">
+            <div class="box border border-defaultborder dark:border-defaultborder/10 shadow-none !mb-0">
+              <div class="box-body">
+                <div class="mb-0 folder-svg-container flex flex-wrap items-center gap-2">
+                  <div
+                    class="svg-warning text-warning me-3 bg-light avatar avatar-md border border-defaultborder dark:border-defaultborder/10 !p-1">
+                    <img [src]="data.img" alt="img">
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium !mb-1 leading-none">
+                      <a href="javascript:void(0);">{{ data.title }}</a>
+                    </p>
+                    <span class="text-textmuted dark:text-textmuted/50 text-xs">
+                      {{ data.files }} Files
+                    </span>
+                  </div>
+                  <div class="float-end ms-auto">
+                    <div class="ti-dropdown hs-dropdown">
+                      <a aria-label="anchor" href="javascript:void(0);" class="hs-dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="ri-more-2-fill font-semibold text-textmuted dark:text-textmuted/50"></i>
+                      </a>
+                      <ul class="ti-dropdown-menu hs-dropdown-menu hidden">
+                        <li class="before:!hidden !mb-0 !ps-0">
+                          <a aria-label="anchor" class="ti-dropdown-item" href="javascript:void(0);">Delete</a>
+                        </li>
+                        <li class="before:!hidden !mb-0 !ps-0">
+                          <a aria-label="anchor" class="ti-dropdown-item" href="javascript:void(0);">Rename</a>
+                        </li>
+                        <li class="before:!hidden !mb-0 !ps-0">
+                          <a aria-label="anchor" class="ti-dropdown-item" href="javascript:void(0);">Hide
+                            Folder</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+      <p class="text-textmuted dark:text-textmuted/50 !mb-4">
+        {{ task.desc }}
+      </p>
+
+      @if(task?.userDetails?.length){
+      <div
+        class="flex items-center gap-2 p-2 bg-light flex-wrap border border-defaultborder dark:border-defaultborder/10 rounded-sm">
+        @for(data of task.userDetails; track $index){
+        <div
+          class="p-2 border border-defaultborder dark:border-defaultborder/10 rounded-sm flex bg-white dark:bg-bodybg items-center flex-wrap">
+          <span class="avatar avatar-sm avatar-rounded me-2"><img [src]="data.img" alt="img"></span>
+          <div class="flex flex-col leading-none">
+            <span class="mb-1">{{ data.title }}</span>
+            <span class="text-[11px] text-textmuted dark:text-textmuted/50"> {{ data.designation }} </span>
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </li>
+  }
+</ul>

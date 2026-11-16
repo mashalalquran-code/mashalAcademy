@@ -1,0 +1,52 @@
+<div class="col">
+    <div class="box">
+      <div class="box-body">
+        <div class="flex items-center justify-between mb-2">
+          <span class="badge rounded-full" [ngClass]="categoryBg()">{{ category() }}</span>
+          <div class="ti-dropdown hs-dropdown">
+            <a class="ti-btn ti-btn-sm ti-btn-icon ti-btn-light ti-dropdown-toggle hs-dropdown-toggle" href="javascript:void(0);" data-bs-toggle="dropdown">
+              <i class="ri-more-2-fill text-textmuted dark:text-textmuted/50"></i>
+            </a>
+            <ul class="ti-dropdown-menu hs-dropdown-menu hidden" role="menu">
+              <li><a class="ti-dropdown-item" href="javascript:void(0);">Week</a></li>
+              <li><a class="ti-dropdown-item" href="javascript:void(0);">Day</a></li>
+              <li><a class="ti-dropdown-item" href="javascript:void(0);">Year</a></li>
+            </ul>
+          </div>
+        </div>
+        <h6 class="mb-2 font-semibold">{{ title() }}</h6>
+        <span class="text-textmuted dark:text-textmuted/50 text-[13px]">{{ description() }}</span>
+        <div class="p-2 bg-light border flex items-center gap-3 mt-2 rounded-sm flex-wrap border-defaultborder dark:border-defaultborder/10">
+          <span class="avatar avatar-md" [ngClass]="iconBg()"><i [class]="icon() + ' text-xl'"></i></span>
+          <div>
+            <p class="!mb-0">{{ skill() }}</p>
+            <span class="text-textmuted dark:text-textmuted/50 block text-xs">
+              <strong class="text-black/75 dark:text-white/75">{{ completedTasks() }}</strong> tasks completed
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="box-footer flex justify-between items-center flex-wrap gap-2">
+        <div class="avatar-list-stacked">
+            @for (member of visibleTeam; track $index) {
+            <ng-container>
+              <span class="avatar avatar-sm avatar-rounded">
+                <img [src]="member" alt="team" />
+              </span>
+            </ng-container>
+        }
+        @if (extraCount > 0) {
+            <ng-container>
+              <a class="avatar avatar-sm bg-primary avatar-rounded text-fixed-white" href="javascript:void(0);">
+                +{{ extraCount }}
+              </a>
+            </ng-container>
+        }
+          </div>
+        <span class="text-[13px] text-textmuted dark:text-textmuted/50">
+          <i class="ri-calendar-line me-1"></i>{{ dueDate() }}
+        </span>
+      </div>
+    </div>
+  </div>
+  

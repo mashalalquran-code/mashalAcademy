@@ -1,0 +1,30 @@
+<body class="authentication-background authenticationcover-background relative" id="particles-js" #particleJs >
+  <ngx-particles [id]="id" [options]="particlesOptions" (particlesLoaded)="particlesLoaded($event)" />
+  <div class="">
+    <div class="flex justify-center authentication authentication-basic items-center h-full">
+        <div class="xl:max-w-[42%] px-3 mx-auto z-10">
+            <div class="bg-white dark:bg-bodybg p-[3rem] error-img text-center rounded-md">
+                <div class="grid grid-cols-12 items-center mx-0 g-0">
+                    <div class="2xl:col-span-12 xl:col-span-12 lg:col-span-12 md:col-span-12 sm:col-span-12 col-span-12">
+                        <div class="text-center">
+                            <div class="">
+                                <p class="error-text !mb-4">404</p>
+                                <p class="text-[1.25rem]  !font-medium !mb-2">Oops, the page you are trying to access does not
+                                    exist?</p>
+                                <p class="text-[15px] !mb-4 text-textmuted break-all">The requested page is not available. It might
+                                    have been relocated, deleted, or never existed.</p>
+                                <a [routerLink]="['']"
+                                    class="ti-btn ti-btn-lg ti-btn-w-lg mb-2 border-0 ti-btn-primary me-sm-3 sm-0">Home
+                                    Page</a>
+                                <a [routerLink]="['']"
+                                    class="ti-btn ti-btn-lg ti-btn-w-lg mb-2 border-0 ti-btn-secondary">Visit
+                                    Help Center</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

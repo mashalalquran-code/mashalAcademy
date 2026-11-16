@@ -1,0 +1,24 @@
+<div class="box overflow-hidden">
+  <div class="box-body !p-0">
+      <div class="flex gap-2 justify-between mb-2 p-3 pb-0">
+          <div class="avatar avatar-lg" [ngClass]="avatarClass()">
+              <div class="avatar avatar-md" [ngClass]="avatarSubClass()">
+                  <i [ngClass]="icon()" class="text-xl"></i>
+              </div>
+          </div>
+          <div>
+              <div class="flex-auto text-[13px] text-textmuted dark:text-textmuted/50">{{ title() }}</div>
+              <div class="text-2xl font-semibold">{{ value() }}</div>
+          </div>
+      </div>
+      <div class="flex justify-between py-2 px-3 bg-light border flex-wrap border-defaultborder dark:border-defaultborder/10">
+          <div class="flex items-center mb-1">
+              <span [ngClass]="percentageClass()" ><i
+                    [ngClass]="percentageIcon()"  class="text-[11px]"></i></span>
+              <span class="text-sm">{{percentage()}}%</span>
+              <p class="text-[11px] text-textmuted dark:text-textmuted/50 !mb-0 !ms-1">This Month</p>
+          </div>
+          <a href="javascript:void(0);" class="text-primary underline">View More</a>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="box featured-jobs">
+    <div class="box-body">
+        <div class="bg-light border border-b-0 p-4 border-defaultborder dark:border-defaultborder/10">
+            <div class="ti-btn-list float-end">
+                <div class="hs-tooltip ti-main-tooltip">
+                    <a href="javascript:void(0);"
+                        class="hs-tooltip-toggle avatar avatar-rounded avatar-sm bg-primary-transparent text-primary">
+                        <i class="text-[15px]" (click)="toggleWishlist()"
+                            [ngClass]="{ 'ri-heart-3-fill text-primary': job()?.wishlisted, 'ri-heart-3-line': !job()?.wishlisted }"></i>
+                        <span
+                            class="hs-tooltip-content  ti-main-tooltip-content py-1 px-2 !bg-black !text-xs !font-medium !text-white shadow-sm "
+                            role="tooltip">
+                            Add to wishlist
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-3 items-center">
+                <span class="avatar avatar-lg {{ job()?.bgIcon }}">
+                    <i class="{{ job()?.icon }} text-3xl {{ job()?.iconClass  }}"></i>
+                </span>
+                <div>
+                    <h5 class="font-medium mb-0 flex items-center"><a href="javascript:void(0);"> {{ job()?.job }}</a>
+                    </h5>
+                    <a href="javascript:void(0);">{{ job()?.company }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="border p-4 border-defaultborder dark:border-defaultborder/10">
+            <div class="popular-tags mb-4">
+                <span
+                    class="badge border bg-light !text-dark mb-1 dark:!text-defaulttextcolor/80 border-defaultborder dark:border-defaultborder/10 !mx-1"><i
+                        class="!mx-1 bi bi-geo-alt text-textmuted dark:text-textmuted/50"></i> {{ job()?.location }}</span>
+                <span
+                    class="badge border bg-light !text-dark mb-1 dark:!text-defaulttextcolor/80 border-defaultborder dark:border-defaultborder/10 !mx-1"><i
+                        class="!mx-1 bi bi-briefcase text-textmuted dark:text-textmuted/50"></i> {{ job()?.openings }}
+                    Openings</span>
+                <span
+                    class="badge border bg-light !text-dark mb-1 dark:!text-defaulttextcolor/80 border-defaultborder dark:border-defaultborder/10 !mx-1"><i
+                        class="!mx-1 bi bi-mortarboard text-textmuted dark:text-textmuted/50"></i> {{ job()?.qualification
+                    }}</span>
+                <span
+                    class="badge border bg-light !text-dark mb-1 dark:!text-defaulttextcolor/80 border-defaultborder dark:border-defaultborder/10 !mx-1"><i
+                        class="!mx-1 bi bi-clock text-textmuted dark:text-textmuted/50"></i> Min - {{ job()?.experience
+                    }}Years</span>
+                <span
+                    class="badge border bg-light !text-dark mb-1 dark:!text-defaulttextcolor/80 border-defaultborder dark:border-defaultborder/10 !mx-1"><i
+                        class="!mx-1 bi bi-moon-stars text-textmuted dark:text-textmuted/50"></i> {{ job()?.shifts }}</span>
+            </div>
+            <div class="flex justify-between flex-wrap">
+                <h5 class="font-medium mb-0">${{ job()?.salary  |number}}<span
+                        class="text-textmuted dark:text-textmuted/50 font-normal">/</span><span
+                        class="text-textmuted dark:text-textmuted/50 text-xs">Month</span></h5>
+                <a href="javascript:void(0);" class="ti-btn ti-btn-primary ti-btn-sm font-medium text-sm inline-flex">
+                    Apply Now <i class="fe fe-arrow-right transform-arrow ms-2 leading-6"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,501 @@
+<!-- Start::page-header -->
+<div class="flex items-center justify-between page-header-breadcrumb flex-wrap gap-2">
+  <div>
+    <p class="font-semibold text-xl !mb-0">{{ 'sales.welcomeBack' | translate }}</p>
+    <p class="text-[13px] text-textmuted dark:text-textmuted/50 !mb-0">{{ 'sales.intro' | translate }}</p>
+  </div>
+  <div class="flex gap-2 flex-wrap">
+    <div class="form-group">
+      <div class="input-group border rounded-sm border-defaultborder dark:border-defaultborder/10">
+        <div class="input-group-text !bg-white dark:!bg-bodybg !border-0 !pe-0"> <i class="ri-calendar-line"></i> </div>
+
+        <input id="salesdaterange" [class]="'form-control breadcrumb-input !border-0 salesdateranges flatpickr-input'"
+          mwlFlatpickr [(ngModel)]="rangeValue" [mode]="'range'" [altInput]="true" [altFormat]="'d, M Y'"
+          [convertModelValue]="true" [placeholder]="'sales.dateRange' | translate" />
+      </div>
+    </div>
+    <div class="ti-btn-list">
+      <button type="button" class="ti-btn ti-btn-primary btn-wave !border-0 me-0 !m-0 !py-[7px]">
+        <i class="ri-upload-2-line me-2"></i> {{ 'sales.exportReport' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<!-- End::page-header -->
+<!-- Start:: row-1 -->
+<div class="grid grid-cols-12 gap-x-6">
+  <div class="2xl:col-span-9  col-span-12">
+    <div class="grid grid-cols-12 gap-x-6">
+      @for (card of salesData.cardData; track $index) {
+      <div class="xl:col-span-3 col-span-12">
+        <spk-sales-cards [title]="card.title" [value]="card.value" [percentage]="card.percentage"
+          [linkText]="card.linkText" [linkHref]="card.linkHref" [svg]="card.svg" [svgClass]="card.svgClass"
+          [textColor]="card.textColor" [changeColor]="card.changeColor" />
+      </div>
+      }
+      <div class="xl:col-span-4 col-span-12">
+        <div class="box">
+          <div class="box-header justify-between">
+            <div class="box-title">
+              {{ 'sales.visitorsReport' | translate }}
+            </div>
+            <spk-dropdowns [Customclass]="'dropdown '" [Icon]="true" [title]="'sales.sortBy' | translate"
+              [IconClass]="'ri-arrow-down-s-line align-middle ms-1'"
+              [class]="'text-xs text-textmuted dark:text-textmuted/50 !p-1 hs-dropdown-toggle ti-dropdown-toggle'"
+              [Menuclass]="'dropdown-menu'">
+              <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.thisWeek' | translate }}</a></li>
+              <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.lastWeek' | translate }}</a></li>
+              <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.thisMonth' | translate }}</a></li>
+            </spk-dropdowns>
+          </div>
+          <div class="box-body">
+            <div class="grid grid-cols-12 gap-y-4 sm:gap-x-4">
+              <div class="xl:col-span-6 col-span-12">
+                <div
+                  class="p-4 bg-light text-default rounded-sm border border-dashed border-defaultborder dark:border-defaultborder/10">
+                  <span class="block mb-1">{{ 'sales.thisWeek' | translate }}</span>
+                  <h5 class="!font-semibold !leading-[1.5] mb-0 flex flex-wrap items-end">14,642<span
+                      class="text-success font-semibold text-[13px] ms-2 inline-flex items-center">0.64%<i
+                        class="ri-arrow-up-s-line ms-1"></i></span></h5>
+                </div>
+              </div>
+              <div class="xl:col-span-6 col-span-12">
+                <div
+                  class="p-4 bg-light text-default rounded-sm border border-dashed border-defaultborder dark:border-defaultborder/10">
+                  <span class="block mb-1">{{ 'sales.lastWeek' | translate }}</span>
+                  <h5 class="!font-semibold 1leading-[1.5] mb-0 flex flex-wrap items-end">12,326<span
+                      class="text-danger font-semibold text-[13px] ms-2 inline-flex items-center">5.31%<i
+                        class="ri-arrow-down-s-line ms-1"></i></span></h5>
+                </div>
+              </div>
+            </div>
+            <div id="visitors-report">
+              <spk-apexcharts [chartOptions]="salesData.VisitorsReport" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="xl:col-span-8 col-span-12">
+        <div class="box">
+          <div class="box-header justify-between">
+            <div class="box-title">
+              {{ 'sales.orderStatistics' | translate }}
+            </div>
+            <div class="flex items-center flex-wrap gap-2">
+              <div class="inline-flex rounded-sm">
+                <button type="button"
+                  class="ti-btn-group !border-0 !text-[0.8rem] !py-[0.25rem] !px-[0.8rem] bg-primary btn-wave text-white waves-effect waves-light">{{ 'sales.day' | translate }}</button>
+                <button type="button"
+                  class="ti-btn-group !border-0 !text-[0.8rem] !py-[0.25rem] !px-[0.8rem] btn-wave ti-btn-soft-primary waves-effect waves-light">{{ 'sales.week' | translate }}</button>
+                <button type="button"
+                  class="ti-btn-group !border-0 !text-[0.8rem] !py-[0.25rem] !px-[0.8rem] btn-wave ti-btn-soft-primary waves-effect waves-light">{{ 'sales.month' | translate }}</button>
+                <button type="button"
+                  class="ti-btn-group !border-0 !text-[0.8rem] !py-[0.25rem] !px-[0.8rem] btn-wave ti-btn-soft-primary !rounded-s-none waves-effect waves-light">{{ 'sales.year' | translate }}</button>
+              </div>
+              <div>
+                <button type="button" class="ti-btn ti-btn-light border ti-btn-sm m-0">{{ 'sales.export' | translate }}<i
+                    class="ri-share-forward-line ms-1"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="box-body !pb-0">
+            <div id="ordered-statistics">
+              <spk-apexcharts [chartOptions]="salesData.OrderStatistics" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="2xl:col-span-3 col-span-12">
+    <div class="box overflow-hidden">
+      <div class="box-header justify-between ">
+        <div class="box-title">
+          {{ 'sales.topCategories' | translate }}
+        </div>
+        <spk-dropdowns [Customclass]="'ti-dropdown hs-dropdown'" [title]="'sales.sortBy' | translate"
+          [class]="' text-xs text-textmuted dark:text-textmuted/50 hs-dropdown-toggle ti-dropdown-toggle !p-0'"
+          [Menuclass]="'ti-dropdown-menu hs-dropdown-menu hidden'" [Icon]="true"
+          [IconClass]="'ri-arrow-down-s-line align-middle ms-1 inline-block'">
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.thisWeek' | translate }}</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.lastWeek' | translate }}</a></li>
+          <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.thisMonth' | translate }}</a></li>
+        </spk-dropdowns>
+      </div>
+      <div class="box-body !p-0 ">
+        <div class="mt-2">
+          <spk-apexcharts id="top-categories" [chartOptions]="salesData.TopSellingcategories" />
+        </div>
+
+        <div class="Top-Selling-categories !border-t border-defaultborder dark:border-defaultborder/10">
+          <ul class="ti-list-group list-group-flush top-categories !border-0 rounded-none">
+            @for (category of salesData.categories; track $index ;let last=$last) {
+            <li class="ti-list-group-item">
+              <div class="flex items-center justify-between">
+                <div class="leading-none">
+                  <div class="font-semibold mb-1">{{ category.name }}</div>
+                  <div>
+                    <span class="text-textmuted dark:text-textmuted/50 text-[13px]">
+                      {{ category.change }}
+                      <span [ngClass]="category.iconColor" class="font-medium ms-1 inline-flex items-center">
+                        {{ category.percentage}}
+                        <i [class]="category.icon + ' ms-1'"></i>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="leading-none text-end">
+                  <span class="block !font-semibold h6 mb-1">{{ category.sales }}</span>
+                  <span class="block text-[13px] text-textmuted dark:text-textmuted/50">{{ category.salesText }}</span>
+                </div>
+              </div>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End:: row-1 -->
+
+<!-- Start:: row-2 -->
+<div class="grid grid-cols-12 gap-x-6">
+  <div class="2xl:col-span-3 xxl:col-span-3 col-span-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="box-title">
+          {{ 'sales.countrySales' | translate }}
+        </div>
+      </div>
+      <div class="box-body">
+        <ul class="list-unstyled mb-0 top-country-sales">
+          @for (country of salesData.countriesData; track $index) {
+          <li>
+            <div class="flex items-center flex-wrap gap-2">
+              <div class="leading-none">
+                <span class="avatar avatar-md p-2 bg-light border dark:border-defaultborder/10 avatar-rounded">
+                  <img [src]="country.flag" alt="{{ country.name }}">
+                </span>
+              </div>
+              <div class="flex-auto leading-none">
+                <span class="font-semibold mb-2 block">{{ country.name }}</span>
+                <span class="block text-textmuted dark:text-textmuted/50 text-[13px]">{{ country.sales }}</span>
+              </div>
+              <div class="text-end">
+                <span class="text-default h6 !font-semibold mb-0">{{ country.revenue }}</span>
+                <span [ngClass]="{'text-success': country.trend === 'up', 'text-danger': country.trend === 'down'}"
+                  class="font-medium block">
+                  <i [class]="country.trend === 'up' ? 'ti ti-arrow-narrow-up' : 'ti ti-arrow-narrow-down'"></i>{{
+                  country.percentage }}
+                </span>
+              </div>
+            </div>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="2xl:col-span-3 xxl:col-span-3 col-span-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="box-title">
+          {{ 'sales.visitorsGender' | translate }}
+        </div>
+      </div>
+      <div class="box-body">
+        <div id="segmentation">
+          <spk-apexcharts [chartOptions]="salesData.VisitorsByGender" />
+        </div>
+        <div class="VisitorsByGender">
+          <ul class="ti-list-group segmentation-list">
+            <li class="ti-list-group-item male">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="block font-semibold">{{ 'sales.male' | translate }}<span
+                      class="text-success font-medium ms-1 inline-flex items-center"><i
+                        class="ti ti-arrow-narrow-up"></i>0.78%</span></span>
+                </div>
+                <div class="h6 mb-0 font-semibold">
+                  18,235
+                </div>
+              </div>
+            </li>
+            <li class="ti-list-group-item female">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="block font-semibold">{{ 'sales.female' | translate }}<span
+                      class="text-danger font-medium ms-1 inline-flex  items-center"><i
+                        class="ti ti-arrow-narrow-down"></i>1.57%</span></span>
+                </div>
+                <div class="h6 mb-0 font-semibold">
+                  12,743
+                </div>
+              </div>
+            </li>
+            <li class="ti-list-group-item others">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="block font-semibold">{{ 'sales.others' | translate }}<span
+                      class="text-success font-medium ms-1 inline-flex items-center"><i
+                        class="ti ti-arrow-narrow-up"></i>0.32%</span></span>
+                </div>
+                <div class="h6 mb-0 font-semibold">
+                  5,369
+                </div>
+              </div>
+            </li>
+            <li class="ti-list-group-item not-mentioned">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="block font-semibold">{{ 'sales.notMentioned' | translate }}<span
+                      class="text-success !font-medium  inline-flex items-center"><i
+                        class="ti ti-arrow-narrow-up"></i>19.45%</span></span>
+                </div>
+                <div class="h6 mb-0 font-semibold">
+                  16,458
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="2xl:col-span-3 xxl:col-span-3 col-span-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="box-title">
+          {{ 'sales.recentActivity' | translate }}
+        </div>
+      </div>
+      <div class="box-body">
+        <ul class="list-unstyled recent-activity-list">
+          @for (activity of salesData.activities; track activity.id) {
+          <li>
+            <div class="flex justify-between items-start gap-2 pe-4">
+              <div>
+                <span class="block">
+                  {{ activity.descriptionPrefix }}
+                  @if (activity.highlightText) {
+                  <span [ngClass]="activity.highlightClass">{{ activity.highlightText }}</span>
+                  }
+                  {{ activity.descriptionSuffix }}
+                </span>
+              </div>
+              <div class="recent-activity-time text-[13px]">
+                <span class="text-textmuted dark:text-textmuted/50">{{ activity.time }}</span>
+              </div>
+            </div>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="2xl:col-span-3 xxl:col-span-3 col-span-12">
+    <div class="box overflow-hidden">
+      <div class="box-header justify-between">
+        <div class="box-title">
+          {{ 'sales.recentTransactions' | translate }}
+        </div>
+        <a href="javascript:void(0);" class="text-[13px] text-textmuted dark:text-textmuted/50"> {{ 'sales.viewAll' | translate }}<i
+            class="ti ti-arrow-narrow-right ms-1"></i> </a>
+      </div>
+      <div class="box-body !p-0">
+        <div class="table-responsive">
+          <spk-reusable-tables [columns]="salesData.companiesColumn"
+            trHeadClass="border-b border-defaultborder dark:border-defaultborder/10"
+            [tableHead]="'!border-b border-defaultborder dark:border-defaultborder/10'" tableClass="table text-nowrap"
+            [showCheckbox]="false" checkboxClass="text-center">
+            @for (transaction of salesData.transactions; track $index;let last=$last) {
+            <tr [class]=" last? '' :'!border-b border-defaultborder dark:border-defaultborder/10'">
+              <td>
+                <div class="flex items-start gap-2">
+                  <div>
+                    <span [class]="transaction.iconColor + ' avatar avatar-md avatar-rounded'">
+                      <i [class]="transaction.icon + ' text-lg'"></i>
+                    </span>
+                  </div>
+                  <div>
+                    <span class="block font-semibold mb-1">{{ transaction.method }}</span>
+                    <span class="block text-[13px] text-textmuted dark:text-textmuted/50">{{ transaction.type }}</span>
+                  </div>
+                </div>
+              </td>
+              <td class="!text-end">
+                <div>
+                  <span class="block !font-semibold mb-1 h6">{{ transaction.amount }}</span>
+                  <span class="block text-[13px] text-textmuted dark:text-textmuted/50">{{ transaction.date }}</span>
+                </div>
+              </td>
+            </tr>
+            }
+          </spk-reusable-tables>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End:: row-2 -->
+
+<!-- Start:: row-3 -->
+<div class="grid grid-cols-12 gap-x-6">
+  <div class="2xl:col-span-9 xxl:col-span-9 col-span-12">
+    <div class="box">
+      <div class="box-header justify-between">
+        <div class="box-title">
+          {{ 'sales.recentOrders' | translate }}
+        </div>
+        <div class="flex flex-wrap gap-2 items-center">
+          <div>
+            <input class="form-control" type="text" [placeholder]="'sales.search' | translate" [attr.aria-label]="'sales.search' | translate">
+          </div>
+          <spk-dropdowns [Customclass]="'ti-dropdown hs-dropdown'" [title]="'sales.sortBy' | translate"
+            [class]="'ti-btn ti-btn-wave hs-dropdown-toggle  ti-btn ti-btn-primary ti-btn-md m-0 '"
+            [Menuclass]="'ti-dropdown-menu hs-dropdown-menu hidden'" [Icon]="true"
+            [IconClass]="'ri-arrow-down-s-line align-middle ms-1 inline-block'">
+            <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.new' | translate }}</a></li>
+            <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.popular' | translate }}</a></li>
+            <li><a class="ti-dropdown-item" href="javascript:void(0);">{{ 'sales.relevant' | translate }}</a></li>
+          </spk-dropdowns>
+        </div>
+      </div>
+      <div class="box-body !p-0">
+        <div class="table-responsive">
+          <spk-reusable-tables [columns]="salesData.orderColumns"
+            [trHeadClass]="'border-b border-defaultborder dark:border-defaultborder/10'"
+            [tableClass]="'table text-nowrap'"
+            [tableHead]="'border-b border-defaultborder dark:border-defaultborder/10'" 
+            [showCheckbox]="true">
+            @for (product of salesData.products; track $index ;let last=$last) {
+            <tr [class]="last ?' ': 'border-b border-defaultborder dark:border-defaultborder/10'">
+              <td class="ps-4">
+                <input class="form-check-input" type="checkbox" [id]="product.id" value="" [attr.aria-label]="'sales.selectOrder' | translate"
+                  [checked]="product.checked">
+              </td>
+              <td>
+                <div class="flex">
+                  <span class="avatar avatar-md bg-light">
+                    <img [src]="product.image" class="" alt="...">
+                  </span>
+                  <div class="ms-2">
+                    <p class="font-semibold !mb-0 flex items-center">
+                      <a href="javascript:void(0);">{{ product.name }}</a>
+                    </p>
+                    <p class="text-[13px] text-textmuted dark:text-textmuted/50 !mb-0">{{ product.brand }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>{{ product.category }}</td>
+              <td class="text-center">{{ product.quantity }}</td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <div class="leading-none">
+                    <span class="avatar avatar-xs avatar-rounded">
+                      <img [src]="product.avatar" alt="">
+                    </span>
+                  </div>
+                  <div>{{ product.assignedTo }}</div>
+                </div>
+              </td>
+              <td>
+                <span class="badge"
+                  [ngClass]="{'bg-primary-transparent': product.status === 'Shipped', 'bg-success-transparent': product.status === 'Delivered', 'bg-secondary-transparent': product.status === 'Processing', 'bg-warning-transparent': product.status === 'Pending'}">
+                  {{ ('sales.status.' + product.status) | translate }}
+                </span>
+              </td>
+              <td class="!font-semibold">{{ product.price }}</td>
+              <td>{{ product.date }}</td>
+              <td>
+                <div class="ti-btn-list flex gap-2">
+                  <button type="button" [attr.aria-label]="'sales.view' | translate"
+                    class="ti-btn ti-btn-sm ti-btn-icon  ti-btn-soft-primary btn-wave">
+                    <i class="ri-eye-line"></i>
+                  </button>
+                  <button type="button" [attr.aria-label]="'sales.edit' | translate"
+                    class="ti-btn ti-btn-sm ti-btn-icon  ti-btn-soft-secondary btn-wave">
+                    <i class="ri-edit-line"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            }
+          </spk-reusable-tables>
+        </div>
+      </div>
+      <div class="box-footer">
+        <div class="flex items-center">
+          <div> {{ 'sales.showingEntries' | translate }} <i class="bi bi-arrow-right ms-2 font-semibold"></i> </div>
+          <div class="ms-auto">
+            <nav [attr.aria-label]="'sales.pagination' | translate" class="pagination-style-2">
+              <ul class="ti-pagination mb-0 flex-wrap">
+                <li class="page-item disabled">
+                  <a class="page-link px-3 py-[0.375rem] !border-0" href="javascript:void(0);">
+                    {{ 'sales.previous' | translate }}
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link active px-3 py-[0.375rem] !border-0"
+                    href="javascript:void(0);">1</a></li>
+                <li class="page-item"><a class="page-link px-3 py-[0.375rem] !border-0" href="javascript:void(0);">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link px-3 py-[0.375rem] !text-primary !border-0" href="javascript:void(0);">
+                    {{ 'sales.next' | translate }}
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="2xl:col-span-3 xxl:col-span-3 col-span-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="box-title">
+          {{ 'sales.visitorsBrowser' | translate }}
+        </div>
+      </div>
+      <div class="box-body">
+        <ul class="list-unstyled visitors-browser-list">
+          @for (browser of salesData.browsers; track $index) {
+          <li>
+            <div class="flex items-center gap-2 flex-wrap">
+              <div>
+                <span class="avatar avatar-md avatar-rounded bg-light p-2 border dark:border-defaultborder/10">
+                  <img [src]="browser.image" alt="{{ browser.name }}">
+                </span>
+              </div>
+              <div class="flex-auto">
+                <div class="flex items-center justify-between mb-1 flex-wrap">
+                  <span class="font-semibold inline-flex">
+                    {{ browser.name }}
+                    <span class="text-textmuted dark:text-textmuted/50 text-[13px] ms-1 rtl:me-1">({{
+                      browser.description }})</span>
+                  </span>
+                  <span class="block h6 mb-0 !font-semibold">
+                    <span [ngClass]="browser.badge" class="me-2 rtl:ms-2 text-[13px] font-medium ">
+                      <i [class]="browser.trendIcon"></i>{{ browser.percentageChange }}%
+                    </span>
+                    {{ browser.users |number}}
+                  </span>
+                </div>
+                <div class="progress progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated !bg-{{browser.progressColor}}"
+                    [style.width.%]="browser.progress">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          }
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End:: row-3 -->

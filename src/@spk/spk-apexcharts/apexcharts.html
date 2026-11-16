@@ -1,0 +1,10 @@
+<apx-chart  #chart [id]="id()" [ngClass]="apxClass()" [title]="chartOptions()?.title ?? { text: '' }" [series]="chartOptions()?.series ?? []"
+    [colors]="chartOptions()?.colors ?? []" [dataLabels]="chartOptions()?.dataLabels ?? {}"
+    [chart]="chartOptions()?.chart ?? {type:'line'}" [xaxis]="chartOptions()?.xaxis ?? {}"
+    [tooltip]="chartOptions()?.tooltip ?? {}" [fill]="chartOptions()?.fill ?? {}" [legend]="chartOptions()?.legend ?? {}"
+    [stroke]="chartOptions()?.stroke ?? {}" [plotOptions]="chartOptions()?.plotOptions ?? {}"
+    [yaxis]="chartOptions()?.yaxis ?? []" [responsive]="chartOptions()?.responsive ?? []"
+    [labels]="chartOptions()?.labels ?? [] " [grid]="chartOptions()?.grid ?? {}" [markers]="chartOptions()?.markers ?? {}"
+    [annotations]="chartOptions()?.annotations ?? {}" [states]="chartOptions()?.states ?? {}"
+    [theme]="chartOptions()?.theme ??{}">
+</apx-chart> 

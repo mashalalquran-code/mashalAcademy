@@ -1,0 +1,39 @@
+
+    <div class="box">
+      <div class="box-body">
+        <div class="flex items-center">
+          <img [src]="image()" alt="img" class="avatar avatar-xxl me-3">
+          <div class="w-full">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <a href="javascript:void(0);">
+                  <h6 class="font-semibold mb-0">{{ title() }}</h6>
+                </a>
+                <span class="text-textmuted dark:text-textmuted/50 text-xs">By {{ author() }}</span>
+              </div>
+              <spk-dropdowns [Customclass]="'ti-dropdown hs-dropdown'" [class]="'ti-btn ti-btn-light ti-btn-sm ti-btn-icon ti-dropdown-toggle hs-dropdown-toggle !m-0'" 
+              [Menuclass]="'ti-dropdown-menu hs-dropdown-menu hidden'" [Icon]="true" [IconClass]="'ri-more-2-fill text-textmuted dark:text-textmuted/50 '">
+                  <li><a class="ti-dropdown-item" href="javascript:void(0);">Week</a></li>
+                  <li><a class="ti-dropdown-item" href="javascript:void(0);">Day</a></li>
+                  <li><a class="ti-dropdown-item" href="javascript:void(0);">Year</a></li>
+              </spk-dropdowns>
+            </div>
+            <div class="flex items-end justify-between flex-wrap gap-2">
+              <button type="button" class="ti-btn ti-btn-soft-primary ti-btn-sm !py-0 px-2 !m-0">
+                <i class="ri-play-fill me-1"></i> Listen Now
+              </button>
+              <div class="flex items-center gap-3 leading-none">
+                <span class="flex items-center gap-2 text-textmuted dark:text-textmuted/50 text-xs">
+                  <i class="ri-time-line text-sm"></i>{{ duration() }}
+                </span>
+                <span class="flex items-center gap-2 text-sm font-semibold">
+                  <i class="ri-volume-up-line text-sm"></i>{{ listeners() | number }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  

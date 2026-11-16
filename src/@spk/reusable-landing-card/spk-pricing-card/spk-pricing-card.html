@@ -1,0 +1,55 @@
+<div class="box-body !p-6">
+    <div class="flex gap-3 items-center p-1">
+        <div
+            class="p-2 !border inline-block border-{{plan().svgClass}}/10 rounded-sm bg-{{plan().svgClass}}-transparent">
+            <span class="avatar avatar-md bg-{{plan().svgClass}} svg-white" [innerHTML]="(getSanitizedSVG(plan().svg))">
+
+            </span>
+        </div>
+        <div class="text-start">
+            <h4 class="font-medium mb-1">{{ plan().title }}</h4> <span
+                class="mb-1 text-textmuted dark:text-textmuted/50 block">{{ plan().description }}</span>
+        </div>
+    </div>
+    <hr class="border-t !border-defaultborder dark:!border-defaultborder/10 my-4">
+    <div>
+        <h2 class="mb-0 !font-bold block !text-{{plan().svgClass}} dark:text-{{plan().svgClass}}">{{ plan().price
+            }}/<span class="text-xs text-{{plan().svgClass}} font-medium ms-1">{{ plan().period }}</span>
+        </h2>
+        <span class="text-textmuted dark:text-textmuted/50 text-sm"><span
+                class="text-{{plan().svgClass}} me-2 font-semibold">{{ plan().extraCost }}</span>{{ plan().extraCostText }}
+        </span>
+    </div>
+    <div class="text-center my-4 pricing-barrier">
+        <span
+            class="opacity-60 text-xs px-2 py-1 !border border-defaultborder dark:border-defaultborder/10 rounded-full">{{
+            plan().status }}</span>
+    </div>
+    <ul class="list-unstyled pricing-body mb-4">
+        @for( feature of plan().features; track $index ){
+
+        <li>
+            <div class="flex items-center">
+                <span class="avatar avatar-xs svg-primary">
+                    <i class="ri-check-double-line text-success text-sm"></i>
+                </span>
+                <span class="ms-2 my-auto flex-auto">{{ feature.description }}</span>
+                @if (feature.badge) {
+                <span [class]="feature.badge.class">
+                    @if (feature.badge.icon) {
+                    <i [class]="feature.badge.icon"></i>
+                    }
+                    {{ feature.badge.text }}
+                </span>
+                }
+                @if (feature.extra) {
+                <span [class]="feature.extra.class">{{ feature.extra.text }}</span>
+                }
+            </div>
+        </li>
+        }
+    </ul>
+    <button type="button"
+        class="ti-btn ti-btn-lg mt-4 {{ plan().buttonClass }} grid w-full btn-wave waves-effect waves-light">
+        <span class="ms-4 me-4">Schedule a Demo</span> </button>
+</div>

@@ -1,0 +1,33 @@
+
+    <div class="box">
+      <div class="box-body">
+        <div class="relative mb-3 overflow-hidden rounded-sm">
+          <img [src]="imageUrl()" class="card-img rounded-sm" alt="...">
+          <p class="mb-0 !bg-secondary text-fixed-white nft-auction-time">{{ timeLeft() }}</p>
+          <div class="nft-content">
+            <a href="javascript:void(0);" class="text-sm font-bold text-fixed-white">{{ title() }}</a>
+            <div class="flex mb-0 items-center flex-wrap gap-2 justify-between">
+              <div>
+                <span class="text-xs text-fixed-white block mb-1 op-8">Created By</span>
+                <span class="font-medium text-fixed-white block leading-none">{{ creator() }}</span>
+              </div>
+              <div class="text-end">
+                <span class="text-xs text-fixed-white block mb-1">Top Bid</span>
+                <div class="flex items-center">
+                  <span class="avatar avatar-xs">
+                    <img src="./assets/images/crypto-currencies/square-color/Ethereum.svg" alt="">
+                  </span>
+                  <span class="ms-1 h6 mb-0 font-semibold text-fixed-white">{{ bid() }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid">
+          <button class="ti-btn ti-btn-primary btn-wave !my-0">
+            Place Bid
+          </button>
+        </div>
+      </div>
+    </div>
+

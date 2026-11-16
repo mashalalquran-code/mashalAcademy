@@ -1,0 +1,34 @@
+
+<div class="box">
+  <div class="box-body">
+      <div class="relative mb-3 overflow-hidden rounded">
+          <img [src]="nft().nftImg" class="card-img rounded" alt="...">
+          @if(nft().time){
+          <p class="mb-0 !bg-secondary text-fixed-white nft-auction-time"> {{ nft().time }} </p>
+          }
+          <div class="nft-content">
+              <a href="javascript:void(0);" class="text-sm font-bold text-fixed-white">{{ nft().nftName }}</a>
+              <div class="flex mb-0 items-center flex-wrap 2xl:flex-nowrap gap-2 justify-between">
+                  <div>
+                      <span class="text-xs text-fixed-white block mb-1 op-8">Created By</span>
+                      <span class="font-medium text-fixed-white block leading-none">{{ nft().creator }}</span>
+                  </div>
+                  <div class="text-end">
+                      <span class="text-xs text-fixed-white block mb-1">Top Bid</span>
+                      <div class="flex items-center">
+                          <span class="avatar avatar-xs">
+                              <img [src]="nft().BidImg" alt="">
+                          </span>
+                          <span class="ms-1 h6 mb-0 font-semibold text-fixed-white">{{ nft().value }}</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="grid">
+          <button class="ti-btn ti-btn-primary btn-wave waves-effect waves-light !m-0">
+              Place BId
+          </button>
+      </div>
+  </div>
+</div>

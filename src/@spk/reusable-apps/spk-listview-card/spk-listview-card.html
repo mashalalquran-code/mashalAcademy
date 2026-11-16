@@ -1,0 +1,28 @@
+<div class="box">
+    <div class="box-body">
+        <div class="">
+            <div class="flex items-center justify-between">
+                <span class="avatar avatar-md {{ card().avatarClass }} svg-white">
+                    <div [innerHTML]="sanitizeIcon(card().svg)"></div>
+                </span>
+                <div class="charts">
+                    <spk-apexcharts [chartOptions]="card().chartOptions" />
+                </div>
+            </div>
+            <div class="flex justify-between items-center">
+                <div>
+                    <span class="block mb-1 mt-2">{{ card().tasksType }}</span>
+                    <div class="flex items-center gap-2">
+                        <h3 class="font-medium mb-0"><span class="count-up" data-count="card.count" [countUp]="card().count || 0" ></span> </h3>
+                        <span class="badge {{ card().valueClass }}">{{ card().value }}</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-semibold mb-1 text-muted">This Year</span>
+                    <span class="block {{ card().percentageClass }} text-[13px] inline-flex items-center"><i
+                            class="ti {{ card().percentageIconClass }}"></i>{{ card().percentage }}%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

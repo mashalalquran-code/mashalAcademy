@@ -1,0 +1,109 @@
+<div class="box">
+  <div class="box-body">
+    <div class="p-4 bg-light border border-b-0 border-defaultborder dark:border-defaultborder/10">
+      <div class="btn-list float-end">
+        <div class="hs-tooltip ti-main-tooltip">
+          <a href="javascript:void(0);"
+            class="hs-tooltip-toggle avatar avatar-rounded avatar-sm bg-primary text-fixed-white mx-1">
+            <i class="ri-download-line text-[0.875rem]"></i>
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 !bg-black !text-xs !font-medium !text-white shadow-sm"
+              role="tooltip">
+              Download Resume
+            </span>
+          </a>
+        </div>
+        <div class="hs-tooltip ti-main-tooltip">
+          <a href="javascript:void(0);"
+            class="hs-tooltip-toggle avatar avatar-rounded avatar-sm bg-primary-transparent border border-defaultborder dark:border-defaultborder/10">
+            <i class="ri-heart-3-line text-[0.875rem]" (click)="toggleWishlist()"
+              [ngClass]="{ 'ri-heart-3-fill text-primary': candidate()?.wishlisted, 'ri-heart-3-line': !candidate()?.wishlisted }"></i>
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 !bg-black !text-xs !font-medium !text-white shadow-sm"
+              role="tooltip">
+              Add to Wishlist
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center flex-wrap gap-2">
+        <div>
+          <span class="avatar avatar-lg avatar-rounded">
+            <img [src]="candidate().avatar" alt="">
+          </span>
+        </div>
+        <div>
+          <h5 class="fw-medium mb-0 flex items-center">
+            <a routerLink="/apps/jobs/candidate-details"> {{ candidate().name }}</a>
+          </h5>
+          <div class="flex gap-2 flex-wrap">
+            <a href="javascript:void(0);">{{ candidate().role }}</a>
+            <p class="!mb-0 text-[0.75rem] text-textmuted dark:text-textmuted/50">
+              <i class="bi bi-geo-alt text-[0.6875rem]"></i> {{ candidate().location }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-4 border border-defaultborder dark:border-defaultborder/10">
+      <div class="flex items-center flex-wrap gap-3 mb-4">
+        <p class="!mb-0 flex-grow">
+          <span class="text-textmuted dark:text-textmuted/50">Package (Yearly) : </span>
+          <span class="hs-tooltip ti-main-tooltip">
+            <span class="fw-medium hs-tooltip-toggle"> {{ candidate().salaryStart }}
+              <span
+                class="hs-tooltip-content  ti-main-tooltip-content py-1 px-2 !bg-black !text-xs !font-medium !text-white shadow-sm "
+                role="tooltip">
+                Current
+              </span>
+            </span>
+          </span>
+          @if(candidate().salaryEnd){
+          -
+          <span class="hs-tooltip ti-main-tooltip">
+            <span class="fw-medium hs-tooltip-toggle"> {{ candidate().salaryEnd }}
+              <span
+                class="hs-tooltip-content  ti-main-tooltip-content py-1 px-2 !bg-black !text-xs !font-medium !text-white shadow-sm "
+                role="tooltip">
+                Expected
+              </span>
+            </span>
+          </span>
+          }
+        </p>
+        <p class="!mb-0">
+          <span class="text-textmuted dark:text-textmuted/50"> Languages :</span>
+          <span class="fw-medium"> {{ candidate().languages }}</span>
+        </p>
+      </div>
+      <div class="flex items-center gap-3 flex-wrap">
+        <h6 class="mb-0 fw-medium">Skills :</h6>
+        <div class="popular-tags flex-grow">
+          <a href="javascript:void(0);"
+            class="badge !rounded-full bg-light !text-defaulttextcolor dark:!text-defaulttextcolor/80 mx-1">HTML</a>
+          <a href="javascript:void(0);"
+            class="badge !rounded-full bg-light !text-defaulttextcolor dark:!text-defaulttextcolor/80 mx-1">CSS</a>
+          <a href="javascript:void(0);"
+            class="badge !rounded-full bg-light !text-defaulttextcolor dark:!text-defaulttextcolor/80 mx-1">Javascript</a>
+          <a href="javascript:void(0);" class="badge !rounded-full bg-primary-transparent">More</a>
+        </div>
+        <div class="flex gap-1 flex-wrap">
+          @if(candidate().bond) {
+          <div class="hs-tooltip ti-main-tooltip">
+            <a href="javascript:void(0);"
+              class="hs-tooltip-toggle badge badge-md !rounded-full bg-primary-transparent">{{ candidate().bond }}
+              <span
+                class="hs-tooltip-content  ti-main-tooltip-content py-1 px-2 !bg-black !text-xs !font-medium !text-white shadow-sm "
+                role="tooltip"> {{ candidate().bond }}
+              </span>
+            </a>
+          </div>
+          }
+          <a href="javascript:void(0);" class="badge badge-md !rounded-full bg-secondary-transparent">
+            <i class="bi bi-briefcase me-1"></i>Exp : {{ candidate().experience }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

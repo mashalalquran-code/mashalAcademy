@@ -1,0 +1,27 @@
+<div class="box !border border-defaultborder dark:!border-defaultborder/10 shadow-none !mb-0">
+    <div class="box-body">
+      <div class="flex items-start gap-3 flex-wrap">
+        <div>
+          <span class="avatar avatar-md" [ngClass]="bgColor()">
+            <i [ngClass]="iconClass() + ' text-lg'"></i>
+          </span>
+        </div>
+        <div class="flex-auto">
+          <span class="block mb-2">{{ title() }}</span>
+          <h5 class="font-semibold mb-2 leading-none">
+            {{ value() }}
+            <span class="font-semibold text-xs" [ngClass]="percentType() === 'up' ? 'text-success' : 'text-danger'">
+              <i class="ti" [ngClass]="percentType() === 'up' ? 'ti-arrow-narrow-up' : 'ti-arrow-narrow-down'"></i>{{ percentage() }}
+            </span>
+          </h5>
+        </div>
+        <spk-dropdowns [Customclass]="'ti-dropdown hs-dropdown'" [class]="' hs-dropdown-toggle !p-0'" 
+        [Menuclass]="'ti-dropdown-menu hs-dropdown-menu hidden'" [Icon]="true" [IconClass]="'ri-more-2-fill text-lg text-textmuted dark:text-textmuted/50'">
+            <li><a class="ti-dropdown-item" href="javascript:void(0);">Week</a></li>
+            <li><a class="ti-dropdown-item" href="javascript:void(0);">Day</a></li>
+            <li><a class="ti-dropdown-item" href="javascript:void(0);">Year</a></li>
+        </spk-dropdowns>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,803 @@
+<div class="landing-page-wrapper relative">
+
+    <!-- Start::Header -->
+    <header class="app-header" id="header">
+        <div class="main-header-container container-fluid">
+            <div class="header-content-left">
+                <div class="header-element">
+                    <div class="horizontal-logo">
+                        <a routerLink="/dashboards/sales" class="header-logo">
+                            <img src="./assets/images/brand-logos/toggle-logo.png" alt="Mashalify" class="toggle-logo">
+                            <img src="./assets/images/brand-logos/toggle-dark.png" alt="Mashalify" class="toggle-dark">
+                        </a>
+                    </div>
+                </div>
+                <div class="header-element">
+                    <a (click)="toggleSidebar()" [attr.aria-label]="'common.openMenu' | translate" href="javascript:void(0);" class="sidemenu-toggle header-link">
+                        <span class="open-toggle"><i class="ri-menu-3-line text-xl"></i></span>
+                    </a>
+                </div>
+            </div>
+            <div class="header-content-right">
+                <app-language-switcher />
+               
+            </div>
+        </div>
+    </header>
+    <!-- End::Header -->
+
+    <!-- Start::app-sidebar -->
+    <aside [ngClass]="{ 'data-toggled': isDataToggled , 'sticky-pin': scrolled  }" class="app-sidebar sticky" id="sidebar">
+        <div class="container-xl px-2">
+            <div class="main-sidebar !py-0 shadow-none">
+                <nav class="main-menu-container nav nav-pills sub-open">
+                    <div class="landing-logo-container">
+                        <div class="horizontal-logo">
+                            <a routerLink="/dashboards/sales" class="header-logo">
+                                <img src="./assets/images/brand-logos/desktop-logo.png" alt="Mashalify" class="desktop-logo" style="width: 260px; max-width: 100%; height: auto;">
+                                <img src="./assets/images/brand-logos/desktop-white.png" alt="Mashalify" class="desktop-white" style="width: 260px; max-width: 100%; height: auto;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slide-left" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg></div>
+                    <ul class="main-menu">
+                        <li class="slide"><a class="side-menu__item" value="home" [class.active]="activeSection === 'home'" (click)="scroll(home, 'home')"><span class="side-menu__label">{{ 'landing.home' | translate }}</span></a></li>
+                        <li class="slide"><a class="side-menu__item" value="about" [class.active]="activeSection === 'about'" (click)="scroll(about,'about')"><span class="side-menu__label">{{ 'landing.about' | translate }}</span></a></li>
+                        <li class="slide has-sub" [ngClass]="expande ? 'open' : ''">
+                            <a href="javascript:void(0);" class="side-menu__item" [class.active]="expande || isAnyChildActive()" (click)="toggleExpand()">
+                                <span class="side-menu__label me-2">{{ 'landing.more' | translate }}</span>
+                                <i class="fe fe-chevron-right side-menu__angle opacity-80"></i>
+                            </a>
+                            <ul class="slide-menu child1" [class.active]="expande" [ngStyle]="{ display: expande ? 'block' : 'none' }">
+                                <li class="slide"><a [class.active]="activeSection === 'services'" (click)="scroll(services,'services')" value="services" class="side-menu__item">{{ 'landing.services' | translate }}</a></li>
+                                <li class="slide"><a [class.active]="activeSection === 'expectations'" (click)="scroll(expectations,'expectations')" class="side-menu__item">{{ 'landing.ourStory' | translate }}</a></li>
+                                <li class="slide"><a [class.active]="activeSection === 'features'" (click)="scroll(features,'features')" value="features" class="side-menu__item">{{ 'landing.whyUs' | translate }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="slide"><a [class.active]="activeSection === 'pricing'" (click)="scroll(pricing,'pricing')" value="pricing" class="side-menu__item"><span class="side-menu__label">{{ 'landing.pricing' | translate }}</span></a></li>
+                        <li class="slide"><a [class.active]="activeSection === 'team'" (click)="scroll(team,'team')" value="team" class="side-menu__item"><span class="side-menu__label">{{ 'landing.team' | translate }}</span></a></li>
+                        <li class="slide"><a [class.active]="activeSection === 'faqs'" (click)="scroll(faqs,'faqs')" value="faqs" class="side-menu__item"><span class="side-menu__label">{{ 'landing.faqS' | translate }}</span></a></li>
+                        <li class="slide"><a [class.active]="activeSection === 'testimonials'" (click)="scroll(testimonials,'testimonials')" value="testimonials" class="side-menu__item"><span class="side-menu__label">{{ 'landing.testimonials' | translate }}</span></a></li>
+                        <li class="slide"><a [class.active]="activeSection === 'contact'" (click)="scroll(contact,'contact')" class="side-menu__item"><span class="side-menu__label">{{ 'landing.contactUs' | translate }}</span></a></li>
+                    </ul>
+                    <li class="header-element px-2">
+  <a
+    routerLink="/auth/login"
+    class="ti-btn ti-btn-primary !mb-0 inline-flex items-center gap-2"
+  >
+    <i class="ri-login-box-line" aria-hidden="true"></i>
+    <span>{{ 'header.login' | translate }}</span>
+  </a>
+</li>
+                    <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg></div>
+                    <div class="lg:flex hidden items-center gap-3">
+                        <app-language-switcher />
+                       
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </aside>
+    <!-- End::app-sidebar -->
+
+    <!-- Start::main-content -->
+    <div (click)="bodyclick()" class="main-content  landing-main dark:text-defaulttextcolor/70">
+        <!-- Start::Home Content -->
+        <div class="landing-banner" id="home" #home>
+            <section class="section">
+                <div class="container main-banner-container lg:pb-0 sm:pt-[5rem]">
+                    <div class="grid grid-cols-12 gap-x-6">
+                        <div class="2xl:col-span-8 xl:col-span-7 lg:col-span-7 md:col-span-8 col-span-12 my-auto">
+                            <div class="lg:pt-5 mt-3">
+                                <div class="mb-3">
+                                    <h6 class="font-medium !text-white op-9">{{ 'landing.softwareQuranAcademyAndBlog' | translate }}</h6>
+                                </div>
+                                <p class="landing-banner-heading !mb-3 !text-white !font-semibold uppercase">
+                                    {{ 'landing.softwareThatWorksKnowledgeThatLightsThe' | translate }} <span class="text-warning">Mashalify</span></p>
+                                <div class="text-base !mb-[3rem] !text-white op-7">{{ 'landing.mashalifyIsASoftwareDevelopmentCompanyBuilding' | translate }}</div>
+                                <a routerLink="/dashboards/sales" class="m-1 ti-btn ti-btn-lg bg-success text-fixed-white">
+                                    {{ 'landing.ourServices' | translate }}
+                                    <i class="ri-eye-line ms-2 align-middle"></i>
+                                </a>
+                                <a routerLink="/dashboards/sales" class="m-1 ti-btn ti-btn-lg ti-btn-secondary ti-btn-wave waves-effect waves-light">
+                                    {{ 'landing.joinTheAcademy' | translate }}
+                                    <i class="ri-arrow-right-line ms-2 align-middle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="2xl:col-span-4 xl:col-span-5 lg:col-span-5 md:col-span-4 col-span-12 my-auto relative">
+                            <div class="text-end landing-main-image landing-heading-img !ms-4">
+                                <img src="./assets/images/media/media-78.png" alt="" class="img-fluid">
+                            </div>
+                            <div class="side-img-bg sm:block hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 700 700" width="700" height="700">
+                                    <defs>
+                                        <linearGradient id="two-163" x1="350" y1="-350" x2="350" y2="350" spreadMethod="pad" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0%" stop-color="hsl(1.4, 100%, 67%)" stop-opacity="1"></stop>
+                                            <stop offset="100%" stop-color="hsl(167, 52%, 78%)" stop-opacity="1"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <g id="two-0" transform="matrix(1 0 0 1 0 0)" opacity="1">
+                                        <path transform="matrix(1 0 0 1 350 350)" id="two-213" d="M 237.85514 98.522825 C 227.062517 131.662812 219.074086 169.801869 195.095167 195.095167 C 171.051113 220.45717 130.070898 224.158279 100.684106 243.072935 C 64.937066 266.081332 42.380709 320.101632 0 323.4352 C -41.034117 326.662848 -75.939076 287.066961 -108.451391 261.824818 C -136.725275 239.87334 -158.984007 209.593513 -183.732535 183.732534 C -208.039029 158.333458 -235.224881 134.012468 -257.107091 106.497244 C -283.326775 73.527975 -318.380622 41.129234 -327.481752 0 C -336.690408 -41.615158 -333.90373 -93.598788 -308.385856 -127.737604 C -281.519872 -163.679977 -216.430462 -152.974506 -185.093668 -185.093668 C -153.021223 -217.966846 -172.127834 -295.546588 -129.52009 -312.689158 C -86.559482 -329.973697 -44.807453 -270.381947 -0.000001 -258.691719 C 32.86618 -250.116959 68.360799 -249.221147 102.24339 -246.837381 C 148.692933 -243.569483 207.63395 -273.235515 243.30323 -243.303231 C 277.21985 -214.841712 267.600266 -156.010774 269.894333 -111.793894 C 271.81461 -74.781613 264.844751 -36.621516 259.147299 -0.000001 C 254.033847 32.867732 248.155407 66.894677 237.85514 98.522825 Z " fill="rgba(255,255,255,0.1)" stroke="undefined" stroke-width="1" stroke-opacity="1" fill-opacity="1" visibility="visible" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="landing-shape">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2400 800" opacity="1">
+                        <g fill="##f5f6fa" transform="matrix(1,0,0,1,4.3314208984375,317.0009536743164)">
+                            <path d="M-10,10C92.08333333333334,16.041666666666664,277.9166666666667,49.20833333333333,480,39C682.0833333333333,28.791666666666668,760,-39.416666666666664,960,-39C1160,-38.583333333333336,1240,40.166666666666664,1440,41C1640,41.833333333333336,1720,-38.125,1920,-35C2120,-31.875,2247.9166666666665,-34.625,2400,56C2552.0833333333335,146.625,3254.1666666666665,224.16666666666669,2650,400C2045.8333333333335,575.8333333333333,156.25,795.8333333333334,-500,900" transform="matrix(1,0,0,1,0,35)" opacity="0.05"></path>
+                            <path d="M-10,10C92.08333333333334,16.041666666666664,277.9166666666667,49.20833333333333,480,39C682.0833333333333,28.791666666666668,760,-39.416666666666664,960,-39C1160,-38.583333333333336,1240,40.166666666666664,1440,41C1640,41.833333333333336,1720,-38.125,1920,-35C2120,-31.875,2247.9166666666665,-34.625,2400,56C2552.0833333333335,146.625,3254.1666666666665,224.16666666666669,2650,400C2045.8333333333335,575.8333333333333,156.25,795.8333333333334,-500,900" transform="matrix(1,0,0,1,0,70)" opacity="1.00"></path>
+                        </g>
+                    </svg>
+                </div>
+            </section>
+        </div>
+        <!-- End::Home Content -->
+
+        <!-- Start:: Section-2 -->
+        <section class="section pt-5 dark:bg-bodybg" id="about" #about>
+            <div class="container position-relative">
+                <div class="text-center">
+                    <span class="landing-text-heading">{{ 'landing.aboutMashalify' | translate }}</span>
+                    <h3 class="!font-semibold mb-2 mt-3">{{ 'landing.whyChooseMashalify' | translate }}</h3>
+                    <p class="text-textmuted dark:text-textmuted/50 text-[15px] !mb-[3rem] font-normal">{{ 'landing.oneTeamForSoftwareLearningAndKnowledge' | translate }}</p>
+                </div>
+                <div class="grid grid-cols-12 gap-x-6">
+                    @for(data of landingData.glanceCards;track $index){
+                    <div class="xl:col-span-4 col-span-12">
+                        <spk-glance-cards [title]="data.title | translate" [description]="data.description | translate" [icon]="data.avatar.icon" [outerColor]="data.avatar.outerColor" [innerColor]="data.avatar.innerColor" />
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-3 -->
+        <section class="section section-bg" id="expectations" #expectations>
+            <div class="container">
+                <div class="grid grid-cols-12 gap-x-5 mx-0">
+                    <div class="xl:col-span-5 col-span-12">
+                        <div class="home-proving-image hidden xl:block">
+                            <img src="./assets/images/media/media-79.png" alt="" class="img-fluid about-image">
+                        </div>
+                        <div class="proving-pattern-1"></div>
+                    </div>
+                    <div class="xl:col-span-7 col-span-12 my-auto">
+                        <div class="heading-section text-start mb-4">
+                            <span class="landing-text-heading">{{ 'landing.aboutUs' | translate }}</span>
+                            <h3 class="mt-3 font-semibold mb-2">{{ 'landing.technologyAndKnowledgeUnderOneLight' | translate }}</h3>
+                            <div class="heading-description text-base text-textmuted dark:text-textmuted/50">{{ 'landing.mashalifyTakesItsNameFromMashalThe' | translate }}</div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-x-6 gap-y-3 mb-0">
+                            <div class="xl:col-span-12 col-span-12">
+                                <div class="flex items-top">
+                                    <div class="me-2 home-prove-svg">
+                                        <i class="ri-arrow-right-circle-line rtl:before:!rotate-[180deg] align-middle text-base text-primary inline-block"></i>
+                                    </div>
+                                    <div><span class="text-[15px]">{{ 'landing.weBuildWebsitesMobileAppsAndCustom' | translate }}</span></div>
+                                </div>
+                            </div>
+                            <div class="xl:col-span-12 col-span-12">
+                                <div class="flex items-top">
+                                    <div class="me-2 home-prove-svg">
+                                        <i class="ri-arrow-right-circle-line rtl:before:!rotate-[180deg] align-middle text-base text-primary inline-block"></i>
+                                    </div>
+                                    <div><span class="text-[15px]">{{ 'landing.ourDevelopersAndQuranTeachersAreQualified' | translate }}</span></div>
+                                </div>
+                            </div>
+                            <div class="xl:col-span-12 col-span-12">
+                                <div class="flex items-top">
+                                    <div class="me-2 home-prove-svg">
+                                        <i class="ri-arrow-right-circle-line rtl:before:!rotate-[180deg] align-middle text-base text-primary inline-block"></i>
+                                    </div>
+                                    <div><span class="text-[15px]">{{ 'landing.everyClientAndStudentIsDifferentSo' | translate }}</span></div>
+                                </div>
+                            </div>
+                            <div class="xl:col-span-12 col-span-12">
+                                <div class="flex items-top">
+                                    <div class="me-2 home-prove-svg">
+                                        <i class="ri-arrow-right-circle-line rtl:before:!rotate-[180deg] align-middle text-base text-primary inline-block"></i>
+                                    </div>
+                                    <div><span class="text-[15px]">{{ 'landing.youCanHireUsOnUpworkOr' | translate }}</span></div>
+                                </div>
+                            </div>
+                            <div class="xl:col-span-12 col-span-12">
+                                <div class="flex items-top">
+                                    <div class="me-2 home-prove-svg">
+                                        <i class="ri-arrow-right-circle-line rtl:before:!rotate-[180deg] align-middle text-base text-primary inline-block"></i>
+                                    </div>
+                                    <div><span class="text-[15px]">{{ 'landing.ourBlogSharesIslamicAndTechnologyArticles' | translate }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-4 -->
+        <section class="section" id="services" #services>
+            <div class="container">
+                <div class="text-center">
+                    <span class="landing-text-heading">{{ 'landing.services' | translate }}</span>
+                    <h3 class="!font-semibold mt-3 mb-2">{{ 'landing.softwareLearningAndKnowledge' | translate }}</h3>
+                    <p class="text-textmuted dark:text-textmuted/50 text-[15px] !mb-[3rem] font-normal">{{ 'landing.chooseTheServiceYouNeedFromCustom' | translate }}</p>
+                </div>
+                <div class="grid grid-cols-12 gap-x-6">
+                    @for(data of landingData.serviceCards;track $index){
+                    <div class="xl:col-span-3 col-span-12">
+                        <spk-services-card [bgColor]="data.avatarClass" [title]="data.title | translate" [svg]="sanitizeIcon(data.svg)" [description]="data.description | translate" />
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-5 -->
+        <section class="section landing-Features" id="features" #features>
+            <div class="container">
+                <div class="grid grid-cols-12 gap-x-6 justify-center">
+                    <div class="xl:col-span-2 col-span-12"></div>
+                    <div class="xl:col-span-8 col-span-12">
+                        <div class="heading-section text-center mb-0">
+                            <span class="landing-text-heading dark-text">{{ 'landing.whyUs' | translate }}</span>
+                            <h3 class="text-fixed-white text-center mt-3 font-medium">{{ 'landing.builtAroundYourSuccess' | translate }}</h3>
+                            <div class="text-base text-fixed-white text-center opacity-80">{{ 'landing.mashalifyCombinesModernTechnologyClearCommunicationAnd' | translate }}</div>
+                            <div class="mt-4 !mb-[3rem] flex items-center justify-center">
+                                <a routerLink="/dashboards/sales" class="ti-btn bg-white-transparent me-3 sm:mb-0">{{ 'landing.startAProject' | translate }}</a>
+                                <a routerLink="/dashboards/sales" class="ti-btn text-fixed-white border border-white/25 ti-btn-wave waves-effect waves-light">{{ 'landing.exploreTheAcademy' | translate }}<i class="fe fe-arrow-right text-sm align-text-bottom ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:col-span-2 col-span-12"></div>
+                    <div class="xl:col-span-1 col-span-12"></div>
+                    <div class="xl:col-span-10 col-span-12 my-auto">
+                        <div class="flex items-center justify-center trusted-companies sub-card-companies flex-wrap mb-3 mb-xl-0 gap-4">
+                            <div class="trust-img"><img src="./assets/images/media/landing/web/1.png" alt="img"></div>
+                            <div class="trust-img"><img src="./assets/images/media/landing/web/2.png" alt="img"></div>
+                            <div class="trust-img"><img src="./assets/images/media/landing/web/4.png" alt="img"></div>
+                            <div class="trust-img"><img src="./assets/images/media/landing/web/5.png" alt="img"></div>
+                            <div class="trust-img"><img src="./assets/images/media/landing/web/6.png" alt="img"></div>
+                        </div>
+                    </div>
+                    <div class="xl:col-span-1 col-span-12"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-6 -->
+        <section class="section" id="team" #team>
+            <div class="container">
+                <div class="text-center">
+                    <span class="landing-text-heading">{{ 'landing.ourTeam' | translate }}</span>
+                    <h3 class="!font-semibold mt-3 mb-2">{{ 'landing.theTeamBehindMashalify' | translate }}</h3>
+                    <p class="text-textmuted dark:text-textmuted/50 text-[15px] !mb-[3rem] font-normal">{{ 'landing.ourDevelopersDesignersAndTeachersWorkTogether' | translate }}</p>
+                </div>
+                <div class="grid grid-cols-12 gap-x-6">
+                    @for(member of landingData.teamMembers;track $index){
+                    <div class="xl:col-span-3 lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                        <div class="box team-member">
+                            <div class="box-body text-center p-4">
+                                <span class="avatar avatar-xxl bg-{{ member.color }}-transparent avatar-rounded mb-3 border-[5px] border-{{ member.color }}/10">
+                                    <img [src]="member.image" class="card-img" alt="...">
+                                </span>
+                                <div class="text-center py-2">
+                                    <h5 class="mb-0 font-medium">{{ member.name }}</h5>
+                                    <p class="!mb-1 text-sm font-medium text-{{ member.color }}">{{ member.position | translate }}</p>
+                                    <p class="!mb-0 text-[13px] text-textmuted dark:text-textmuted/50 opacity-80">{{ member.desc | translate }}</p>
+                                    <div class="flex justify-center mt-3">
+                                        <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-primary ti-btn-wave ms-2 waves-effect waves-light"><i class="ri-twitter-x-fill"></i></a>
+                                        <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-secondary ti-btn-wave ms-2 waves-effect waves-light"><i class="ri-facebook-fill"></i></a>
+                                        <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-success ti-btn-wave ms-2 waves-effect waves-light"><i class="ri-instagram-line"></i></a>
+                                        <a aria-label="anchor" href="javascript:void(0);" class="ti-btn ti-btn-icon ti-btn-info ti-btn-wave ms-2 waves-effect waves-light"><i class="ri-linkedin-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-7 -->
+        <section class="section section-bg" id="pricing" #pricing>
+            <div class="container">
+                <div class="text-center">
+                    <span class="landing-text-heading">{{ 'landing.pricing' | translate }}</span>
+                    <h3 class="!font-semibold mt-3 mb-2">{{ 'landing.fairPricingForEveryProject' | translate }}</h3>
+                    <p class="text-textmuted dark:text-textmuted/50 text-[15px] !mb-[3rem] font-normal">{{ 'landing.ourPlansAreDesignedToBeAffordable' | translate }}</p>
+                </div>
+                <div class="md:max-w-[66.66666667%] xl:max-w-[100%] mx-auto">
+                    <div class="grid grid-cols-12 gap-x-6 items-center justify-center !mb-[3rem]">
+                        @for(plan of landingData.pricingPlans; track $index){
+                        <div class="lg:col-span-12 xl:col-span-4 2xl:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+                            <div class="box pricing-card pricing-card1 !border border-defaultborder dark:border-defaultborder/10">
+                                <spk-pricing-card [plan]="plan" />
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-8 -->
+        <section class="section" id="faqs" #faqs>
+            <div class="container text-center">
+                <span class="landing-text-heading">{{ 'landing.fAQS' | translate }}</span>
+                <h3 class="!font-semibold mt-3 mb-2">{{ 'landing.frequentlyAskedQuestions' | translate }}</h3>
+                <p class="text-textmuted dark:text-textmuted/50 text-[15px] !mb-[3rem] font-normal">{{ 'landing.weHaveSharedSomeOfTheMost' | translate }}</p>
+                <div class="grid grid-cols-12 gap-x-6 text-start">
+                    <div class="xl:col-span-12 col-span-12">
+                        <div class="grid grid-cols-12 gap-x-6 gap-y-2">
+                            <div class="xl:col-span-6 col-span-12">
+                                <div class="accordion accordion-customicon1 accordion-primary accordions-items-seperate" id="accordionFAQ1">
+                                    <div class="hs-accordion-group">
+                                        <div class="hs-accordion active bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q1">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q1">
+                                                {{ 'landing.whatServicesDoesMashalifyOffer' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q1" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" aria-labelledby="faq-q1">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.weBuildWebsitesWebAppsMobileApps' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q2">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q2">
+                                                {{ 'landing.canIHireYouOnUpworkOr' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q2" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q2">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.yesYouCanHireMashalifyOnUpwork' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q3">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q3">
+                                                {{ 'landing.whatIsMashalAlQuran' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q3" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q3">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.mashalAlQuranIsOurOnlineAcademy' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q4">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q4">
+                                                {{ 'landing.whichCoursesDoesTheAcademyOffer' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q4" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q4">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.theAcademyTeachesQuranReadingWithTajweed' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q5">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q5">
+                                                {{ 'landing.howDoIStartASoftwareProject' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q5" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q5">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.sendUsAMessageFromTheContact' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q6">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q6">
+                                                {{ 'landing.howLongDoesAProjectTake' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q6" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q6">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.itDependsOnTheSizeAndFeatures' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="xl:col-span-6 col-span-12">
+                                <div class="accordion accordion-customicon1 accordion-primary accordions-items-seperate" id="accordionFAQ2">
+                                    <div class="hs-accordion-group">
+                                        <div class="hs-accordion active bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q7">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q7">
+                                                {{ 'landing.doYouWorkWithLocalClients' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q7" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" aria-labelledby="faq-q7">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.yesWeTakeLocalProjectsAndCan' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q8">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q8">
+                                                {{ 'landing.doYouProvideSupportAfterLaunch' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q8" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q8">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.yesWeProvideFixesUpdatesAndSupport' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q9">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q9">
+                                                {{ 'landing.whatWillIFindOnTheBlog' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q9" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q9">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.ourBlogPublishesArticlesOnIslamicTopics' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q10">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q10">
+                                                {{ 'landing.whereCanIFindYourWebsites' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q10" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q10">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.eachPartOfMashalifyHasItsOwn' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q11">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q11">
+                                                {{ 'landing.whatAreYourWorkingHours' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q11" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q11">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.contactUsAnyTimeAndWeWill' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="hs-accordion bg-white dark:bg-bodybg border mt-[0.5rem] rounded-sm dark:border dark:border-defaultborder/10 border-defaultborder" id="faq-q12">
+                                            <button type="button" class="hs-accordion-toggle hs-accordion-active:!text-primary hs-accordion-active:border-b dark:border-defaultborder/10 hs-accordion-active:bg-primary/10  dark:hs-accordion-active:border-b border-defaultborder justify-between inline-flex items-center w-full font-medium text-start text-[0.85rem] transition py-3 px-4 dark:hs-accordion-active:!text-primary dark:text-gray-200 dark:hover:text-white/80" aria-controls="faq-collapse-q12">
+                                                {{ 'landing.howCanIContactYou' | translate }}
+                                                <svg class="hs-accordion-active:hidden hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary block w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary/10 text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M8 15.36L8 2.35999" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                                <svg class="hs-accordion-active:block hs-accordion-active:!text-white hs-accordion-active:!bg-primary hs-accordion-active:group-hover:!text-primary hidden w-[1.25rem] h-[1.25rem] p-1 !rounded-full bg-primary text-primary group-hover:text-defaulttextcolor dark:!text-primary " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.85999L14.5 8.85998" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                                            </button>
+                                            <div id="faq-collapse-q12" class="hs-accordion-content w-full overflow-hidden hidden transition-[height] duration-300" aria-labelledby="faq-q12">
+                                                <div class="p-5"><p class="text-sm text-defaulttextcolor dark:text-defaulttextcolor/70 ">{{ 'landing.useTheContactFormInTheContact' | translate }}</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-9 -->
+        <section class="section landing-Features !py-0" id="testimonials" #testimonials>
+            <div class="container reviews-container">
+                <div class="grid grid-cols-12 gap-x-6 justify-center">
+                    <div class="xl:col-span-1 col-span-12"></div>
+                    <div class="xl:col-span-10 col-span-12">
+                        <div class="text-center mb-0 !mt-4 heading-section">
+                            <span class="landing-text-heading dark-text">{{ 'landing.testimonials' | translate }}</span>
+                            <div class="h3 mt-3 text-fixed-white">{{ 'landing.seeWhatPeopleAreSayingAboutUs' | translate }}</div>
+                            <div class="text-[15px] text-fixed-white mb-4 opacity-80">{{ 'landing.customerSatisfactionAndExperienceAreOurTop' | translate }}</div>
+                        </div>
+                        @for (sliderLanguage of [language.current()]; track sliderLanguage) {
+                        <swiper-container [attr.dir]="language.direction()" class="swiper pagination-dynamic testimonialSwiperService custom-landing !mb-0" space-between="20" slides-per-view="2" slides-per-group="1" pagination="true" pagination-clickable="true" autoplay-delay="2000" autoplay-disable-on-interaction="false" [breakpoints]="breakpoints">
+                            <swiper-slide>
+                                <div class="box mb-0 dark:bg-primary/10">
+                                    <i class="bx bxs-quote-alt-left review-quote review-quote1 primary"></i>
+                                    <div class="box-body">
+                                        <div class="flex  gap-3 p-2 mb-3 rounded bg-white-transparent items-center">
+                                            <img src="./assets/images/faces/1.jpg" alt="img" class="text-center avatar avatar-md rounded-circle mb-2 sm:mb-0">
+                                            <div>
+                                                <h6 class="mb-0 text-fixed-white">{{ 'landing.upworkClient' | translate }}</h6>
+                                                <span class="text-xs text-fixed-white">{{ 'landing.softwareProject' | translate }}</span>
+                                            </div>
+                                        </div>
+                                        <span class="">{{ 'landing.addARealReviewFromAnUpwork' | translate }} <a href="javascript:void(0);" class="font-semibold text-fixed-white opacity-60 text-[11px]">{{ 'landing.readMore' | translate }}</a></span>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <div class="">
+                                                <span class="opacity-80 block text-fiexd-white">{{ 'landing.rating' | translate }} </span>
+                                                <span class="text-warning block">
+                                                    <i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-half-line"></i>
+                                                </span>
+                                            </div>
+                                            <div class=""><span class="text-success text-xs">{{ 'landing.9DaysAgo' | translate }}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide>
+                                <div class="box mb-0 dark:bg-primary/10">
+                                    <i class="bx bxs-quote-alt-left review-quote review-quote1 primary"></i>
+                                    <div class="box-body">
+                                        <div class="flex  gap-3 p-2 mb-3 rounded bg-white-transparent items-center">
+                                            <img src="./assets/images/faces/2.jpg" alt="img" class="text-center avatar avatar-md rounded-circle mb-2 sm:mb-0">
+                                            <div>
+                                                <h6 class="mb-0 text-fixed-white">{{ 'landing.fiverrClient' | translate }}</h6>
+                                                <span class="text-xs text-fixed-white">{{ 'landing.softwareProject' | translate }}</span>
+                                            </div>
+                                        </div>
+                                        <span class="">{{ 'landing.addARealReviewFromAFiverr' | translate }} <a href="javascript:void(0);" class="font-semibold text-fixed-white opacity-60 text-[11px]">{{ 'landing.readMore' | translate }}</a></span>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <div class="">
+                                                <span class="opacity-80 block text-fiexd-white">{{ 'landing.rating' | translate }} </span>
+                                                <span class="text-warning block">
+                                                    <i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-half-line"></i>
+                                                </span>
+                                            </div>
+                                            <div class=""><span class="text-success text-xs">{{ 'landing.2DaysAgo' | translate }}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide>
+                                <div class="box mb-0 dark:bg-primary/10">
+                                    <i class="bx bxs-quote-alt-left review-quote review-quote1 primary"></i>
+                                    <div class="box-body">
+                                        <div class="flex  gap-3 p-2 mb-3 rounded bg-white-transparent items-center">
+                                            <img src="./assets/images/faces/3.jpg" alt="img" class="text-center avatar avatar-md rounded-circle mb-2 sm:mb-0">
+                                            <div>
+                                                <h6 class="mb-0 text-fixed-white">{{ 'landing.academyStudent' | translate }}</h6>
+                                                <span class="text-xs text-fixed-white">{{ 'landing.quranAcademy' | translate }}</span>
+                                            </div>
+                                        </div>
+                                        <span class="">{{ 'landing.addARealReviewFromAMashal' | translate }} <a href="javascript:void(0);" class="font-semibold text-fixed-white opacity-60 text-[11px]">{{ 'landing.readMore' | translate }}</a></span>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <div class="">
+                                                <span class="opacity-80 block text-fiexd-white">{{ 'landing.rating' | translate }} </span>
+                                                <span class="text-warning block">
+                                                    <i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-half-line"></i>
+                                                </span>
+                                            </div>
+                                            <div class=""><span class="text-success text-xs">{{ 'landing.today' | translate }}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide>
+                                <div class="box mb-0 dark:bg-primary/10">
+                                    <i class="bx bxs-quote-alt-left review-quote review-quote1 primary"></i>
+                                    <div class="box-body">
+                                        <div class="flex  gap-3 p-2 mb-3 rounded bg-white-transparent items-center">
+                                            <img src="./assets/images/faces/4.jpg" alt="img" class="text-center avatar avatar-md rounded-circle mb-2 sm:mb-0">
+                                            <div>
+                                                <h6 class="mb-0 text-fixed-white">{{ 'landing.localClient' | translate }}</h6>
+                                                <span class="text-xs text-fixed-white">{{ 'landing.localProject' | translate }}</span>
+                                            </div>
+                                        </div>
+                                        <span class="">{{ 'landing.addARealReviewFromALocal' | translate }} <a href="javascript:void(0);" class="font-semibold text-fixed-white opacity-60 text-[11px]">{{ 'landing.readMore' | translate }}</a></span>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <div class="">
+                                                <span class="opacity-80 block text-fiexd-white">{{ 'landing.rating' | translate }} </span>
+                                                <span class="text-warning block">
+                                                    <i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-fill me-1"></i>
+<i class="ri-star-half-line"></i>
+                                                </span>
+                                            </div>
+                                            <div class=""><span class="text-success text-xs">{{ 'landing.12DaysAgo' | translate }}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+                        </swiper-container>
+                        }
+                    </div>
+                    <div class="xl:col-span-1 col-span-12"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-10 -->
+        <section class="section" id="contact" #contact>
+            <div class="container text-center">
+                <span class="landing-text-heading">{{ 'landing.contactUs' | translate }}</span>
+                <h3 class="!font-semibold mt-3 mb-2">{{ 'landing.haveAnyQuestionsWeDBeHappy' | translate }}</h3>
+                <p class="text-textmuted dark:text-textmuted/50 text-[15px] !mb-[3rem] font-normal">{{ 'landing.feelFreeToContactUsAnytimeWith' | translate }}</p>
+                <div class="box-body !p-0 bg-white dark:bg-bodybg">
+                    <div class="grid grid-cols-12 sm:gap-x-6 text-start">
+                        <div class="2xl:col-span-6 xl:col-span-6 lg:col-span-6 md:col-span-12 sm:col-span-12 col-span-12 pe-0">
+                            <div class="p-[3rem] border-e border-defaultborder dark:border-defaultborder/10">
+                                <div class="grid grid-cols-12 sm:gap-x-6 gap-y-3">
+                                    <div class="xl:col-span-6 col-span-12">
+                                        <div class="grid grid-cols-12 gap-y-3">
+                                            <div class="xl:col-span-12 col-span-12">
+                                                <label for="contact-address-name" class="ti-form-label ">{{ 'landing.fullName' | translate }}</label>
+                                                <input type="text" class="ti-form-control" id="contact-address-name" [placeholder]="'common.enterName' | translate">
+                                            </div>
+                                            <div class="xl:col-span-12 col-span-12">
+                                                <label for="contact-address-phone" class="ti-form-label ">{{ 'landing.phoneNo' | translate }}</label>
+                                                <input type="text" class="ti-form-control" id="contact-address-phone" [placeholder]="'common.enterPhone' | translate" dir="ltr">
+                                            </div>
+                                            <div class="xl:col-span-12 col-span-12">
+                                                <label for="contact-address-address" class="ti-form-label ">{{ 'landing.email' | translate }}</label>
+                                                <textarea class="form-control" id="contact-address-address" rows="1" dir="ltr"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="xl:col-span-6 col-span-12">
+                                        <label for="contact-address-message" class="ti-form-label ">{{ 'landing.message' | translate }}</label>
+                                        <textarea class="form-control" id="contact-address-message" rows="8"></textarea>
+                                    </div>
+                                    <div class="xl:col-span-12 col-span-12">
+                                        <div class="flex mt-3 flex-wrap">
+                                            <div class="">
+                                                <div class="ti-btn-list flex gap-2 me-2">
+                                                    <button type="button" aria-label="button" class="ti-btn ti-btn-icon ti-btn-soft-info ti-btn-wave"><i class="ri-facebook-line font-bold"></i></button>
+                                                    <button type="button" aria-label="button" class="ti-btn ti-btn-icon ti-btn-soft-secondary ti-btn-wave"><i class="ri-twitter-x-line font-bold"></i></button>
+                                                    <button type="button" aria-label="button" class="ti-btn ti-btn-icon ti-btn-soft-success ti-btn-wave"><i class="ri-instagram-line font-bold"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="ms-auto">
+                                                <button type="button" class="ti-btn ti-btn-primary  ti-btn-wave">{{ 'landing.sendMessage' | translate }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="2xl:col-span-6 xl:col-span-6 lg:col-span-6 md:col-span-12 sm:col-span-12 col-span-12 pe-0">
+                            <div class="p-5 landing-contact-info mt-5">
+                                <div class="">
+                                    <div class="text-lg font-semibold mb-3">{{ 'landing.contactInformation' | translate }}</div>
+                                    <div class="mb-3 text-dark dark:text-defaulttextcolor/80 text-sm"> <i class="ri-map-pin-fill me-2 text-textmuted dark:text-textmuted/50"></i> {{ 'landing.mashalifyMainOfficeAddYourAddressHere' | translate }}</div>
+                                    <div class="flex mb-3"> <i class="ri-phone-fill me-2 inline-block text-textmuted dark:text-textmuted/50"></i>
+                                        <div class="text-dark dark:text-defaulttextcolor/80 text-sm">
+                                            <div>{{ 'landing.addYourPhoneNumber' | translate }}</div> <span>{{ 'landing.addYourWhatsAppNumber' | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 text-dark dark:text-defaulttextcolor/80 text-sm"><i class="ri-mail-fill me-2 inline-block text-textmuted dark:text-textmuted/50"></i> hello&#64;mashalify.com</div>
+                                </div>
+                                <div class="">
+                                    <div class="box border mb-0 shadow-none overflow-hidden"> <iframe [title]="'common.map' | translate" src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d30444.274596168965!2d78.54114692513858!3d17.48198883339408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d17.4886524!2d78.5495041!4m5!1s0x3bcb9c7ec139a15d%3A0x326d1c90786b2ab6!2sspruko%20technologies!3m2!1d17.474805099999998!2d78.570258!5e0!3m2!1sen!2sin!4v1670225507254!5m2!1sen!2sin" height="100" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start:: Section-11 -->
+        <section class="section landing-footer text-fixed-white">
+            <div class="container">
+                <div class="grid grid-cols-12 gap-x-6">
+                    <div class="md:col-span-4 sm:col-span-6 col-span-12 mb-md-0 mb-3">
+                        <div class="px-4">
+                            <p class="font-medium !mb-3"><a aria-label="anchor" routerLink="/dashboards/sales"><img src="./assets/images/brand-logos/desktop-dark.png" alt=""></a></p>
+                            <p class="mb-2 opacity-60 text-sm">{{ 'landing.mashalifyIsASoftwareDevelopmentCompanyAnd' | translate }}</p>
+                            <p class="!mb-0 opacity-60 text-sm">{{ 'landing.softwareLearningAndKnowledgeFromOneMain' | translate }}</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 sm:col-span-6 col-span-12">
+                        <div class="px-4">
+                            <h6 class="font-medium mb-3 text-fixed-white">{{ 'landing.ourSITES' | translate }}</h6>
+                            <ul class="list-unstyled opacity-60 text-sm landing-footer-list">
+                                <li><a routerLink="/pages/email/mailapp" class="text-fixed-white">{{ 'landing.mashalifyTech' | translate }}</a></li>
+                                <li><a routerLink="/pages/profile" class="text-fixed-white">{{ 'landing.mashalAlQuran' | translate }}</a></li>
+                                <li><a routerLink="/pages/blog/blog" class="text-fixed-white">{{ 'landing.blog' | translate }}</a></li>
+                                <li><a routerLink="/apps/projects/projects-list" class="text-fixed-white">{{ 'landing.projects' | translate }}</a></li>
+                                <li><a href="javascript:void(0);" class="text-fixed-white">{{ 'landing.upwork' | translate }}</a></li>
+                                <li><a href="javascript:void(0);" class="text-fixed-white">{{ 'landing.fiverr' | translate }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 sm:col-span-6 col-span-12">
+                        <div class="px-4">
+                            <h6 class="font-medium text-fixed-white mb-2">{{ 'landing.info' | translate }}</h6>
+                            <ul class="list-unstyled opacity-60 text-sm landing-footer-list">
+                                <li><a routerLink="/pages/team" class="text-fixed-white">{{ 'landing.ourTeam' | translate }}</a></li>
+                                <li><a href="javascript:void(0);" class="text-fixed-white">{{ 'landing.contactUS' | translate }}</a></li>
+                                <li><a href="javascript:void(0);" class="text-fixed-white">{{ 'landing.about' | translate }}</a></li>
+                                <li><a href="javascript:void(0);" class="text-fixed-white">{{ 'landing.services' | translate }}</a></li>
+                                <li><a routerLink="/pages/blog/blog" class="text-fixed-white">{{ 'landing.blog' | translate }}</a></li>
+                                <li><a routerLink="/pages/terms-conditions" class="text-fixed-white">{{ 'landing.termsConditions' | translate }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 sm:col-span-6 col-span-12">
+                        <div class="px-4">
+                            <h6 class="font-medium text-fixed-white mb-2">{{ 'landing.contact' | translate }}</h6>
+                            <ul class="list-unstyled text-sm landing-footer-list">
+                                <li><a href="javascript:void(0);" class="text-fixed-white opacity-60"><i class="ri-home-4-line me-1 align-middle"></i> {{ 'landing.mashalifyMainOffice' | translate }}</a></li>
+                                <li><a href="javascript:void(0);" class="text-fixed-white opacity-60"><i class="ri-mail-line me-1 align-middle"></i> hello&#64;mashalify.com</a></li>
+                                <li><a href="javascript:void(0);" class="text-fixed-white opacity-60"><i class="ri-phone-line me-1 align-middle"></i> {{ 'landing.addYourPhoneNumber' | translate }}</a></li>
+                                <li class="mt-3">
+                                    <p class="mb-2 font-medium opacity-80">{{ 'landing.followUSON' | translate }}</p>
+                                    <div class="mb-0">
+                                        <div class="ti-btn-list flex gap-2">
+                                            <button type="button" aria-label="button" class="ti-btn ti-btn-sm ti-btn-icon ti-btn-soft-primary ti-btn-wave waves-effect waves-light"><i class="ri-facebook-line font-bold"></i></button>
+                                            <button type="button" aria-label="button" class="ti-btn ti-btn-sm ti-btn-icon ti-btn-soft-secondary ti-btn-wave waves-effect waves-light"><i class="ri-twitter-x-line font-bold"></i></button>
+                                            <button type="button" aria-label="button" class="ti-btn ti-btn-sm ti-btn-icon ti-btn-soft-success ti-btn-wave waves-effect waves-light"><i class="ri-instagram-line font-bold"></i></button>
+                                            <button type="button" aria-label="button" class="ti-btn ti-btn-sm ti-btn-icon ti-btn-soft-info ti-btn-wave waves-effect waves-light"><i class="ri-github-line font-bold"></i></button>
+                                            <button type="button" aria-label="button" class="ti-btn ti-btn-sm ti-btn-icon ti-btn-soft-warning ti-btn-wave waves-effect waves-light"><i class="ri-youtube-line font-bold"></i></button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center landing-main-footer py-3">
+            <span class="text-textmuted dark:text-textmuted/50 text-[15px]"> {{ 'landing.copyright' | translate }} <span id="year"> 2026 </span>
+                <a href="javascript:void(0);" class="text-primary font-medium"><u>Mashalify</u></a>{{ 'landing.designedWith' | translate }} <span class="fa fa-heart text-danger"></span> {{ 'landing.by' | translate }} <span class="text-primary font-medium">Mashalify</span> {{ 'landing.allRightsReserved' | translate }}
+            </span>
+        </div>
+    </div>
+    <!-- End::main-content -->
+
+</div>
+<!-- Back To Top -->
+
+<!-- ========== Switcher  ========== -->
+<div id="hs-overlay-switcher" class="hs-overlay hidden !border-0 ti-offcanvas ti-offcanvas-right hs-overlay-backdrop-open:bg-[#11182780] dark:hs-overlay-backdrop-open:bg-[#171717cc]" tabindex="-1">
+    <div class="ti-offcanvas-header border-defaultborder dark:border-defaultborder/10">
+        <h5 class="ti-offcanvas-title">{{ 'landing.switcher' | translate }}</h5>
+        <button type="button" class="ti-btn flex-shrink-0 p-0 transition-none text-defaulttextcolor dark:text-defaulttextcolor/70 hover:text-gray-700 focus:ring-gray-400 focus:ring-offset-white  dark:hover:text-white/80 dark:focus:ring-white/10 dark:focus:ring-offset-white/10" data-hs-overlay="#hs-overlay-switcher">
+            <span class="sr-only">{{ 'landing.closeModal' | translate }}</span>
+            <i class="ri-close-large-line leading-none text-lg"></i>
+        </button>
+    </div>
+    <div class="ti-offcanvas-body !p-0" id="switcher-body">
+        <div>
+            <div>
+                <p class="switcher-style-head">{{ 'landing.themeColorMode' | translate }}</p>
+                <div class="grid grid-cols-3 gap-6 switcher-style">
+                    <div class="flex">
+                        <input (click)="updateTheme('light')" type="radio" name="theme-style" class="ti-form-radio" id="switcher-light-theme" [checked]="localdata['theme'] == 'light'">
+                        <label for="switcher-light-theme" class="text-xs text-defaulttextcolor dark:text-defaulttextcolor/70 font-semibold ms-2 ">{{ 'landing.light' | translate }}</label>
+                    </div>
+                    <div class="flex">
+                        <input (click)="updateTheme('dark')" [checked]="localdata['theme'] == 'dark'" type="radio" name="theme-style" class="ti-form-radio" id="switcher-dark-theme">
+                        <label for="switcher-dark-theme" class="text-xs text-defaulttextcolor dark:text-defaulttextcolor/70 font-semibold ms-2 ">{{ 'landing.dark' | translate }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4">
+                <app-language-switcher />
+                <p class="mt-2 text-sm">{{ 'common.direction' | translate }}</p>
+            </div>
+            <div class="theme-colors">
+                <p class="switcher-style-head">{{ 'landing.themePrimary' | translate }}</p>
+                <div class="flex switcher-style space-x-3 !item-center">
+                    <div class="ti-form-radio switch-select"><input class="ti-form-radio color-input color-primary-1" type="radio" name="theme-primary" id="switcher-primary" (click)="updateprimary('#7647e5')"></div>
+                    <div class="ti-form-radio switch-select"><input class="ti-form-radio color-input color-primary-2" type="radio" name="theme-primary" id="switcher-primary1" (click)="updateprimary('#3f4bec')" [checked]="localdata['themePrimary'] == '#3f4bec'"></div>
+                    <div class="ti-form-radio switch-select"><input class="ti-form-radio color-input color-primary-3" type="radio" name="theme-primary" id="switcher-primarytint2color" (click)="updateprimary('#377dce')" [checked]="localdata['themePrimary'] == '#377dce'"></div>
+                    <div class="ti-form-radio switch-select"><input class="ti-form-radio color-input color-primary-4" type="radio" name="theme-primary" id="switcher-primarytint3color" (click)="updateprimary('#019fa2')" [checked]="localdata['themePrimary'] == '#019fa2'"></div>
+                    <div class="ti-form-radio switch-select"><input class="ti-form-radio color-input color-primary-5" type="radio" name="theme-primary" id="switcher-primary4" (click)="updateprimary('#8b9504')" [checked]="localdata['themePrimary'] == '#8b9504'"></div>
+                    <div class="ti-form-radio switch-select  color-primary-light">
+                        <div class="pickr-container-primary">
+                            <div class="pickr">
+                                <button type="button" role="button" #themeprimary [attr.aria-label]="'common.pickColor' | translate" class="color-bg-transparent pcr-button" style="--pcr-color: rgba(132, 90, 223, 1);" [style.background]="defaultPrimary" [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'hex'" [(colorPicker)]="defaultPrimary" (cpSliderDragEnd)="dynamicLightPrimary($event)"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ti-offcanvas-footer  sm:flex justify-between">
+        <a href="javascript:void(0);" id="reset-all" (click)="reset()" class="w-full ti-btn ti-btn-danger m-1">{{ 'landing.reset' | translate }}</a>
+    </div>
+</div>
+<!-- ========== END Switcher  ========== -->

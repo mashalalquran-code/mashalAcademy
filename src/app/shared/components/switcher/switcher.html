@@ -1,0 +1,452 @@
+<div id="hs-overlay-switcher" class="hs-overlay hidden  !border !border-defaultborder dark:!border-defaultborder/10 ti-offcanvas ti-offcanvas-right   hs-overlay-backdrop-open:bg-[#11182780] dark:hs-overlay-backdrop-open:bg-[#171717cc] " tabindex="-1">
+  <div class="ti-offcanvas-header z-10 relative !border-0">
+    <h5 class="ti-offcanvas-title">
+      {{ 'switcher.title' | translate }}
+    </h5>
+    <button type="button"  class="ti-btn flex-shrink-0 p-0 !mb-0  transition-none text-defaulttextcolor dark:text-defaulttextcolor/80 hover:text-gray-700 focus:ring-gray-400 focus:ring-offset-white  dark:hover:text-white/80 dark:focus:ring-white/10 dark:focus:ring-offset-white/10"  data-hs-overlay="#hs-overlay-switcher">
+      <span class="sr-only">{{ 'switcher.close' | translate }}</span>
+      <i class="ri-close-large-line leading-none text-lg"></i>
+    </button>
+  </div>
+  <div class="ti-offcanvas-body !p-0  !border border-defaultborder dark:border-white/10 z-10 relative !h-auto">
+    <div class="flex " [attr.aria-label]="'switcher.tabs' | translate" role="tablist">
+      <button type="button"
+        class="hs-tab-active:bg-danger/20 w-full !py-2 !px-4 hs-tab-active:border-b-transparent text-[0.813rem] border-0 hs-tab-active:text-danger dark:hs-tab-active:bg-danger/20 dark:hs-tab-active:border-b-white/10 dark:hs-tab-active:text-danger -mb-px bg-white font-normal text-center  text-defaulttextcolor dark:text-defaulttextcolor/80 rounded-none dark:hover:text-white/70 hover:text-gray-700 dark:bg-bodybg dark:border-white/10  active"
+        id="switcher-item-1" data-hs-tab="#switcher-1" aria-controls="switcher-1" role="tab">
+        {{ 'switcher.themeStyle' | translate }}
+      </button>
+      <button type="button"
+        class="hs-tab-active:bg-danger/20 w-full !py-2 !px-4 hs-tab-active:border-b-transparent text-[0.813rem] border-0 hs-tab-active:text-danger dark:hs-tab-active:bg-danger/20 dark:hs-tab-active:border-b-white/10 dark:hs-tab-active:text-danger -mb-px  bg-white font-normal text-center  text-defaulttextcolor dark:text-defaulttextcolor/80 rounded-none dark:hover:text-white/70 hover:text-gray-700 dark:bg-bodybg dark:border-white/10  dark:hover:text-gray-300"
+        id="switcher-item-2" data-hs-tab="#switcher-2" aria-controls="switcher-2" role="tab">
+        {{ 'switcher.themeColors' | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="ti-offcanvas-body !p-0 !pb-[13rem]" id="switcher-body">
+    <div id="switcher-1" role="tabpanel" aria-labelledby="switcher-item-1" class="">
+      <div class="">
+        <p class="switcher-style-head">{{ 'switcher.colorMode' | translate }}</p>
+        <div class="grid grid-cols-3 switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="theme-style" class="ti-form-radio" id="switcher-light-theme" 
+              (click)="updateTheme('light')" [checked]="localdata['theme'] == 'light'">
+            <label for="switcher-light-theme"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2 font-normal">{{ 'switcher.light' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="theme-style" class="ti-form-radio" id="switcher-dark-theme"
+              (click)="updateTheme('dark')" [checked]="localdata['theme'] == 'dark'">
+            <label for="switcher-dark-theme"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2 font-normal">{{ 'switcher.dark' | translate }}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="switcher-style-head">{{ 'switcher.language' | translate }}</p>
+        <div class="switcher-style">
+          <app-language-switcher />
+          <p class="mt-2 text-xs text-textmuted dark:text-textmuted/50">
+            {{ 'switcher.directionHint' | translate }}
+          </p>
+        </div>
+      </div>
+      <div>
+        <p class="switcher-style-head">{{ 'switcher.navigationStyles' | translate }}</p>
+        <div class="grid grid-cols-3  switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="navigation-style" class="ti-form-radio" id="switcher-vertical"
+              (click)="updatemenuType('vertical')" [checked]="localdata['navigationStyles'] != 'horizontal'">
+            <label for="switcher-vertical"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.vertical' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="navigation-style" class="ti-form-radio" id="switcher-horizontal"
+              [checked]="localdata['navigationStyles'] == 'horizontal'" (click)="updatemenuType('horizontal')">
+            <label for="switcher-horizontal"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.horizontal' | translate }}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="switcher-style-head">{{ 'switcher.navigationMenuStyle' | translate }}</p>
+        <div class="grid grid-cols-2 gap-2 switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio" id="switcher-menu-click"
+              (click)="updatemenuStyle('menu-click')" [checked]="localdata['menuStyles'] == 'menu-click'">
+            <label for="switcher-menu-click"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.menuClick' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio" id="switcher-menu-hover"
+              (click)="updatemenuStyle('menu-hover')" [checked]="localdata['menuStyles'] == 'menu-hover'">
+            <label for="switcher-menu-hover"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.menuHover' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio" id="switcher-icon-click"
+              (click)="updatemenuStyle('icon-click')" [checked]="localdata['menuStyles'] == 'icon-click'">
+            <label for="switcher-icon-click"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.iconClick' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio" id="switcher-icon-hover"
+              (click)="updatemenuStyle('icon-hover')" [checked]="localdata['menuStyles'] == 'icon-hover'">
+            <label for="switcher-icon-hover"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.iconHover' | translate }}</label>
+          </div>
+        </div>
+      </div>
+      <div class=" sidemenu-layout-styles">
+        <p class="switcher-style-head">{{ 'switcher.sideLayout' | translate }}</p>
+        <div class="grid grid-cols-2 gap-2 switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio" id="switcher-default-menu"
+              (click)="updatelayoutStyles('default')" [checked]="localdata['layoutStyles'] == 'default'">
+            <label for="switcher-default-menu"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal ">{{ 'switcher.defaultMenu' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio" id="switcher-closed-menu"
+              (click)="updatelayoutStyles('closed')" [checked]="localdata['layoutStyles'] == 'closed'">
+            <label for="switcher-closed-menu"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal ">
+              {{ 'switcher.closedMenu' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio" id="switcher-icontext-menu"
+              (click)="updatelayoutStyles('icontext')" [checked]="localdata['layoutStyles'] == 'icontext'">
+            <label for="switcher-icontext-menu"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal ">{{ 'switcher.iconText' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio" id="switcher-icon-overlay"
+              (click)="updatelayoutStyles('overlay')" [checked]="localdata['layoutStyles'] == 'overlay'">
+            <label for="switcher-icon-overlay"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal ">{{ 'switcher.iconOverlay' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio" id="switcher-detached"
+              (click)="updatelayoutStyles('detached')" [checked]="localdata['layoutStyles'] == 'detached'">
+            <label for="switcher-detached"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal ">{{ 'switcher.detached' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio" id="switcher-double-menu"
+              (click)="updatelayoutStyles('doublemenu')" [checked]="localdata['layoutStyles'] == 'doublemenu'">
+            <label for="switcher-double-menu"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.doubleMenu' | translate }}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="switcher-style-head">{{ 'switcher.pageStyles' | translate }}</p>
+        <div class="grid grid-cols-3  switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="data-page-styles" class="ti-form-radio" id="switcher-regular"
+              (click)="updatepageStyles('regular')" [checked]="localdata['pageStyles'] == 'regular'">
+            <label for="switcher-regular"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.regular' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="data-page-styles" class="ti-form-radio" id="switcher-classic"
+              (click)="updatepageStyles('classic')" [checked]="localdata['pageStyles'] == 'classic'">
+            <label for="switcher-classic"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.classic' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="data-page-styles" class="ti-form-radio" id="switcher-modern"
+              (click)="updatepageStyles('modern')" [checked]="localdata['pageStyles'] == 'modern'">
+            <label for="switcher-modern"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">
+              {{ 'switcher.modern' | translate }}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="switcher-style-head">{{ 'switcher.widthStyles' | translate }}</p>
+        <div class="grid grid-cols-3 switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="layout-width" class="ti-form-radio" id="switcher-full-width"
+              (click)="updatewidthStyles('fullwidth')" [checked]="localdata['widthStyles'] != 'boxed'">
+            <label for="switcher-full-width"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.fullWidth' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="layout-width" class="ti-form-radio" id="switcher-boxed"
+              (click)="updatewidthStyles('boxed')" [checked]="localdata['widthStyles'] == 'boxed'">
+            <label for="switcher-boxed"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.boxed' | translate }}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="switcher-style-head">{{ 'switcher.menuPositions' | translate }}</p>
+        <div class="grid grid-cols-3  switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="data-menu-positions" class="ti-form-radio" id="switcher-menu-fixed"
+              (click)="updatemenuPosition('fixed')" [checked]="localdata['menuPosition'] != 'scrollable'">
+            <label for="switcher-menu-fixed"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.fixed' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="data-menu-positions" class="ti-form-radio" id="switcher-menu-scroll"
+              (click)="updatemenuPosition('scrollable')" [checked]="localdata['menuPosition'] == 'scrollable'">
+            <label for="switcher-menu-scroll"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.scrollable' | translate }}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="switcher-style-head">{{ 'switcher.headerPositions' | translate }}</p>
+        <div class="grid grid-cols-3 switcher-style">
+          <div class="flex items-center">
+            <input type="radio" name="data-header-positions" class="ti-form-radio" id="switcher-header-fixed"
+              (click)="updateheaderPosition('fixed')" [checked]="localdata['headerPosition'] != 'scrollable'">
+            <label for="switcher-header-fixed"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">
+              {{ 'switcher.fixed' | translate }}</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="data-header-positions" class="ti-form-radio" id="switcher-header-scroll"
+              (click)="updateheaderPosition('scrollable')" [checked]="localdata['headerPosition'] == 'scrollable'">
+            <label for="switcher-header-scroll"
+              class="text-[0.813rem] text-defaulttextcolor dark:text-defaulttextcolor/80 ms-2  font-normal">{{ 'switcher.scrollable' | translate }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="switcher-2" class="hidden" role="tabpanel" aria-labelledby="switcher-item-2">
+      <div class="theme-colors">
+        <p class="switcher-style-head">{{ 'switcher.menuColors' | translate }}</p>
+        <div class="flex switcher-style space-x-3 ">
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-white" type="radio" name="menu-colors"
+              id="switcher-menu-light" (click)="updatemenuColor('light')" [checked]="localdata['menuColor'] == 'light'" [attr.aria-label]="'switcher.lightMenu' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.lightMenu' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-dark" type="radio" name="menu-colors"
+              id="switcher-menu-dark" (click)="updatemenuColor('dark')" [checked]="localdata['menuColor'] == 'dark'" [attr.aria-label]="'switcher.darkMenu' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.darkMenu' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-primary" type="radio" name="menu-colors"
+              id="switcher-menu-primary" (click)="updatemenuColor('color')"
+              [checked]="localdata['menuColor'] == 'color'" [attr.aria-label]="'switcher.colorMenu' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.colorMenu' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-gradient" type="radio" name="menu-colors"
+              id="switcher-menu-gradient" (click)="updatemenuColor('gradient')"
+              [checked]="localdata['menuColor'] == 'gradient'" [attr.aria-label]="'switcher.gradientMenu' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.gradientMenu' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-transparent" type="radio" name="menu-colors"
+              id="switcher-menu-transparent" (click)="updatemenuColor('transparent')"
+              [checked]="localdata['menuColor'] == 'transparent'" [attr.aria-label]="'switcher.transparentMenu' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs !font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.transparentMenu' | translate }}
+            </span>
+          </div>
+        </div>
+        <div class="px-4 text-textmuted dark:text-textmuted/50 text-[.6875rem]"><b class="me-2 font-normal">{{ 'switcher.note' | translate }}</b>{{ 'switcher.menuColorHint' | translate }}</div>
+      </div>
+      <div class="theme-colors">
+        <p class="switcher-style-head">{{ 'switcher.headerColors' | translate }}</p>
+        <div class="flex switcher-style space-x-3 ">
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-white !border" type="radio"
+              name="header-colors" id="switcher-header-light" (click)="updateheaderColor('light')"
+              [checked]="localdata['headerColor'] == 'light'" [attr.aria-label]="'switcher.lightHeader' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.lightHeader' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-dark" type="radio" name="header-colors"
+              id="switcher-header-dark" (click)="updateheaderColor('dark')"
+              [checked]="localdata['headerColor'] == 'dark'" [attr.aria-label]="'switcher.darkHeader' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.darkHeader' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-primary" type="radio" name="header-colors"
+              id="switcher-header-primary" (click)="updateheaderColor('color')"
+              [checked]="localdata['headerColor'] == 'color'" [attr.aria-label]="'switcher.colorHeader' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.colorHeader' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-gradient" type="radio" name="header-colors"
+              id="switcher-header-gradient" (click)="updateheaderColor('gradient')"
+              [checked]="localdata['headerColor'] == 'gradient'" [attr.aria-label]="'switcher.gradientHeader' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.gradientHeader' | translate }}
+            </span>
+          </div>
+          <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select">
+            <input class="hs-tooltip-toggle ti-form-radio color-input color-transparent" type="radio"
+              name="header-colors" id="switcher-header-transparent" (click)="updateheaderColor('transparent')"
+              [checked]="localdata['headerColor'] == 'transparent'" [attr.aria-label]="'switcher.transparentHeader' | translate">
+            <span
+              class="hs-tooltip-content ti-main-tooltip-content !py-1 !px-2 !bg-black text-xs font-medium !text-white shadow-sm dark:!bg-black"
+              role="tooltip">
+              {{ 'switcher.transparentHeader' | translate }}
+            </span>
+          </div>
+        </div>
+        <div class="px-4 text-textmuted dark:text-textmuted/50 text-[.6875rem]">
+          <b class="me-2 !font-normal">{{ 'switcher.note' | translate }}</b>{{ 'switcher.headerColorHint' | translate }}
+        </div>
+      </div>
+      <div class="theme-colors">
+        <p class="switcher-style-head">{{ 'switcher.primary' | translate }}</p>
+        <div class="flex switcher-style space-x-3  !items-top custom-theme-bg">
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-primary-1" type="radio" name="theme-primary"
+              id="switcher-primary" (click)="updateprimary('#7647e5')" [checked]="localdata['themePrimary'] == '#7647e5'" [attr.aria-label]="'switcher.primaryPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-primary-2" type="radio" name="theme-primary"
+              id="switcher-primary1" (click)="updateprimary('#3f4bec')"
+              [checked]="localdata['themePrimary'] == '#3f4bec'" [attr.aria-label]="'switcher.primaryPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-primary-3" type="radio" name="theme-primary"
+              id="switcher-primarytint2color" (click)="updateprimary('#377dce')"
+              [checked]="localdata['themePrimary'] == '#377dce'" [attr.aria-label]="'switcher.primaryPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-primary-4" type="radio" name="theme-primary"
+              id="switcher-primarytint3color" (click)="updateprimary('#019fa2')"
+              [checked]="localdata['themePrimary'] == '#019fa2'" [attr.aria-label]="'switcher.primaryPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-primary-5" type="radio" name="theme-primary"
+              id="switcher-primary4" (click)="updateprimary('#8b9504')"
+              [checked]="localdata['themePrimary'] == '#8b9504'" [attr.aria-label]="'switcher.primaryPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select ps-0 color-primary-light">
+            <div class="pickr-container-primary">
+              <div class="pickr">
+                <button #themeprimary type="button" role="button" [attr.aria-label]="'switcher.pickPrimary' | translate"
+                     class="color-bg-transparent pcr-button" style="--pcr-color: rgba(132, 90, 223, 1);"
+                  [style.background]="defaultPrimary" [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'hex'"
+                  [(colorPicker)]="defaultPrimary" (cpSliderDragEnd)="dynamicLightPrimary($event)"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="theme-colors">
+        <p class="switcher-style-head">{{ 'switcher.background' | translate }}</p>
+        <div class="flex switcher-style space-x-3  !items-top custom-theme-bg">
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-bg-1" type="radio" name="theme-background"
+              id="switcher-background" (click)="
+              updateBackground({
+                  main :  '#0c175b',  secondary :'#111f60',
+                  accent: '#111f60', overlay:'#ffffff1a',
+                  theme:'dark'
+              })
+            " [checked]="localdata['themeBackground']?.['main'] == '#0c175b'" [attr.aria-label]="'switcher.backgroundPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-bg-2" type="radio" name="theme-background"
+              id="switcher-background1" (click)="
+              updateBackground({main : '#320b6e',  secondary : '#391078',  accent : '#391078',  overlay: '#ffffff1a',theme: 'dark'})"
+              [checked]="localdata['themeBackground']?.['main'] == '#320b6e'" [attr.aria-label]="'switcher.backgroundPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-bg-3" type="radio" name="theme-background"
+              id="switcher-background2" (click)="
+              updateBackground({main: '#085171', secondary: '#1b6585', accent: '#1b6585', overlay: '#ffffff1a', theme: 'dark'})"
+           [checked]="localdata['themeBackground']?.['main'] == '#085171'" [attr.aria-label]="'switcher.backgroundPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-bg-4" type="radio" name="theme-background"
+              id="switcher-background3" (click)="
+              updateBackground({ main : '#03513c', formControl:'#08634b',  secondary :'#08634b',accent: '#08634b', overlay:'#ffffff1a', theme:'dark',gray: '#ffffff1a' })
+            " [checked]="localdata['themeBackground']?.['main'] =='#03513c'" [attr.aria-label]="'switcher.backgroundPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input class="ti-form-radio color-input color-bg-5" type="radio" name="theme-background"  id="switcher-background4"
+            (click)="updateBackground({    main : '#494e01', formControl:'#545904', secondary :'#545904',accent: '#545904', overlay:'#ffffff1a',    theme:'dark',gray: '#ffffff1a', })"
+            [checked]="localdata['themeBackground']?.['main'] == '#494e01'" [attr.aria-label]="'switcher.backgroundPreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select ps-0 color-bg-transparent">
+            <div class="theme-container-background hidden"></div>
+            <div class="pickr-container-background">
+              <div class="pickr">
+                <button type="button" role="button" [attr.aria-label]="'switcher.pickBackground' | translate"
+               #themebackground    class="color-bg-transparent pcr-button" style="--pcr-color: rgba(132, 90, 223, 1);"
+                  [style.background]="defaultBg" [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'rgba'"
+                  [(colorPicker)]="defaultBg" (cpSliderDragEnd)="dynamicTranparentBgPrimary($event)"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-image theme-colors">
+        <p class="switcher-style-head">{{ 'switcher.backgroundImage' | translate }}</p>
+        <div class="flex switcher-style space-x-3  flex-wrap gap-3">
+          <div class="ti-form-radio switch-select">
+            <input (click)="updateBgImage('bgimg1')" class="ti-form-radio bgimage-input bg-img1 checked:!bg-transparent" type="radio"
+              name="theme-images" id="switcher-bg-img" [attr.aria-label]="'switcher.imagePreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input (click)="updateBgImage('bgimg2')" class="ti-form-radio bgimage-input bg-img2 checked:!bg-transparent" type="radio"
+              name="theme-images" id="switcher-bg-img1" [attr.aria-label]="'switcher.imagePreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input (click)="updateBgImage('bgimg3')" class="ti-form-radio bgimage-input bg-img3 checked:!bg-transparent" type="radio"
+              name="theme-images" id="switcher-bg-img2" [attr.aria-label]="'switcher.imagePreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input (click)="updateBgImage('bgimg4')" class="ti-form-radio bgimage-input bg-img4 checked:!bg-transparent" type="radio"
+              name="theme-images" id="switcher-bg-img3" [attr.aria-label]="'switcher.imagePreset' | translate">
+          </div>
+          <div class="ti-form-radio switch-select">
+            <input (click)="updateBgImage('bgimg5')" class="ti-form-radio bgimage-input bg-img5 checked:!bg-transparent" type="radio"
+              name="theme-images" id="switcher-bg-img4" [attr.aria-label]="'switcher.imagePreset' | translate">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ti-offcanvas-footer !items-center sm:flex justify-between">
+
+    <a  (click)="reset()" href="javascript:void(0);" id="reset-all" class="ti-btn ti-btn-danger m-1 w-full">{{ 'switcher.reset' | translate }}</a>
+  </div>
+</div>

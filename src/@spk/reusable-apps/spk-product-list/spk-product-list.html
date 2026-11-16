@@ -1,0 +1,39 @@
+
+    <div class="box shadow-none">
+      <div class="box-body">
+        <div class="flex items-start gap-3">
+          <div>
+            <span class="avatar avatar-md" [ngClass]="iconBg()">
+              <i [class]="icon() + ' text-lg'"></i>
+            </span>
+          </div>
+          <div class="flex-auto">
+            <span class="block mb-2">{{ title() }}</span>
+            <h5 class="font-semibold mb-2 leading-none">
+              {{ count() }}
+              <span
+                class="font-semibold text-xs inline-flex items-center"
+                [ngClass]="{
+                  'text-success': trend() === 'up',
+                  'text-danger': trend() === 'down'
+                }"
+              >
+                <i
+                  [class]="'ti ' + (trend() === 'up' ? 'ti-arrow-narrow-up' : 'ti-arrow-narrow-down')"
+                ></i>
+                {{ percentage() }}
+              </span>
+            </h5>
+          </div>
+          <spk-dropdowns [Customclass]="'ti-dropdown hs-dropdown'" [class]="' hs-dropdown-toggle !p-0 '"
+          [Menuclass]="'ti-dropdown-menu hs-dropdown-menu hidden'" [Icon]="true" [IconClass]="'ri-more-2-fill text-lg text-textmuted dark:text-textmuted/50'">
+              @for (option of dropdownOptions(); track $index) {
+              <li>
+                <a class="ti-dropdown-item" href="javascript:void(0);">{{ option }}</a>
+              </li>
+            }
+          </spk-dropdowns>
+        </div>
+      </div>
+    </div>
+
