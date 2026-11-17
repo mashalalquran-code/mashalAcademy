@@ -6,17 +6,73 @@ export const admin: Routes = [
     path: 'dashboards',
     children: [
       {
-        path: 'sales',
+        path: 'admin',
         loadComponent: () =>
-          import('./sales/sales').then((m) => m.Sales),
+          import('./admin/admin').then((m) => m.Admin),
         data: {
           parentTitle: 'pageHeader.dashboards',
           subParentTitle: '',
-          childTitle: 'pageHeader.sales',
+          childTitle: 'pageHeader.admin',
         },
-        title: 'Mashalify - Sales',
+        title: 'Mashalify - Admin',
+      },
+       {
+        path: 'finance',
+        loadComponent: () =>
+          import('./finance/finance').then((m) => m.Finance),
+        data: {
+          parentTitle: 'pageHeader.dashboards',
+          subParentTitle: '',
+          childTitle: 'pageHeader.finance',
+        },
+        title: 'Mashalify - Finance',
+      },
+       {
+        path: 'HR',
+        loadComponent: () =>
+          import('./HR/HR').then((m) => m.HR),
+        data: {
+          parentTitle: 'pageHeader.dashboards',
+          subParentTitle: '',
+          childTitle: 'pageHeader.HR',
+        },
+        title: 'Mashalify - HR',
+      },
+       {
+        path: 'manager',
+        loadComponent: () =>
+          import('./manager/manager').then((m) => m.Manager),
+        data: {
+          parentTitle: 'pageHeader.dashboards',
+          subParentTitle: '',
+          childTitle: 'pageHeader.manager',
+        },
+        title: 'Mashalify - Manager',
+      },
+       {
+        path: 'students',
+        loadComponent: () =>
+          import('./students/students').then((m) => m.Students),
+        data: {
+          parentTitle: 'pageHeader.dashboards',
+          subParentTitle: '',
+          childTitle: 'pageHeader.students',
+        },
+        title: 'Mashalify - Students',
+      },
+       {
+        path: 'teachers',
+        loadComponent: () =>
+          import('./teachers/teachers').then((m) => m.Teachers),
+        data: {
+          parentTitle: 'pageHeader.dashboards',
+          subParentTitle: '',
+          childTitle: 'pageHeader.teachers',
+        },
+        title: 'Mashalify - Teachers',
       },
     ],
+    
   },
 ];
 

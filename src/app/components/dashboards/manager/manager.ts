@@ -18,7 +18,7 @@ import * as sales from '../../../shared/data/dashbaords/sales';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-sales',
+  selector: 'app-manager',
   standalone: true,
   imports: [
     CommonModule,
@@ -33,11 +33,11 @@ import { TranslatePipe } from '@ngx-translate/core';
   providers: [
     provideFlatpickrDefaults(),
   ],
-  templateUrl: './sales.html',
-  styleUrl: './sales.scss',
+  templateUrl: './manager.html',
+  styleUrl: './manager.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Sales {
+export class Manager {
   readonly salesData = sales;
 
   rangeValue: { from: Date; to: Date } = {

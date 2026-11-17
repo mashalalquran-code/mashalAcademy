@@ -257,7 +257,7 @@ export class Login {
   Submit(): void {
     const { username, password } = this.angularLoginForm.controls;
     if (username.value === 'spruko@admin.com' && password.value === 'sprukoadmin') {
-      this.router.navigate(['/dashboards/sales']);
+      this.router.navigate(['/dashboards/admin']);
       this.toastr.success('Login successful', 'zynix', {
         timeOut: 3000,
         positionClass: 'toast-top-right'

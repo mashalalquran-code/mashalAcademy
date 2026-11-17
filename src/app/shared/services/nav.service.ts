@@ -94,8 +94,38 @@ export class NavService implements OnDestroy {
       dirchange: false,
       children: [
         {
-          path: '/dashboards/sales',
-          title: 'Sales',
+          path: '/dashboards/admin',
+          title: 'Admin',
+          type: 'link',
+          dirchange: false
+        },
+         {
+          path: '/dashboards/finance',
+          title: 'Finance',
+          type: 'link',
+          dirchange: false
+        },
+         {
+          path: '/dashboards/HR',
+          title: 'HR',
+          type: 'link',
+          dirchange: false
+        },
+         {
+          path: '/dashboards/manager',
+          title: 'Manager',
+          type: 'link',
+          dirchange: false
+        },
+         {
+          path: '/dashboards/students',
+          title: 'Students',
+          type: 'link',
+          dirchange: false
+        },
+         {
+          path: '/dashboards/teachers',
+          title: 'Teachers',
           type: 'link',
           dirchange: false
         },
